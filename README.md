@@ -6,12 +6,13 @@ My portfolio
 - Space Invaders 555 : retro TV
 - Space Shooter 3D : curved monitor
 - Happy Cooking Game : mac display
-- Rocket Simulator 2020 : CRT monitor
+- Rocket Simulator 2020 : arcade machine
 - Space Junk Removal Game
-- Robot Walking
+- Robot Walking : futuristic TV
 - 4D Visualizer
 - Piano Transcription Helper : laptop
-- Special Relativity Visualizer
+- Special Relativity Visualizer : CRT monitor
+- Portfolio
 
 ## Art
 - Violent Spider
