@@ -1,0 +1,221 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://textures/render final 2 noisy.png" type="Texture" id=2]
+[ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://textures/button_uk_inactive.png" type="Texture" id=4]
+[ext_resource path="res://textures/button_uk_hover.png" type="Texture" id=5]
+[ext_resource path="res://textures/button_uk_active.png" type="Texture" id=6]
+[ext_resource path="res://textures/button_japan_hover.png" type="Texture" id=7]
+[ext_resource path="res://textures/button_japan_active.png" type="Texture" id=8]
+[ext_resource path="res://textures/button_japan_inactive.png" type="Texture" id=9]
+[ext_resource path="res://ArtPanel.gd" type="Script" id=10]
+[ext_resource path="res://ButtonLink.tscn" type="PackedScene" id=11]
+[ext_resource path="res://textures/button_hd_hover.png" type="Texture" id=14]
+[ext_resource path="res://textures/button_download_active.png" type="Texture" id=15]
+[ext_resource path="res://textures/button_download_inactive.png" type="Texture" id=16]
+[ext_resource path="res://textures/button_source_inactive.png" type="Texture" id=17]
+[ext_resource path="res://textures/button_source_active.png" type="Texture" id=18]
+[ext_resource path="res://textures/button_source_hover.png" type="Texture" id=19]
+[ext_resource path="res://textures/button_download_hover.png" type="Texture" id=20]
+[ext_resource path="res://textures/button_hd_active.png" type="Texture" id=21]
+[ext_resource path="res://textures/button_hd_inactive.png" type="Texture" id=22]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.827451, 0.827451, 0.827451, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.937255, 0.937255, 0.937255, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 0.262745 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
+
+[node name="ArtPanel" type="Control"]
+margin_right = 480.0
+margin_bottom = 270.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -15.0
+margin_bottom = -15.0
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelShadow" type="Panel" parent="Panel"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 6.0
+margin_bottom = 6.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Panel"]
+margin_top = 196.0
+margin_right = 450.0
+margin_bottom = 234.0
+custom_colors/font_color = Color( 0.239216, 0.239216, 0.239216, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Special Relativity
+Visuzlizer"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionContainer" type="Control" parent="Panel"]
+margin_left = 289.0
+margin_top = 29.0
+margin_right = 438.0
+margin_bottom = 168.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionEnglish" type="RichTextLabel" parent="Panel/DescriptionContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/default_color = Color( 0.239216, 0.239216, 0.239216, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+text = "AAABBBCCCFFFFFFFFFFFF
+DDDEEE
+RRR"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="DescriptionJapanese" type="RichTextLabel" parent="Panel/DescriptionContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/default_color = Color( 0.239216, 0.239216, 0.239216, 1 )
+custom_fonts/normal_font = ExtResource( 3 )
+text = "ああああいいいううううおおおおおおおおおお
+えええ
+らららららら"
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ContentContainer" type="Control" parent="Panel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 290.0
+margin_bottom = 198.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContentCenter" type="Control" parent="Panel/ContentContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Panel/ContentContainer/ContentCenter"]
+scale = Vector2( 0.126389, 0.126389 )
+texture = ExtResource( 2 )
+
+[node name="ButtonEnglish" type="TextureButton" parent="Panel"]
+margin_left = 401.0
+margin_top = 6.0
+margin_right = 414.0
+margin_bottom = 25.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonJapan" type="TextureButton" parent="Panel"]
+margin_left = 414.0
+margin_top = 6.0
+margin_right = 427.0
+margin_bottom = 25.0
+toggle_mode = true
+pressed = true
+action_mode = 0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Panel"]
+margin_left = 272.0
+margin_top = 173.0
+margin_right = 458.0
+margin_bottom = 195.0
+custom_constants/separation = 19
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonVideo" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
+margin_left = 30.0
+margin_right = 59.0
+
+[node name="ButtonHD" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
+visible = false
+margin_left = 78.0
+margin_right = 107.0
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 21 )
+texture_hover = ExtResource( 14 )
+
+[node name="ButtonDownload" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
+margin_left = 78.0
+margin_right = 107.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 15 )
+texture_hover = ExtResource( 20 )
+
+[node name="ButtonSource" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
+margin_left = 126.0
+margin_right = 155.0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 19 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="toggled" from="Panel/ButtonEnglish" to="." method="_on_ButtonEnglish_toggled"]
+[connection signal="toggled" from="Panel/ButtonJapan" to="." method="_on_ButtonJapan_toggled"]

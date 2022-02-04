@@ -35,3 +35,10 @@ My portfolio
 - Gaming Arcade Trailer
 - Low Poly Volcano
 - Low Poly Waterfall
+
+## UI Buttons
+- video
+- original resolution
+- download
+- source code
+- English <-> Japanese
