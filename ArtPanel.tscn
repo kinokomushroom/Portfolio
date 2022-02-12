@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://textures/render final 2 noisy.png" type="Texture" id=2]
+[ext_resource path="res://content/camera_large.png" type="Texture" id=2]
 [ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://textures/button_uk_inactive.png" type="Texture" id=4]
 [ext_resource path="res://textures/button_uk_hover.png" type="Texture" id=5]
@@ -35,7 +35,7 @@ corner_radius_bottom_left = 10
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0, 0, 0, 0.262745 )
+bg_color = Color( 0, 0, 0, 0.0862745 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -51,6 +51,7 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.792157 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
@@ -82,8 +83,7 @@ margin_right = 450.0
 margin_bottom = 234.0
 custom_colors/font_color = Color( 0.239216, 0.239216, 0.239216, 1 )
 custom_fonts/font = ExtResource( 1 )
-text = "Special Relativity
-Visuzlizer"
+text = "Single Row Title"
 align = 1
 valign = 1
 __meta__ = {
@@ -94,7 +94,7 @@ __meta__ = {
 margin_left = 289.0
 margin_top = 29.0
 margin_right = 438.0
-margin_bottom = 168.0
+margin_bottom = 175.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,9 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/default_color = Color( 0.239216, 0.239216, 0.239216, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
-text = "AAABBBCCCFFFFFFFFFFFF
-DDDEEE
-RRR"
+text = "English Description"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -118,9 +116,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/default_color = Color( 0.239216, 0.239216, 0.239216, 1 )
 custom_fonts/normal_font = ExtResource( 3 )
-text = "ああああいいいううううおおおおおおおおおお
-えええ
-らららららら"
+text = "日本語説明"
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -130,7 +126,7 @@ __meta__ = {
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 290.0
-margin_bottom = 198.0
+margin_bottom = 209.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,8 +141,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="Panel/ContentContainer/ContentCenter"]
-scale = Vector2( 0.126389, 0.126389 )
+[node name="ContentImage" type="Sprite" parent="Panel/ContentContainer/ContentCenter"]
 texture = ExtResource( 2 )
 
 [node name="ButtonEnglish" type="TextureButton" parent="Panel"]
@@ -180,9 +175,9 @@ __meta__ = {
 
 [node name="ButtonContainer" type="HBoxContainer" parent="Panel"]
 margin_left = 272.0
-margin_top = 173.0
+margin_top = 181.0
 margin_right = 458.0
-margin_bottom = 195.0
+margin_bottom = 203.0
 custom_constants/separation = 19
 alignment = 1
 __meta__ = {
@@ -214,8 +209,6 @@ margin_right = 155.0
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 18 )
 texture_hover = ExtResource( 19 )
-
-[node name="Node2D" type="Node2D" parent="."]
 
 [connection signal="toggled" from="Panel/ButtonEnglish" to="." method="_on_ButtonEnglish_toggled"]
 [connection signal="toggled" from="Panel/ButtonJapan" to="." method="_on_ButtonJapan_toggled"]

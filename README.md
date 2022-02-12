@@ -15,26 +15,31 @@ My portfolio
 - Portfolio
 
 ## Art
+### Edited
+### Found original
+- Camera
+- Moon
+- Piano
+- Train
+- Field
+- Skyscraper
+- Audio
+- Poses
+- Mall
+- Roland VR-730
+- Volcano
+- Waterfall
+- Mandarins
+- Invaders
+### Not yet found
 - Violent Spider
 - Ray Tracing Chess
 - GLSL Black Hole
-- Steam Train Animation
-- Poses
-- Piano Closeup
-- Audio Visualizer Animation
-- Tree in Field
-- Skyscraper
-- Shopping Mall
 - Chocolate Bar Tutorial
 - Blender Material Tutorial
 - Black Hole
 - Ringed Planet
-- Roland VR-730
-- Mandarins and Pen
-- Space Invaders 3519 Concept
 - Gaming Arcade Trailer
-- Low Poly Volcano
-- Low Poly Waterfall
 
 ## UI Buttons
 - video
@@ -42,3 +47,5 @@ My portfolio
 - download
 - source code
 - English <-> Japanese
+
+s

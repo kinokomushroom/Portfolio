@@ -1,30 +1,539 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=76 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://TV.tscn" type="PackedScene" id=3]
-[ext_resource path="res://fonts/PublicPixel.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://fonts/PixelMplus10-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://fonts/PixelMplus10-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://content/piano_small.png" type="Texture" id=3]
+[ext_resource path="res://content/field_small.png" type="Texture" id=4]
+[ext_resource path="res://content/moon_small.png" type="Texture" id=5]
+[ext_resource path="res://content/skyscraper_small.png" type="Texture" id=6]
 [ext_resource path="res://ArtPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://textures/floor.png" type="Texture" id=8]
+[ext_resource path="res://Easel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://content/mandarin_small.png" type="Texture" id=10]
+[ext_resource path="res://TV.tscn" type="PackedScene" id=11]
+[ext_resource path="res://textures/curved_bg.png" type="Texture" id=12]
+[ext_resource path="res://textures/curved_fg.png" type="Texture" id=13]
+[ext_resource path="res://textures/curved_screen.png" type="Texture" id=14]
+[ext_resource path="res://textures/crt_bg.png" type="Texture" id=15]
+[ext_resource path="res://textures/crt_screen.png" type="Texture" id=16]
+[ext_resource path="res://textures/round_screen.png" type="Texture" id=17]
+[ext_resource path="res://textures/round_fg.png" type="Texture" id=18]
+[ext_resource path="res://textures/round_bg.png" type="Texture" id=19]
+[ext_resource path="res://textures/laptop_bg.png" type="Texture" id=20]
+[ext_resource path="res://textures/laptop_screen.png" type="Texture" id=21]
+[ext_resource path="res://textures/mac_screen.png" type="Texture" id=22]
+[ext_resource path="res://textures/mac_bg.png" type="Texture" id=23]
+[ext_resource path="res://textures/arcade_bg.png" type="Texture" id=24]
+[ext_resource path="res://textures/arcade_screen.png" type="Texture" id=25]
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 12.0416
+[sub_resource type="RectangleShape2D" id=1]
+resource_local_to_scene = true
+extents = Vector2( 33.5, 8 )
 
-[sub_resource type="DynamicFont" id=7]
-size = 8
-font_data = ExtResource( 4 )
+[sub_resource type="CircleShape2D" id=2]
+resource_local_to_scene = true
+radius = 97.0052
 
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 4 )
+[sub_resource type="RectangleShape2D" id=3]
+resource_local_to_scene = true
+extents = Vector2( 27, 9.5 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 10
-font_data = ExtResource( 5 )
+[sub_resource type="RectangleShape2D" id=4]
+resource_local_to_scene = true
+extents = Vector2( 33.5, 8 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 10
-font_data = ExtResource( 6 )
+[sub_resource type="CircleShape2D" id=5]
+resource_local_to_scene = true
+radius = 97.0052
+
+[sub_resource type="RectangleShape2D" id=6]
+resource_local_to_scene = true
+extents = Vector2( 27, 9.5 )
+
+[sub_resource type="RectangleShape2D" id=24]
+resource_local_to_scene = true
+extents = Vector2( 70, 18 )
+
+[sub_resource type="CircleShape2D" id=25]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=26]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="VisualShaderNodeVectorOp" id=15]
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=16]
+uniform_name = "TextureUniform"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id=17]
+source = 2
+
+[sub_resource type="VisualShader" id=18]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=27]
+viewport_path = NodePath("YSort/TVRetro/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=28]
+resource_local_to_scene = true
+shader = SubResource( 18 )
+shader_param/TextureUniform = SubResource( 27 )
+
+[sub_resource type="RectangleShape2D" id=19]
+resource_local_to_scene = true
+extents = Vector2( 77, 8.5 )
+
+[sub_resource type="CircleShape2D" id=20]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=21]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="ViewportTexture" id=22]
+viewport_path = NodePath("YSort/TVCurved/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=23]
+resource_local_to_scene = true
+shader = SubResource( 18 )
+shader_param/TextureUniform = SubResource( 22 )
+
+[sub_resource type="RectangleShape2D" id=29]
+resource_local_to_scene = true
+extents = Vector2( 48, 14 )
+
+[sub_resource type="CircleShape2D" id=30]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=31]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="VisualShader" id=32]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=33]
+viewport_path = NodePath("YSort/TVCRT/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=34]
+resource_local_to_scene = true
+shader = SubResource( 32 )
+shader_param/TextureUniform = SubResource( 33 )
+
+[sub_resource type="RectangleShape2D" id=35]
+resource_local_to_scene = true
+extents = Vector2( 47, 16 )
+
+[sub_resource type="CircleShape2D" id=36]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=37]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="VisualShader" id=38]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=39]
+viewport_path = NodePath("YSort/TVLaptop/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=40]
+resource_local_to_scene = true
+shader = SubResource( 38 )
+shader_param/TextureUniform = SubResource( 39 )
+
+[sub_resource type="RectangleShape2D" id=41]
+resource_local_to_scene = true
+extents = Vector2( 71, 14.5 )
+
+[sub_resource type="CircleShape2D" id=42]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=43]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="VisualShader" id=44]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=45]
+viewport_path = NodePath("YSort/TVRound/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=46]
+resource_local_to_scene = true
+shader = SubResource( 44 )
+shader_param/TextureUniform = SubResource( 45 )
+
+[sub_resource type="RectangleShape2D" id=47]
+resource_local_to_scene = true
+extents = Vector2( 65, 6 )
+
+[sub_resource type="CircleShape2D" id=48]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=49]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="VisualShader" id=50]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=51]
+viewport_path = NodePath("YSort/TVMac/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=52]
+resource_local_to_scene = true
+shader = SubResource( 50 )
+shader_param/TextureUniform = SubResource( 51 )
+
+[sub_resource type="RectangleShape2D" id=53]
+resource_local_to_scene = true
+extents = Vector2( 45, 16.5 )
+
+[sub_resource type="CircleShape2D" id=54]
+resource_local_to_scene = true
+radius = 109.0
+
+[sub_resource type="RectangleShape2D" id=55]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="VisualShader" id=56]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=57]
+viewport_path = NodePath("YSort/TVArcade/ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=58]
+resource_local_to_scene = true
+shader = SubResource( 56 )
+shader_param/TextureUniform = SubResource( 57 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -32,70 +541,358 @@ __meta__ = {
 "_edit_vertical_guides_": [  ]
 }
 
-[node name="TV" parent="." instance=ExtResource( 3 )]
-position = Vector2( 92, 53 )
+[node name="Floor" type="Node2D" parent="."]
 
-[node name="Player" type="KinematicBody2D" parent="."]
-position = Vector2( 250, 129 )
+[node name="Sprite" type="Sprite" parent="Floor"]
+position = Vector2( 74, 139 )
+texture = ExtResource( 8 )
 
-[node name="Sprite" type="Sprite" parent="Player"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Sprite2" type="Sprite" parent="Floor"]
+position = Vector2( 468, 139 )
+texture = ExtResource( 8 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="Sprite3" type="Sprite" parent="Floor"]
+position = Vector2( 130, -17.5 )
+texture = ExtResource( 8 )
+
+[node name="Sprite4" type="Sprite" parent="Floor"]
+position = Vector2( 524, -17.5 )
+texture = ExtResource( 8 )
+
+[node name="Sprite5" type="Sprite" parent="Floor"]
+position = Vector2( 78, -173.5 )
+texture = ExtResource( 8 )
+
+[node name="Sprite6" type="Sprite" parent="Floor"]
+position = Vector2( 472, -173.5 )
+texture = ExtResource( 8 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+
+[node name="EaselPiano" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 89, 365 )
+
+[node name="StaticCollision" parent="YSort/EaselPiano" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="YSort/EaselPiano/EventTriggerArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="YSort/EaselPiano/PanelTriggerArea" index="0"]
 shape = SubResource( 3 )
 
-[node name="Label4" type="Label" parent="."]
-margin_left = 238.0
-margin_top = 17.0
-margin_right = 358.0
-margin_bottom = 48.0
-custom_fonts/font = SubResource( 7 )
-text = "New Super Mario
-Bros. Wii !?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Image" parent="YSort/EaselPiano/ActualThing" index="2"]
+texture = ExtResource( 3 )
 
-[node name="Label5" type="Label" parent="."]
-margin_left = 238.0
-margin_top = 68.0
-margin_right = 478.0
-margin_bottom = 103.0
-custom_fonts/font = SubResource( 8 )
-text = "New Super Mario
-Bros. Wii !?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="EaselMoon" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 8, 516 )
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 237.0
-margin_top = 156.0
-margin_right = 460.0
-margin_bottom = 195.0
-custom_fonts/font = SubResource( 5 )
-text = "ニュースーパーマリオブラザーズ　Ｗｉｉ　？！
+[node name="StaticCollision" parent="YSort/EaselMoon" index="0"]
+shape = SubResource( 1 )
 
-New Super Mario Bros Wii !?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="CollisionShape2D" parent="YSort/EaselMoon/EventTriggerArea" index="0"]
+shape = SubResource( 2 )
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 237.0
-margin_top = 212.0
-margin_right = 460.0
-margin_bottom = 251.0
-custom_fonts/font = SubResource( 6 )
-text = "ニュースーパーマリオブラザーズ　Ｗｉｉ　？！
+[node name="CollisionShape2D" parent="YSort/EaselMoon/PanelTriggerArea" index="0"]
+shape = SubResource( 3 )
 
-New Super Mario Bros Wii !?"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Image" parent="YSort/EaselMoon/ActualThing" index="2"]
+texture = ExtResource( 5 )
 
-[node name="ArtPanel" parent="." instance=ExtResource( 7 )]
+[node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -74, 365 )
+
+[node name="StaticCollision" parent="YSort/EaselSkyscraper" index="0"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" parent="YSort/EaselSkyscraper/EventTriggerArea" index="0"]
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" parent="YSort/EaselSkyscraper/PanelTriggerArea" index="0"]
+shape = SubResource( 6 )
+
+[node name="EaselTop" parent="YSort/EaselSkyscraper/ActualThing" index="1"]
+position = Vector2( -22, -131 )
+
+[node name="Image" parent="YSort/EaselSkyscraper/ActualThing" index="2"]
+position = Vector2( 0, -80 )
+texture = ExtResource( 6 )
+
+[node name="ColorRect" parent="YSort/EaselSkyscraper/ActualThing" index="3"]
+margin_left = -33.0
+margin_top = -38.0
+margin_right = 33.0
+margin_bottom = -36.0
+
+[node name="EaselBottom" parent="YSort/EaselSkyscraper/ActualThing" index="4"]
+position = Vector2( -37, -39 )
+
+[node name="EaselMandarine" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -156, 516 )
+
+[node name="StaticCollision" parent="YSort/EaselMandarine" index="0"]
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D" parent="YSort/EaselMandarine/EventTriggerArea" index="0"]
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" parent="YSort/EaselMandarine/PanelTriggerArea" index="0"]
+shape = SubResource( 6 )
+
+[node name="EaselTop" parent="YSort/EaselMandarine/ActualThing" index="1"]
+position = Vector2( -22, -127 )
+
+[node name="Image" parent="YSort/EaselMandarine/ActualThing" index="2"]
+position = Vector2( 0, -84 )
+texture = ExtResource( 10 )
+
+[node name="ColorRect" parent="YSort/EaselMandarine/ActualThing" index="3"]
+margin_left = -64.0
+margin_top = -50.0
+margin_right = 64.0
+margin_bottom = -48.0
+
+[node name="EaselBottom" parent="YSort/EaselMandarine/ActualThing" index="4"]
+position = Vector2( -37, -51 )
+
+[node name="EaselField" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -237, 365 )
+
+[node name="StaticCollision" parent="YSort/EaselField" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="YSort/EaselField/EventTriggerArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="YSort/EaselField/PanelTriggerArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="Image" parent="YSort/EaselField/ActualThing" index="2"]
+texture = ExtResource( 4 )
+
+[node name="TVRetro" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 417, -185 )
+
+[node name="StaticCollision" parent="YSort/TVRetro" index="0"]
+position = Vector2( 0, -7 )
+shape = SubResource( 24 )
+
+[node name="CollisionShape2D" parent="YSort/TVRetro/EventTriggerArea" index="0"]
+shape = SubResource( 25 )
+
+[node name="CollisionShape2D" parent="YSort/TVRetro/PanelTriggerArea" index="0"]
+shape = SubResource( 26 )
+
+[node name="Video" parent="YSort/TVRetro/ActualThing" index="3"]
+material = SubResource( 28 )
+
+[node name="TVCurved" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 212, -110 )
+
+[node name="StaticCollision" parent="YSort/TVCurved" index="0"]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 19 )
+
+[node name="CollisionShape2D" parent="YSort/TVCurved/EventTriggerArea" index="0"]
+shape = SubResource( 20 )
+
+[node name="CollisionShape2D" parent="YSort/TVCurved/PanelTriggerArea" index="0"]
+shape = SubResource( 21 )
+
+[node name="Background" parent="YSort/TVCurved/ActualThing" index="0"]
+position = Vector2( -26, -32 )
+texture = ExtResource( 12 )
+
+[node name="VideoBackgroun" parent="YSort/TVCurved/ActualThing" index="2"]
+position = Vector2( -74, -93 )
+texture = ExtResource( 14 )
+
+[node name="Video" parent="YSort/TVCurved/ActualThing" index="3"]
+material = SubResource( 23 )
+position = Vector2( -74, -93 )
+texture = ExtResource( 14 )
+
+[node name="Foreground" parent="YSort/TVCurved/ActualThing" index="4"]
+position = Vector2( -74, -93 )
+texture = ExtResource( 13 )
+
+[node name="TVCRT" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 79, -221 )
+
+[node name="StaticCollision" parent="YSort/TVCRT" index="0"]
+position = Vector2( 0, -2 )
+shape = SubResource( 29 )
+
+[node name="CollisionShape2D" parent="YSort/TVCRT/EventTriggerArea" index="0"]
+shape = SubResource( 30 )
+
+[node name="CollisionShape2D" parent="YSort/TVCRT/PanelTriggerArea" index="0"]
+shape = SubResource( 31 )
+
+[node name="Background" parent="YSort/TVCRT/ActualThing" index="0"]
+position = Vector2( -45, -95 )
+texture = ExtResource( 15 )
+
+[node name="VideoBackgroun" parent="YSort/TVCRT/ActualThing" index="2"]
+position = Vector2( -34, -67 )
+texture = ExtResource( 16 )
+
+[node name="Video" parent="YSort/TVCRT/ActualThing" index="3"]
+material = SubResource( 34 )
+position = Vector2( -34, -67 )
+texture = ExtResource( 16 )
+
+[node name="Foreground" parent="YSort/TVCRT/ActualThing" index="4"]
+visible = false
+
+[node name="TVLaptop" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 267, -318 )
+
+[node name="StaticCollision" parent="YSort/TVLaptop" index="0"]
+position = Vector2( 0, -4 )
+shape = SubResource( 35 )
+
+[node name="CollisionShape2D" parent="YSort/TVLaptop/EventTriggerArea" index="0"]
+shape = SubResource( 36 )
+
+[node name="CollisionShape2D" parent="YSort/TVLaptop/PanelTriggerArea" index="0"]
+shape = SubResource( 37 )
+
+[node name="Background" parent="YSort/TVLaptop/ActualThing" index="0"]
+position = Vector2( -45, -72 )
+texture = ExtResource( 20 )
+
+[node name="VideoBackgroun" parent="YSort/TVLaptop/ActualThing" index="2"]
+position = Vector2( -43, -70 )
+texture = ExtResource( 21 )
+
+[node name="Video" parent="YSort/TVLaptop/ActualThing" index="3"]
+material = SubResource( 40 )
+position = Vector2( -43, -70 )
+texture = ExtResource( 21 )
+
+[node name="Foreground" parent="YSort/TVLaptop/ActualThing" index="4"]
+visible = false
+
+[node name="TVRound" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 119, -444 )
+
+[node name="StaticCollision" parent="YSort/TVRound" index="0"]
+position = Vector2( 0, -2.5 )
+shape = SubResource( 41 )
+
+[node name="CollisionShape2D" parent="YSort/TVRound/EventTriggerArea" index="0"]
+shape = SubResource( 42 )
+
+[node name="CollisionShape2D" parent="YSort/TVRound/PanelTriggerArea" index="0"]
+shape = SubResource( 43 )
+
+[node name="Background" parent="YSort/TVRound/ActualThing" index="0"]
+position = Vector2( -69, -78 )
+texture = ExtResource( 19 )
+
+[node name="VideoBackgroun" parent="YSort/TVRound/ActualThing" index="2"]
+position = Vector2( -40, -66 )
+texture = ExtResource( 17 )
+
+[node name="Video" parent="YSort/TVRound/ActualThing" index="3"]
+material = SubResource( 46 )
+position = Vector2( -40, -66 )
+texture = ExtResource( 17 )
+
+[node name="Foreground" parent="YSort/TVRound/ActualThing" index="4"]
+position = Vector2( -40, -66 )
+texture = ExtResource( 18 )
+
+[node name="TVMac" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 408, -488 )
+
+[node name="StaticCollision" parent="YSort/TVMac" index="0"]
+position = Vector2( 0, 6 )
+shape = SubResource( 47 )
+
+[node name="CollisionShape2D" parent="YSort/TVMac/EventTriggerArea" index="0"]
+shape = SubResource( 48 )
+
+[node name="CollisionShape2D" parent="YSort/TVMac/PanelTriggerArea" index="0"]
+shape = SubResource( 49 )
+
+[node name="Background" parent="YSort/TVMac/ActualThing" index="0"]
+position = Vector2( -64, -92 )
+texture = ExtResource( 23 )
+
+[node name="VideoBackgroun" parent="YSort/TVMac/ActualThing" index="2"]
+position = Vector2( -59, -87 )
+texture = ExtResource( 22 )
+
+[node name="Video" parent="YSort/TVMac/ActualThing" index="3"]
+material = SubResource( 52 )
+position = Vector2( -59, -87 )
+texture = ExtResource( 22 )
+
+[node name="Foreground" parent="YSort/TVMac/ActualThing" index="4"]
+visible = false
+
+[node name="TVArcade" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 220, -615 )
+
+[node name="StaticCollision" parent="YSort/TVArcade" index="0"]
+position = Vector2( 0, -4.5 )
+shape = SubResource( 53 )
+
+[node name="CollisionShape2D" parent="YSort/TVArcade/EventTriggerArea" index="0"]
+shape = SubResource( 54 )
+
+[node name="CollisionShape2D" parent="YSort/TVArcade/PanelTriggerArea" index="0"]
+shape = SubResource( 55 )
+
+[node name="Background" parent="YSort/TVArcade/ActualThing" index="0"]
+position = Vector2( -42, -178 )
+texture = ExtResource( 24 )
+
+[node name="VideoBackgroun" parent="YSort/TVArcade/ActualThing" index="2"]
+position = Vector2( -31, -125 )
+texture = ExtResource( 25 )
+
+[node name="Video" parent="YSort/TVArcade/ActualThing" index="3"]
+material = SubResource( 58 )
+position = Vector2( -31, -125 )
+texture = ExtResource( 25 )
+
+[node name="Foreground" parent="YSort/TVArcade/ActualThing" index="4"]
+visible = false
+
+[node name="ArtPanelLayer" type="CanvasLayer" parent="."]
+
+[node name="ArtPanel" parent="ArtPanelLayer" instance=ExtResource( 7 )]
+visible = false
+
+[connection signal="body_entered" from="YSort/TVRetro/EventTriggerArea" to="YSort/TVRetro/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVRetro/EventTriggerArea" to="YSort/TVRetro/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/TVCurved/EventTriggerArea" to="YSort/TVCurved/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVCurved/EventTriggerArea" to="YSort/TVCurved/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/TVCRT/EventTriggerArea" to="YSort/TVCRT/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVCRT/EventTriggerArea" to="YSort/TVCRT/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/TVLaptop/EventTriggerArea" to="YSort/TVLaptop/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVLaptop/EventTriggerArea" to="YSort/TVLaptop/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/TVRound/EventTriggerArea" to="YSort/TVRound/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVRound/EventTriggerArea" to="YSort/TVRound/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/TVMac/EventTriggerArea" to="YSort/TVMac/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVMac/EventTriggerArea" to="YSort/TVMac/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/TVArcade/EventTriggerArea" to="YSort/TVArcade/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/TVArcade/EventTriggerArea" to="YSort/TVArcade/ActualThing" method="_on_EventTriggerArea_body_exited"]
+
+[editable path="YSort/EaselPiano"]
+[editable path="YSort/EaselMoon"]
+[editable path="YSort/EaselSkyscraper"]
+[editable path="YSort/EaselMandarine"]
+[editable path="YSort/EaselField"]
+[editable path="YSort/TVRetro"]
+[editable path="YSort/TVCurved"]
+[editable path="YSort/TVCRT"]
+[editable path="YSort/TVLaptop"]
+[editable path="YSort/TVRound"]
+[editable path="YSort/TVMac"]
+[editable path="YSort/TVArcade"]

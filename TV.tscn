@@ -1,31 +1,130 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://textures/tv_test_foreground.png" type="Texture" id=1]
-[ext_resource path="res://textures/tv_test_background.png" type="Texture" id=2]
-[ext_resource path="res://textures/tv_test_mask.png" type="Texture" id=3]
-[ext_resource path="res://videos/animation_theora.ogv" type="VideoStream" id=4]
+[ext_resource path="res://textures/retro_fg.png" type="Texture" id=1]
+[ext_resource path="res://textures/retro_screen.png" type="Texture" id=2]
+[ext_resource path="res://textures/retro_bg.png" type="Texture" id=3]
+[ext_resource path="res://videos/animation_small.ogv" type="VideoStream" id=4]
 [ext_resource path="res://TV.gd" type="Script" id=5]
+[ext_resource path="res://ArtPiece.tscn" type="PackedScene" id=6]
 
-[sub_resource type="ViewportTexture" id=1]
-viewport_path = NodePath("Viewport")
+[sub_resource type="RectangleShape2D" id=5]
+resource_local_to_scene = true
+extents = Vector2( 70, 9.5 )
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 129.097
+[sub_resource type="CircleShape2D" id=6]
+resource_local_to_scene = true
+radius = 109.0
 
-[node name="TV" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=7]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.5 )
+
+[sub_resource type="ShaderMaterial" id=8]
+
+[sub_resource type="VisualShaderNodeVectorOp" id=15]
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=16]
+uniform_name = "TextureUniform"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id=17]
+source = 2
+
+[sub_resource type="VisualShader" id=18]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+uniform sampler2D TextureUniform : hint_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// TextureUniform:3
+	vec3 n_out3p0;
+	float n_out3p1;
+	{
+		vec4 n_tex_read = texture(TextureUniform, UV.xy);
+		n_out3p0 = n_tex_read.rgb;
+		n_out3p1 = n_tex_read.a;
+	}
+
+// Texture:4
+	vec3 n_out4p0;
+	float n_out4p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out4p0 = _tex_read.rgb;
+		n_out4p1 = _tex_read.a;
+	}
+
+// VectorOp:2
+	vec3 n_out2p0 = n_out3p0 + n_out4p0;
+
+// Output:0
+	COLOR.rgb = n_out2p0;
+	COLOR.a = n_out4p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -481, 99 )
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource( 15 )
+nodes/fragment/2/position = Vector2( 180, 140 )
+nodes/fragment/3/node = SubResource( 16 )
+nodes/fragment/3/position = Vector2( -100, 140 )
+nodes/fragment/4/node = SubResource( 17 )
+nodes/fragment/4/position = Vector2( -100, 380 )
+nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
+
+[sub_resource type="ViewportTexture" id=19]
+viewport_path = NodePath("ActualThing/Viewport")
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = SubResource( 18 )
+shader_param/TextureUniform = SubResource( 19 )
+
+[node name="TV" instance=ExtResource( 6 )]
+
+[node name="StaticCollision" parent="." index="0"]
+position = Vector2( 0, 2.5 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" parent="EventTriggerArea" index="0"]
+shape = SubResource( 6 )
+
+[node name="CollisionShape2D" parent="PanelTriggerArea" index="0"]
+position = Vector2( 0, 19.5 )
+shape = SubResource( 7 )
+
+[node name="ActualThing" parent="." index="3"]
 script = ExtResource( 5 )
 
-[node name="Background" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Background" type="Sprite" parent="ActualThing" index="0"]
+position = Vector2( -65, -108 )
+texture = ExtResource( 3 )
+centered = false
 
-[node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 146, 86 )
+[node name="Viewport" type="Viewport" parent="ActualThing" index="1"]
+size = Vector2( 85, 64 )
 transparent_bg = true
 handle_input_locally = false
+usage = 0
 render_target_v_flip = true
 render_target_update_mode = 3
 
-[node name="VideoPlayer" type="VideoPlayer" parent="Viewport"]
+[node name="VideoPlayer" type="VideoPlayer" parent="ActualThing/Viewport" index="0"]
+material = SubResource( 8 )
 margin_right = 146.0
 margin_bottom = 146.0
 stream = ExtResource( 4 )
@@ -33,25 +132,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Mask" type="Light2D" parent="Viewport"]
-position = Vector2( 73, 43 )
-texture = ExtResource( 3 )
-mode = 3
+[node name="VideoBackgroun" type="Sprite" parent="ActualThing" index="2"]
+position = Vector2( -55, -77 )
+texture = ExtResource( 2 )
+centered = false
 
-[node name="Video" type="Sprite" parent="."]
-position = Vector2( 0, -7 )
-texture = SubResource( 1 )
+[node name="Video" type="Sprite" parent="ActualThing" index="3"]
+material = SubResource( 14 )
+position = Vector2( -55, -77 )
+texture = ExtResource( 2 )
+centered = false
 
-[node name="Foreground" type="Sprite" parent="."]
-position = Vector2( 0, -7 )
+[node name="Foreground" type="Sprite" parent="ActualThing" index="4"]
+position = Vector2( -59, -80 )
 texture = ExtResource( 1 )
+centered = false
 
-[node name="VideoPlayArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VideoPlayArea"]
-position = Vector2( 0, 74 )
-shape = SubResource( 2 )
-
-[connection signal="finished" from="Viewport/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
-[connection signal="body_entered" from="VideoPlayArea" to="." method="_on_VideoPlayArea_body_entered"]
-[connection signal="body_exited" from="VideoPlayArea" to="." method="_on_VideoPlayArea_body_exited"]
+[connection signal="body_entered" from="EventTriggerArea" to="ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="EventTriggerArea" to="ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="finished" from="ActualThing/Viewport/VideoPlayer" to="ActualThing" method="_on_VideoPlayer_finished"]
