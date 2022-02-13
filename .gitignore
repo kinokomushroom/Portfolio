@@ -1,6 +1,2 @@
-videos
 non_final_files
-textures
-fonts
-.import
-content
+*.import
