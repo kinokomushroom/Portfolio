@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 
-export var panel_path: NodePath
+var panel_path: NodePath = "../../ArtPanelLayer/ArtPanel"
 onready var panel = get_node(panel_path)
 
 export var title: String = "Title"

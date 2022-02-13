@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -25,6 +25,17 @@
 [ext_resource path="res://textures/mac_bg.png" type="Texture" id=23]
 [ext_resource path="res://textures/arcade_bg.png" type="Texture" id=24]
 [ext_resource path="res://textures/arcade_screen.png" type="Texture" id=25]
+[ext_resource path="res://videos/happy cooking game.ogv" type="VideoStream" id=26]
+[ext_resource path="res://icon.png" type="Texture" id=27]
+[ext_resource path="res://content/happy_cooking_game_large.png" type="Texture" id=28]
+[ext_resource path="res://videos/space invaders 555.ogv" type="VideoStream" id=29]
+[ext_resource path="res://content/space_invaders_555_large.png" type="Texture" id=30]
+[ext_resource path="res://textures/floor_dark.png" type="Texture" id=31]
+[ext_resource path="res://content/piano_large.png" type="Texture" id=32]
+[ext_resource path="res://content/mandarin_large.png" type="Texture" id=33]
+[ext_resource path="res://content/moon_large.png" type="Texture" id=34]
+[ext_resource path="res://content/skyscraper_large.png" type="Texture" id=35]
+[ext_resource path="res://content/field_large.png" type="Texture" id=36]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -544,35 +555,142 @@ __meta__ = {
 [node name="Floor" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Floor"]
-position = Vector2( 74, 139 )
+position = Vector2( -188, 73 )
 texture = ExtResource( 8 )
+centered = false
 
 [node name="Sprite2" type="Sprite" parent="Floor"]
-position = Vector2( 468, 139 )
+position = Vector2( 206, 73 )
 texture = ExtResource( 8 )
+centered = false
 
 [node name="Sprite3" type="Sprite" parent="Floor"]
-position = Vector2( 130, -17.5 )
+position = Vector2( -172, -83 )
 texture = ExtResource( 8 )
+centered = false
 
 [node name="Sprite4" type="Sprite" parent="Floor"]
-position = Vector2( 524, -17.5 )
+position = Vector2( 222, -83 )
 texture = ExtResource( 8 )
+centered = false
 
 [node name="Sprite5" type="Sprite" parent="Floor"]
-position = Vector2( 78, -173.5 )
+position = Vector2( -185, -239 )
 texture = ExtResource( 8 )
+centered = false
 
 [node name="Sprite6" type="Sprite" parent="Floor"]
-position = Vector2( 472, -173.5 )
+position = Vector2( 209, -239 )
 texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite11" type="Sprite" parent="Floor"]
+position = Vector2( -173, -395 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite12" type="Sprite" parent="Floor"]
+position = Vector2( 221, -395 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite13" type="Sprite" parent="Floor"]
+position = Vector2( -188, -551 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite14" type="Sprite" parent="Floor"]
+position = Vector2( 206, -551 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite15" type="Sprite" parent="Floor"]
+position = Vector2( -165, -707 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite16" type="Sprite" parent="Floor"]
+position = Vector2( 229, -707 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="Sprite7" type="Sprite" parent="Floor"]
+position = Vector2( -170, 230 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="Sprite8" type="Sprite" parent="Floor"]
+position = Vector2( 224, 230 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="Sprite9" type="Sprite" parent="Floor"]
+position = Vector2( -174, 386 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="Sprite10" type="Sprite" parent="Floor"]
+position = Vector2( 220, 386 )
+texture = ExtResource( 31 )
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+margin_left = -294.0
+margin_top = 543.0
+margin_right = 889.0
+margin_bottom = 726.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Floor"]
+margin_left = -294.0
+margin_top = -779.0
+margin_right = -55.0
+margin_bottom = 778.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Floor"]
+margin_left = 595.0
+margin_top = -779.0
+margin_right = 834.0
+margin_bottom = 778.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Floor"]
+margin_left = -294.0
+margin_top = -909.0
+margin_right = 889.0
+margin_bottom = -641.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 
 [node name="EaselPiano" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 89, 365 )
+position = Vector2( 436, 301 )
+title = "Piano Closeup"
+content_image = ExtResource( 32 )
+japanese_description = "ピアノ鍵盤のクロースアップ。フォトリアリズムを追求するために鍵盤に高さのばらつきやかすかな表面汚れを加えた。
+
+使用ツール：
+	Blender"
+english_description = "A closeup of a piano keyboard. Some variation to key heights and slight imperfections were added to pursue photorealism.
+
+Tools used:
+	Blender"
+original_link = "https://i.imgur.com/dAD1Lyd.png"
 
 [node name="StaticCollision" parent="YSort/EaselPiano" index="0"]
 shape = SubResource( 1 )
@@ -587,7 +705,18 @@ shape = SubResource( 3 )
 texture = ExtResource( 3 )
 
 [node name="EaselMoon" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 8, 516 )
+position = Vector2( 355, 452 )
+title = "The moon"
+content_image = ExtResource( 34 )
+japanese_description = "巨大な月の手前にそびえ立つブルジュ・ハリファ。月の表面に法線マップを用いて細かな凹凸を表現した。
+
+使用ツール：
+	Blender"
+english_description = "A view of Burj Khalifa reaching towards the moon. A normal map was used to create the detailed bumps of the moon surface.
+
+Tools used:
+	Blender"
+original_link = "https://i.imgur.com/Fj1F3OL.png"
 
 [node name="StaticCollision" parent="YSort/EaselMoon" index="0"]
 shape = SubResource( 1 )
@@ -602,7 +731,18 @@ shape = SubResource( 3 )
 texture = ExtResource( 5 )
 
 [node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( -74, 365 )
+position = Vector2( 273, 301 )
+title = "Two Towers"
+content_image = ExtResource( 35 )
+japanese_description = "２本の高層ビルを下から眺めた景観。窓ガラスにわずかな歪みを加え、空の反射をリアルにした。
+
+使用ツール：
+	Blender"
+english_description = "A view of two skyscrapers. Slight curvatures were added to window panels to make the sky reflection more realistic.
+
+Tools used:
+	Blender"
+original_link = "https://i.imgur.com/IsWQ2Mq.png"
 
 [node name="StaticCollision" parent="YSort/EaselSkyscraper" index="0"]
 shape = SubResource( 4 )
@@ -630,7 +770,14 @@ margin_bottom = -36.0
 position = Vector2( -37, -39 )
 
 [node name="EaselMandarine" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( -156, 516 )
+position = Vector2( 191, 452 )
+title = "Desk"
+content_image = ExtResource( 33 )
+japanese_description = "使用ツール：
+	Blender"
+english_description = "Tools used:
+	Blender"
+original_link = "https://i.imgur.com/1kqsUdA.png"
 
 [node name="StaticCollision" parent="YSort/EaselMandarine" index="0"]
 shape = SubResource( 4 )
@@ -658,7 +805,18 @@ margin_bottom = -48.0
 position = Vector2( -37, -51 )
 
 [node name="EaselField" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( -237, 365 )
+position = Vector2( 110, 301 )
+title = "Tree in a Field"
+content_image = ExtResource( 36 )
+japanese_description = "草原に立つ１本の木。パーティクルシステムを用いて木と草の葉を作り、半透明な質感を与えることによりフォトリアリズムを達成した。
+
+使用ツール：
+	Blender"
+english_description = "A lone tree in the meadows. The leaves and blades were generated with a particle system, and a translucent material was applied to achieve photorealism.
+
+Tools used:
+	Blender"
+original_link = "https://i.imgur.com/KA8nNZ9.jpg"
 
 [node name="StaticCollision" parent="YSort/EaselField" index="0"]
 shape = SubResource( 1 )
@@ -673,7 +831,21 @@ shape = SubResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="TVRetro" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 417, -185 )
+position = Vector2( 353, -24 )
+title = "Space Invaders 555"
+content_image = ExtResource( 30 )
+japanese_description = "レトロ風の２Dスペースシューターゲーム。宇宙船を操縦して敵を撃ちながら障害物を回避する。
+高校の学校祭の企画のために制作した。４面のワールド、４体のボス、３２のステージから構成される。グラフィックとコースデザインは同級生に協力してもらった。BGMはオリジナルである。
+
+使用ツール：
+	Godot Engine, Paint.NET, LMMS"
+english_description = "A retro-style 2D space shooter game. The player pilots a spaceship and shoots enemies while avoiding obstacles.
+This was made for our high school festival. The game consists of 4 worlds, 4 bosses, and 32 stages. My classmate helped with the graphics and level designs. The BGM is original to this game.
+
+Tools used:
+	Godot Engine, Paint.NET, LMMS"
+video_link = "https://www.youtube.com/watch?v=Md-o17kBvVo"
+download_link = "https://kinokomushroom.itch.io/space-invaders-555"
 
 [node name="StaticCollision" parent="YSort/TVRetro" index="0"]
 position = Vector2( 0, -7 )
@@ -685,11 +857,16 @@ shape = SubResource( 25 )
 [node name="CollisionShape2D" parent="YSort/TVRetro/PanelTriggerArea" index="0"]
 shape = SubResource( 26 )
 
+[node name="VideoPlayer" parent="YSort/TVRetro/ActualThing/Viewport" index="0"]
+margin_right = 85.0
+margin_bottom = 64.0
+stream = ExtResource( 29 )
+
 [node name="Video" parent="YSort/TVRetro/ActualThing" index="3"]
 material = SubResource( 28 )
 
 [node name="TVCurved" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 212, -110 )
+position = Vector2( 457, -169 )
 
 [node name="StaticCollision" parent="YSort/TVCurved" index="0"]
 position = Vector2( 0, 3.5 )
@@ -719,7 +896,7 @@ position = Vector2( -74, -93 )
 texture = ExtResource( 13 )
 
 [node name="TVCRT" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 79, -221 )
+position = Vector2( 186, -292 )
 
 [node name="StaticCollision" parent="YSort/TVCRT" index="0"]
 position = Vector2( 0, -2 )
@@ -748,7 +925,7 @@ texture = ExtResource( 16 )
 visible = false
 
 [node name="TVLaptop" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 267, -318 )
+position = Vector2( 424, -369 )
 
 [node name="StaticCollision" parent="YSort/TVLaptop" index="0"]
 position = Vector2( 0, -4 )
@@ -777,7 +954,7 @@ texture = ExtResource( 21 )
 visible = false
 
 [node name="TVRound" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 119, -444 )
+position = Vector2( 100, -466 )
 
 [node name="StaticCollision" parent="YSort/TVRound" index="0"]
 position = Vector2( 0, -2.5 )
@@ -807,7 +984,19 @@ position = Vector2( -40, -66 )
 texture = ExtResource( 18 )
 
 [node name="TVMac" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 408, -488 )
+position = Vector2( 137, -114 )
+title = "Happy Cooking Game"
+content_image = ExtResource( 28 )
+japanese_description = "大学サークルのゲームジャムで作った２Dアクションゲーム。巨大化・狂暴化した料理の原材料と戦い、原材料を手に入れて料理する。
+
+使用ツール：
+	Godot Engine, Affinity Designer"
+english_description = "A 2D action game made in a game jam. The player battles gigantic and aggressive cooking ingredients, and cooks meals after acquiring ingredients.
+
+Tools used:
+	Godot Engine, Affinity Designer"
+video_link = "https://www.youtube.com/watch?v=VUzHeUCZa-U"
+download_link = "https://kinokomushroom.itch.io/happy-cooking-game"
 
 [node name="StaticCollision" parent="YSort/TVMac" index="0"]
 position = Vector2( 0, 6 )
@@ -823,6 +1012,19 @@ shape = SubResource( 49 )
 position = Vector2( -64, -92 )
 texture = ExtResource( 23 )
 
+[node name="Viewport" parent="YSort/TVMac/ActualThing" index="1"]
+size = Vector2( 117, 67 )
+
+[node name="VideoPlayer" parent="YSort/TVMac/ActualThing/Viewport" index="0"]
+margin_right = 117.0
+margin_bottom = 67.0
+stream = ExtResource( 26 )
+
+[node name="Sprite" type="Sprite" parent="YSort/TVMac/ActualThing/Viewport" index="1"]
+visible = false
+texture = ExtResource( 27 )
+centered = false
+
 [node name="VideoBackgroun" parent="YSort/TVMac/ActualThing" index="2"]
 position = Vector2( -59, -87 )
 texture = ExtResource( 22 )
@@ -836,7 +1038,7 @@ texture = ExtResource( 22 )
 visible = false
 
 [node name="TVArcade" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 220, -615 )
+position = Vector2( 298, -501 )
 
 [node name="StaticCollision" parent="YSort/TVArcade" index="0"]
 position = Vector2( 0, -4.5 )
