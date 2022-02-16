@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=95 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -36,6 +36,14 @@
 [ext_resource path="res://content/moon_large.png" type="Texture" id=34]
 [ext_resource path="res://content/skyscraper_large.png" type="Texture" id=35]
 [ext_resource path="res://content/field_large.png" type="Texture" id=36]
+[ext_resource path="res://videos/rocket simulator 2020.ogv" type="VideoStream" id=37]
+[ext_resource path="res://textures/laptop_shadow.png" type="Texture" id=38]
+[ext_resource path="res://textures/arcade_shadow.png" type="Texture" id=39]
+[ext_resource path="res://textures/curved_shadow.png" type="Texture" id=40]
+[ext_resource path="res://textures/crt_shadow.png" type="Texture" id=41]
+[ext_resource path="res://textures/round_shadow.png" type="Texture" id=42]
+[ext_resource path="res://textures/mac_shadow.png" type="Texture" id=43]
+[ext_resource path="res://textures/room_shadow.png" type="Texture" id=44]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -553,83 +561,100 @@ __meta__ = {
 }
 
 [node name="Floor" type="Node2D" parent="."]
+light_mask = 0
 
 [node name="Sprite" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -188, 73 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite2" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 206, 73 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite3" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -172, -83 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite4" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 222, -83 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite5" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -185, -239 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite6" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 209, -239 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite11" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -173, -395 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite12" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 221, -395 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite13" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -188, -551 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite14" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 206, -551 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite15" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -165, -707 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite16" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 229, -707 )
 texture = ExtResource( 8 )
 centered = false
 
 [node name="Sprite7" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -170, 230 )
 texture = ExtResource( 31 )
 centered = false
 
 [node name="Sprite8" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 224, 230 )
 texture = ExtResource( 31 )
 centered = false
 
 [node name="Sprite9" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( -174, 386 )
 texture = ExtResource( 31 )
 centered = false
 
 [node name="Sprite10" type="Sprite" parent="Floor"]
+light_mask = 2
 position = Vector2( 220, 386 )
 texture = ExtResource( 31 )
 centered = false
@@ -674,6 +699,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RoomShadow" type="Light2D" parent="Floor"]
+position = Vector2( 270, 386.5 )
+scale = Vector2( 81.25, 39.125 )
+texture = ExtResource( 44 )
+color = Color( 0.427451, 0.427451, 0.427451, 1 )
+mode = 2
+range_item_cull_mask = 2
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
@@ -690,7 +723,7 @@ english_description = "A closeup of a piano keyboard. Some variation to key heig
 
 Tools used:
 	Blender"
-original_link = "https://i.imgur.com/dAD1Lyd.png"
+original_link = "https://user-images.githubusercontent.com/57708300/154117610-65914ef1-67df-4ce4-beb4-ea9540040642.png"
 
 [node name="StaticCollision" parent="YSort/EaselPiano" index="0"]
 shape = SubResource( 1 )
@@ -701,7 +734,7 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" parent="YSort/EaselPiano/PanelTriggerArea" index="0"]
 shape = SubResource( 3 )
 
-[node name="Image" parent="YSort/EaselPiano/ActualThing" index="2"]
+[node name="Image" parent="YSort/EaselPiano/ActualThing" index="5"]
 texture = ExtResource( 3 )
 
 [node name="EaselMoon" parent="YSort" instance=ExtResource( 9 )]
@@ -716,7 +749,7 @@ english_description = "A view of Burj Khalifa reaching towards the moon. A norma
 
 Tools used:
 	Blender"
-original_link = "https://i.imgur.com/Fj1F3OL.png"
+original_link = "https://user-images.githubusercontent.com/57708300/154117608-6f78c58a-9df0-4171-a4ec-65b9c5cab031.png"
 
 [node name="StaticCollision" parent="YSort/EaselMoon" index="0"]
 shape = SubResource( 1 )
@@ -727,7 +760,7 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" parent="YSort/EaselMoon/PanelTriggerArea" index="0"]
 shape = SubResource( 3 )
 
-[node name="Image" parent="YSort/EaselMoon/ActualThing" index="2"]
+[node name="Image" parent="YSort/EaselMoon/ActualThing" index="5"]
 texture = ExtResource( 5 )
 
 [node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 9 )]
@@ -742,7 +775,7 @@ english_description = "A view of two skyscrapers. Slight curvatures were added t
 
 Tools used:
 	Blender"
-original_link = "https://i.imgur.com/IsWQ2Mq.png"
+original_link = "https://user-images.githubusercontent.com/57708300/154117617-150c1997-6db0-4904-a395-3dfb592da9e2.png"
 
 [node name="StaticCollision" parent="YSort/EaselSkyscraper" index="0"]
 shape = SubResource( 4 )
@@ -753,20 +786,20 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" parent="YSort/EaselSkyscraper/PanelTriggerArea" index="0"]
 shape = SubResource( 6 )
 
-[node name="EaselTop" parent="YSort/EaselSkyscraper/ActualThing" index="1"]
+[node name="EaselTop" parent="YSort/EaselSkyscraper/ActualThing" index="4"]
 position = Vector2( -22, -131 )
 
-[node name="Image" parent="YSort/EaselSkyscraper/ActualThing" index="2"]
+[node name="Image" parent="YSort/EaselSkyscraper/ActualThing" index="5"]
 position = Vector2( 0, -80 )
 texture = ExtResource( 6 )
 
-[node name="ColorRect" parent="YSort/EaselSkyscraper/ActualThing" index="3"]
+[node name="ColorRect" parent="YSort/EaselSkyscraper/ActualThing" index="6"]
 margin_left = -33.0
 margin_top = -38.0
 margin_right = 33.0
 margin_bottom = -36.0
 
-[node name="EaselBottom" parent="YSort/EaselSkyscraper/ActualThing" index="4"]
+[node name="EaselBottom" parent="YSort/EaselSkyscraper/ActualThing" index="7"]
 position = Vector2( -37, -39 )
 
 [node name="EaselMandarine" parent="YSort" instance=ExtResource( 9 )]
@@ -777,7 +810,7 @@ japanese_description = "使用ツール：
 	Blender"
 english_description = "Tools used:
 	Blender"
-original_link = "https://i.imgur.com/1kqsUdA.png"
+original_link = "https://user-images.githubusercontent.com/57708300/154117604-4720c8a4-d2fa-451d-a07f-516329184081.png"
 
 [node name="StaticCollision" parent="YSort/EaselMandarine" index="0"]
 shape = SubResource( 4 )
@@ -788,20 +821,20 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" parent="YSort/EaselMandarine/PanelTriggerArea" index="0"]
 shape = SubResource( 6 )
 
-[node name="EaselTop" parent="YSort/EaselMandarine/ActualThing" index="1"]
+[node name="EaselTop" parent="YSort/EaselMandarine/ActualThing" index="4"]
 position = Vector2( -22, -127 )
 
-[node name="Image" parent="YSort/EaselMandarine/ActualThing" index="2"]
+[node name="Image" parent="YSort/EaselMandarine/ActualThing" index="5"]
 position = Vector2( 0, -84 )
 texture = ExtResource( 10 )
 
-[node name="ColorRect" parent="YSort/EaselMandarine/ActualThing" index="3"]
+[node name="ColorRect" parent="YSort/EaselMandarine/ActualThing" index="6"]
 margin_left = -64.0
 margin_top = -50.0
 margin_right = 64.0
 margin_bottom = -48.0
 
-[node name="EaselBottom" parent="YSort/EaselMandarine/ActualThing" index="4"]
+[node name="EaselBottom" parent="YSort/EaselMandarine/ActualThing" index="7"]
 position = Vector2( -37, -51 )
 
 [node name="EaselField" parent="YSort" instance=ExtResource( 9 )]
@@ -816,7 +849,7 @@ english_description = "A lone tree in the meadows. The leaves and blades were ge
 
 Tools used:
 	Blender"
-original_link = "https://i.imgur.com/KA8nNZ9.jpg"
+original_link = "https://user-images.githubusercontent.com/57708300/154117590-23886dcc-5881-4dde-b805-9bf7b7ebf0ae.png"
 
 [node name="StaticCollision" parent="YSort/EaselField" index="0"]
 shape = SubResource( 1 )
@@ -827,7 +860,7 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" parent="YSort/EaselField/PanelTriggerArea" index="0"]
 shape = SubResource( 3 )
 
-[node name="Image" parent="YSort/EaselField/ActualThing" index="2"]
+[node name="Image" parent="YSort/EaselField/ActualThing" index="5"]
 texture = ExtResource( 4 )
 
 [node name="TVRetro" parent="YSort" instance=ExtResource( 11 )]
@@ -862,7 +895,7 @@ margin_right = 85.0
 margin_bottom = 64.0
 stream = ExtResource( 29 )
 
-[node name="Video" parent="YSort/TVRetro/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVRetro/ActualThing" index="4"]
 material = SubResource( 28 )
 
 [node name="TVCurved" parent="YSort" instance=ExtResource( 11 )]
@@ -878,20 +911,24 @@ shape = SubResource( 20 )
 [node name="CollisionShape2D" parent="YSort/TVCurved/PanelTriggerArea" index="0"]
 shape = SubResource( 21 )
 
-[node name="Background" parent="YSort/TVCurved/ActualThing" index="0"]
+[node name="Shadow" parent="YSort/TVCurved/ActualThing" index="0"]
+position = Vector2( 4, 6 )
+texture = ExtResource( 40 )
+
+[node name="Background" parent="YSort/TVCurved/ActualThing" index="1"]
 position = Vector2( -26, -32 )
 texture = ExtResource( 12 )
 
-[node name="VideoBackgroun" parent="YSort/TVCurved/ActualThing" index="2"]
+[node name="VideoBackgroun" parent="YSort/TVCurved/ActualThing" index="3"]
 position = Vector2( -74, -93 )
 texture = ExtResource( 14 )
 
-[node name="Video" parent="YSort/TVCurved/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVCurved/ActualThing" index="4"]
 material = SubResource( 23 )
 position = Vector2( -74, -93 )
 texture = ExtResource( 14 )
 
-[node name="Foreground" parent="YSort/TVCurved/ActualThing" index="4"]
+[node name="Foreground" parent="YSort/TVCurved/ActualThing" index="5"]
 position = Vector2( -74, -93 )
 texture = ExtResource( 13 )
 
@@ -908,20 +945,24 @@ shape = SubResource( 30 )
 [node name="CollisionShape2D" parent="YSort/TVCRT/PanelTriggerArea" index="0"]
 shape = SubResource( 31 )
 
-[node name="Background" parent="YSort/TVCRT/ActualThing" index="0"]
+[node name="Shadow" parent="YSort/TVCRT/ActualThing" index="0"]
+position = Vector2( 4, -4 )
+texture = ExtResource( 41 )
+
+[node name="Background" parent="YSort/TVCRT/ActualThing" index="1"]
 position = Vector2( -45, -95 )
 texture = ExtResource( 15 )
 
-[node name="VideoBackgroun" parent="YSort/TVCRT/ActualThing" index="2"]
+[node name="VideoBackgroun" parent="YSort/TVCRT/ActualThing" index="3"]
 position = Vector2( -34, -67 )
 texture = ExtResource( 16 )
 
-[node name="Video" parent="YSort/TVCRT/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVCRT/ActualThing" index="4"]
 material = SubResource( 34 )
 position = Vector2( -34, -67 )
 texture = ExtResource( 16 )
 
-[node name="Foreground" parent="YSort/TVCRT/ActualThing" index="4"]
+[node name="Foreground" parent="YSort/TVCRT/ActualThing" index="5"]
 visible = false
 
 [node name="TVLaptop" parent="YSort" instance=ExtResource( 11 )]
@@ -937,20 +978,24 @@ shape = SubResource( 36 )
 [node name="CollisionShape2D" parent="YSort/TVLaptop/PanelTriggerArea" index="0"]
 shape = SubResource( 37 )
 
-[node name="Background" parent="YSort/TVLaptop/ActualThing" index="0"]
+[node name="Shadow" parent="YSort/TVLaptop/ActualThing" index="0"]
+position = Vector2( 2, -3 )
+texture = ExtResource( 38 )
+
+[node name="Background" parent="YSort/TVLaptop/ActualThing" index="1"]
 position = Vector2( -45, -72 )
 texture = ExtResource( 20 )
 
-[node name="VideoBackgroun" parent="YSort/TVLaptop/ActualThing" index="2"]
+[node name="VideoBackgroun" parent="YSort/TVLaptop/ActualThing" index="3"]
 position = Vector2( -43, -70 )
 texture = ExtResource( 21 )
 
-[node name="Video" parent="YSort/TVLaptop/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVLaptop/ActualThing" index="4"]
 material = SubResource( 40 )
 position = Vector2( -43, -70 )
 texture = ExtResource( 21 )
 
-[node name="Foreground" parent="YSort/TVLaptop/ActualThing" index="4"]
+[node name="Foreground" parent="YSort/TVLaptop/ActualThing" index="5"]
 visible = false
 
 [node name="TVRound" parent="YSort" instance=ExtResource( 11 )]
@@ -966,20 +1011,24 @@ shape = SubResource( 42 )
 [node name="CollisionShape2D" parent="YSort/TVRound/PanelTriggerArea" index="0"]
 shape = SubResource( 43 )
 
-[node name="Background" parent="YSort/TVRound/ActualThing" index="0"]
+[node name="Shadow" parent="YSort/TVRound/ActualThing" index="0"]
+position = Vector2( 3, -1 )
+texture = ExtResource( 42 )
+
+[node name="Background" parent="YSort/TVRound/ActualThing" index="1"]
 position = Vector2( -69, -78 )
 texture = ExtResource( 19 )
 
-[node name="VideoBackgroun" parent="YSort/TVRound/ActualThing" index="2"]
+[node name="VideoBackgroun" parent="YSort/TVRound/ActualThing" index="3"]
 position = Vector2( -40, -66 )
 texture = ExtResource( 17 )
 
-[node name="Video" parent="YSort/TVRound/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVRound/ActualThing" index="4"]
 material = SubResource( 46 )
 position = Vector2( -40, -66 )
 texture = ExtResource( 17 )
 
-[node name="Foreground" parent="YSort/TVRound/ActualThing" index="4"]
+[node name="Foreground" parent="YSort/TVRound/ActualThing" index="5"]
 position = Vector2( -40, -66 )
 texture = ExtResource( 18 )
 
@@ -1008,11 +1057,15 @@ shape = SubResource( 48 )
 [node name="CollisionShape2D" parent="YSort/TVMac/PanelTriggerArea" index="0"]
 shape = SubResource( 49 )
 
-[node name="Background" parent="YSort/TVMac/ActualThing" index="0"]
+[node name="Shadow" parent="YSort/TVMac/ActualThing" index="0"]
+position = Vector2( 2, 7 )
+texture = ExtResource( 43 )
+
+[node name="Background" parent="YSort/TVMac/ActualThing" index="1"]
 position = Vector2( -64, -92 )
 texture = ExtResource( 23 )
 
-[node name="Viewport" parent="YSort/TVMac/ActualThing" index="1"]
+[node name="Viewport" parent="YSort/TVMac/ActualThing" index="2"]
 size = Vector2( 117, 67 )
 
 [node name="VideoPlayer" parent="YSort/TVMac/ActualThing/Viewport" index="0"]
@@ -1025,16 +1078,16 @@ visible = false
 texture = ExtResource( 27 )
 centered = false
 
-[node name="VideoBackgroun" parent="YSort/TVMac/ActualThing" index="2"]
+[node name="VideoBackgroun" parent="YSort/TVMac/ActualThing" index="3"]
 position = Vector2( -59, -87 )
 texture = ExtResource( 22 )
 
-[node name="Video" parent="YSort/TVMac/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVMac/ActualThing" index="4"]
 material = SubResource( 52 )
 position = Vector2( -59, -87 )
 texture = ExtResource( 22 )
 
-[node name="Foreground" parent="YSort/TVMac/ActualThing" index="4"]
+[node name="Foreground" parent="YSort/TVMac/ActualThing" index="5"]
 visible = false
 
 [node name="TVArcade" parent="YSort" instance=ExtResource( 11 )]
@@ -1050,20 +1103,32 @@ shape = SubResource( 54 )
 [node name="CollisionShape2D" parent="YSort/TVArcade/PanelTriggerArea" index="0"]
 shape = SubResource( 55 )
 
-[node name="Background" parent="YSort/TVArcade/ActualThing" index="0"]
+[node name="Shadow" parent="YSort/TVArcade/ActualThing" index="0"]
+position = Vector2( 6, -5 )
+texture = ExtResource( 39 )
+
+[node name="Background" parent="YSort/TVArcade/ActualThing" index="1"]
 position = Vector2( -42, -178 )
 texture = ExtResource( 24 )
 
-[node name="VideoBackgroun" parent="YSort/TVArcade/ActualThing" index="2"]
+[node name="Viewport" parent="YSort/TVArcade/ActualThing" index="2"]
+size = Vector2( 61, 46 )
+
+[node name="VideoPlayer" parent="YSort/TVArcade/ActualThing/Viewport" index="0"]
+margin_right = 61.0
+margin_bottom = 46.0
+stream = ExtResource( 37 )
+
+[node name="VideoBackgroun" parent="YSort/TVArcade/ActualThing" index="3"]
 position = Vector2( -31, -125 )
 texture = ExtResource( 25 )
 
-[node name="Video" parent="YSort/TVArcade/ActualThing" index="3"]
+[node name="Video" parent="YSort/TVArcade/ActualThing" index="4"]
 material = SubResource( 58 )
 position = Vector2( -31, -125 )
 texture = ExtResource( 25 )
 
-[node name="Foreground" parent="YSort/TVArcade/ActualThing" index="4"]
+[node name="Foreground" parent="YSort/TVArcade/ActualThing" index="5"]
 visible = false
 
 [node name="ArtPanelLayer" type="CanvasLayer" parent="."]
@@ -1071,6 +1136,16 @@ visible = false
 [node name="ArtPanel" parent="ArtPanelLayer" instance=ExtResource( 7 )]
 visible = false
 
+[connection signal="body_entered" from="YSort/EaselPiano/EventTriggerArea" to="YSort/EaselPiano/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselPiano/EventTriggerArea" to="YSort/EaselPiano/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselMoon/EventTriggerArea" to="YSort/EaselMoon/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselMoon/EventTriggerArea" to="YSort/EaselMoon/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselSkyscraper/EventTriggerArea" to="YSort/EaselSkyscraper/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselSkyscraper/EventTriggerArea" to="YSort/EaselSkyscraper/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselMandarine/EventTriggerArea" to="YSort/EaselMandarine/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselMandarine/EventTriggerArea" to="YSort/EaselMandarine/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselField/EventTriggerArea" to="YSort/EaselField/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselField/EventTriggerArea" to="YSort/EaselField/ActualThing" method="_on_EventTriggerArea_body_exited"]
 [connection signal="body_entered" from="YSort/TVRetro/EventTriggerArea" to="YSort/TVRetro/ActualThing" method="_on_EventTriggerArea_body_entered"]
 [connection signal="body_exited" from="YSort/TVRetro/EventTriggerArea" to="YSort/TVRetro/ActualThing" method="_on_EventTriggerArea_body_exited"]
 [connection signal="body_entered" from="YSort/TVCurved/EventTriggerArea" to="YSort/TVCurved/ActualThing" method="_on_EventTriggerArea_body_entered"]

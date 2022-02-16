@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://textures/retro_fg.png" type="Texture" id=1]
 [ext_resource path="res://textures/retro_screen.png" type="Texture" id=2]
 [ext_resource path="res://textures/retro_bg.png" type="Texture" id=3]
+[ext_resource path="res://textures/retro_shadow.png" type="Texture" id=4]
 [ext_resource path="res://TV.gd" type="Script" id=5]
 [ext_resource path="res://ArtPiece.tscn" type="PackedScene" id=6]
 
@@ -109,12 +110,20 @@ shape = SubResource( 7 )
 [node name="ActualThing" parent="." index="3"]
 script = ExtResource( 5 )
 
-[node name="Background" type="Sprite" parent="ActualThing" index="0"]
+[node name="Shadow" type="Light2D" parent="ActualThing" index="0"]
+position = Vector2( 4, -9 )
+texture = ExtResource( 4 )
+color = Color( 0.866667, 0.847059, 0.815686, 1 )
+mode = 2
+range_item_cull_mask = 2
+shadow_item_cull_mask = 0
+
+[node name="Background" type="Sprite" parent="ActualThing" index="1"]
 position = Vector2( -65, -108 )
 texture = ExtResource( 3 )
 centered = false
 
-[node name="Viewport" type="Viewport" parent="ActualThing" index="1"]
+[node name="Viewport" type="Viewport" parent="ActualThing" index="2"]
 size = Vector2( 85, 64 )
 transparent_bg = true
 handle_input_locally = false
@@ -130,18 +139,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VideoBackgroun" type="Sprite" parent="ActualThing" index="2"]
+[node name="VideoBackgroun" type="Sprite" parent="ActualThing" index="3"]
 position = Vector2( -55, -77 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Video" type="Sprite" parent="ActualThing" index="3"]
+[node name="Video" type="Sprite" parent="ActualThing" index="4"]
 material = SubResource( 14 )
 position = Vector2( -55, -77 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Foreground" type="Sprite" parent="ActualThing" index="4"]
+[node name="Foreground" type="Sprite" parent="ActualThing" index="5"]
 position = Vector2( -59, -80 )
 texture = ExtResource( 1 )
 centered = false
