@@ -31,15 +31,14 @@ My portfolio
 - Waterfall
 - Mandarins
 - Invaders
-### Not yet found
-- Violent Spider
-- Ray Tracing Chess
+- Trailer
+- Chess
+- Spider
 - GLSL Black Hole
-- Chocolate Bar Tutorial
-- Blender Material Tutorial
 - Black Hole
-- Ringed Planet
-- Gaming Arcade Trailer
+- Chocolate
+- Material
+### Not yet found
 
 ## UI Buttons
 - video
@@ -47,5 +46,3 @@ My portfolio
 - download
 - source code
 - English <-> Japanese
-
-s
