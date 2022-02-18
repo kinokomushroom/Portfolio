@@ -23,12 +23,12 @@ func _on_ButtonJapan_toggled(button_pressed: bool):
 	update_text_language()
 
 
-func _on_PanelTriggerArea_body_entered(body: KinematicBody2D, title: String, content_image: Texture, japanese_description: String, english_description: String, video_link: String, original_link: String, download_link: String, source_link: String):
+func _on_PanelTriggerArea_body_entered(body: KinematicBody2D, title: String, content_image: Texture, japanese_description: String, english_description: String, tools_used: String, video_link: String, original_link: String, download_link: String, source_link: String):
 	update_text_language()
 	$Panel/Title.text = title
 	$Panel/ContentContainer/ContentCenter/ContentImage.texture = content_image
-	$Panel/DescriptionContainer/DescriptionJapanese.text = japanese_description
-	$Panel/DescriptionContainer/DescriptionEnglish.text = english_description
+	$Panel/DescriptionContainer/DescriptionJapanese.text = japanese_description + "\n\n" + "使用ツール：\n" + tools_used
+	$Panel/DescriptionContainer/DescriptionEnglish.text = english_description + "\n\n" + "Tools used:\n" + tools_used
 	
 	if video_link != "":
 		$Panel/ButtonContainer/ButtonVideo.visible = true

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Framed.tscn" type="PackedScene" id=1]
+
+[node name="Framed_16-9" instance=ExtResource( 1 )]
+
+[connection signal="body_entered" from="EventTriggerArea" to="ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="EventTriggerArea" to="ActualThing" method="_on_EventTriggerArea_body_exited"]

@@ -17,6 +17,6 @@ shape = SubResource( 1 )
 
 [node name="Wall" type="Sprite" parent="."]
 light_mask = 2
-position = Vector2( -61, -150 )
+position = Vector2( -61, -164 )
 texture = ExtResource( 1 )
 centered = false
