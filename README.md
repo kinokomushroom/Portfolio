@@ -20,7 +20,7 @@ My portfolio
 - moon
 - piano
 - skyscraper
-- mandarins
+- desk
 - camera
 ### Blender misc.
 - space invaders concept

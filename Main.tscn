@@ -1,14 +1,14 @@
-[gd_scene load_steps=123 format=2]
+[gd_scene load_steps=160 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://Projector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Framed_4-3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://content/field_small.png" type="Texture" id=4]
 [ext_resource path="res://Framed_16-9.tscn" type="PackedScene" id=5]
-[ext_resource path="res://temp_textures/534-476.png" type="Texture" id=6]
+[ext_resource path="res://content/train.ogv" type="VideoStream" id=6]
 [ext_resource path="res://ArtPanel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://LightFloor.tscn" type="PackedScene" id=8]
-[ext_resource path="res://temp_textures/4-3_large.png" type="Texture" id=9]
+[ext_resource path="res://Projector_534-476.tscn" type="PackedScene" id=9]
 [ext_resource path="res://textures/frame_white.png" type="Texture" id=10]
 [ext_resource path="res://TV.tscn" type="PackedScene" id=11]
 [ext_resource path="res://textures/curved_bg.png" type="Texture" id=12]
@@ -25,16 +25,18 @@
 [ext_resource path="res://textures/mac_bg.png" type="Texture" id=23]
 [ext_resource path="res://textures/arcade_bg.png" type="Texture" id=24]
 [ext_resource path="res://textures/arcade_screen.png" type="Texture" id=25]
-[ext_resource path="res://videos/happy cooking game.ogv" type="VideoStream" id=26]
+[ext_resource path="res://content/spider.ogv" type="VideoStream" id=26]
 [ext_resource path="res://icon.png" type="Texture" id=27]
 [ext_resource path="res://content/happy_cooking_game_large.png" type="Texture" id=28]
-[ext_resource path="res://videos/space invaders 555.ogv" type="VideoStream" id=29]
+[ext_resource path="res://Projector_4-3.tscn" type="PackedScene" id=29]
 [ext_resource path="res://content/space_invaders_555_large.png" type="Texture" id=30]
 [ext_resource path="res://DarkFloor.tscn" type="PackedScene" id=31]
 [ext_resource path="res://textures/golden_small_light.png" type="Texture" id=32]
-[ext_resource path="res://temp_textures/golden.png" type="Texture" id=33]
-[ext_resource path="res://Laptop.tscn" type="PackedScene" id=34]
-[ext_resource path="res://videos/rocket simulator 2020.ogv" type="VideoStream" id=37]
+[ext_resource path="res://content/volcano_small.png" type="Texture" id=33]
+[ext_resource path="res://content/moon_large.png" type="Texture" id=34]
+[ext_resource path="res://content/chess_small.png" type="Texture" id=35]
+[ext_resource path="res://content/mall_small.png" type="Texture" id=36]
+[ext_resource path="res://content/GLSL black hole.ogv" type="VideoStream" id=37]
 [ext_resource path="res://textures/laptop_shadow.png" type="Texture" id=38]
 [ext_resource path="res://textures/arcade_shadow.png" type="Texture" id=39]
 [ext_resource path="res://textures/curved_shadow.png" type="Texture" id=40]
@@ -52,7 +54,25 @@
 [ext_resource path="res://Easel_3-4.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Easel_4-3.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Easel_16-9.tscn" type="PackedScene" id=54]
-[ext_resource path="res://ArtPiece.gd" type="Script" id=55]
+[ext_resource path="res://content/piano_small.png" type="Texture" id=56]
+[ext_resource path="res://content/chess_large.png" type="Texture" id=57]
+[ext_resource path="res://content/volcano_large.png" type="Texture" id=58]
+[ext_resource path="res://content/mall_large.png" type="Texture" id=59]
+[ext_resource path="res://content/piano_large.png" type="Texture" id=60]
+[ext_resource path="res://Framed_4-3.tscn" type="PackedScene" id=61]
+[ext_resource path="res://content/desk_small.png" type="Texture" id=62]
+[ext_resource path="res://content/roland_small.png" type="Texture" id=63]
+[ext_resource path="res://content/poses_small.png" type="Texture" id=64]
+[ext_resource path="res://content/concept_small.png" type="Texture" id=65]
+[ext_resource path="res://content/skyscraper_small.png" type="Texture" id=66]
+[ext_resource path="res://content/moon_small.png" type="Texture" id=67]
+[ext_resource path="res://content/field_large.png" type="Texture" id=68]
+[ext_resource path="res://content/desk_large.png" type="Texture" id=69]
+[ext_resource path="res://content/skyscraper_large.png" type="Texture" id=70]
+[ext_resource path="res://content/roland_large.png" type="Texture" id=71]
+[ext_resource path="res://content/poses_large.png" type="Texture" id=72]
+[ext_resource path="res://content/concept_large.png" type="Texture" id=73]
+[ext_resource path="res://Laptop.tscn" type="PackedScene" id=74]
 
 [sub_resource type="RectangleShape2D" id=24]
 resource_local_to_scene = true
@@ -557,20 +577,17 @@ resource_local_to_scene = true
 shader = SubResource( 12 )
 shader_param/Video = SubResource( 69 )
 
-[sub_resource type="RectangleShape2D" id=71]
+[sub_resource type="RectangleShape2D" id=95]
 resource_local_to_scene = true
 extents = Vector2( 19.5, 14 )
 
-[sub_resource type="CircleShape2D" id=72]
+[sub_resource type="CircleShape2D" id=96]
 resource_local_to_scene = true
 radius = 96.0052
 
-[sub_resource type="RectangleShape2D" id=73]
+[sub_resource type="RectangleShape2D" id=97]
 resource_local_to_scene = true
 extents = Vector2( 49, 9.25 )
-
-[sub_resource type="ViewportTexture" id=74]
-viewport_path = NodePath("ActualThing/Viewport")
 
 [sub_resource type="VisualShaderNodeTextureUniform" id=75]
 uniform_name = "Video"
@@ -613,7 +630,8 @@ input_name = "uv"
 [sub_resource type="VisualShaderNodeScalarUniform" id=83]
 uniform_name = "y_cutoff"
 
-[sub_resource type="VisualShader" id=84]
+[sub_resource type="VisualShader" id=98]
+resource_local_to_scene = true
 code = "shader_type canvas_item;
 render_mode blend_add;
 
@@ -705,7 +723,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -702.166, 115.365 )
+graph_offset = Vector2( -546.166, 90.3647 )
 mode = 1
 modes/blend = 1
 flags/light_only = false
@@ -748,15 +766,360 @@ nodes/fragment/20/node = SubResource( 83 )
 nodes/fragment/20/position = Vector2( -540, 140 )
 nodes/fragment/connections = PoolIntArray( 2, 0, 12, 0, 11, 2, 15, 2, 12, 1, 15, 0, 12, 2, 16, 0, 12, 3, 17, 0, 11, 2, 16, 2, 11, 2, 17, 2, 15, 0, 18, 0, 16, 0, 18, 1, 17, 0, 18, 2, 12, 0, 18, 3, 18, 0, 0, 0, 20, 0, 12, 2, 19, 0, 12, 1 )
 
-[sub_resource type="ViewportTexture" id=85]
-viewport_path = NodePath("ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=86]
+[sub_resource type="ShaderMaterial" id=99]
 resource_local_to_scene = true
-shader = SubResource( 84 )
+shader = SubResource( 98 )
 shader_param/brightness = 1.0
 shader_param/y_cutoff = 0.97
-shader_param/Video = SubResource( 85 )
+
+[sub_resource type="RectangleShape2D" id=107]
+resource_local_to_scene = true
+extents = Vector2( 19.5, 14 )
+
+[sub_resource type="CircleShape2D" id=108]
+resource_local_to_scene = true
+radius = 96.0052
+
+[sub_resource type="RectangleShape2D" id=109]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.25 )
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=110]
+uniform_name = "Video"
+texture_type = 1
+color_default = 1
+
+[sub_resource type="VisualShaderNodeExpression" id=111]
+size = Vector2( 642, 434.8 )
+expression = "float y_max = -uv.y * 0.5 + 1.0;
+float y_min = uv.y * 0.5;
+float uv_x = (uv.x - y_min) / (y_max - y_min);
+uv_1 = vec3(uv_x, 0.0, 0.0);
+uv_2 = vec3(uv_x, 0.4, 0.0);
+uv_3 = vec3(uv_x, 0.8, 0.0);
+float region = float(uv.x < y_max) * float(uv.x > y_min);
+float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
+float y_gradient = pow(uv.y, 1.5);
+float y_cut = float(uv.y < y_cutoff);
+alpha = region * y_gradient * x_gradient * y_cut * brightness;"
+
+[sub_resource type="VisualShaderNodeTexture" id=100]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id=101]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id=102]
+source = 5
+
+[sub_resource type="VisualShaderNodeExpression" id=103]
+size = Vector2( 564, 400 )
+expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=104]
+uniform_name = "brightness"
+
+[sub_resource type="VisualShaderNodeInput" id=105]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=106]
+uniform_name = "y_cutoff"
+
+[sub_resource type="VisualShader" id=112]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform float brightness;
+uniform float y_cutoff;
+uniform sampler2D Video : hint_black_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = vec3(UV, 0.0);
+
+// ScalarUniform:19
+	float n_out19p0 = brightness;
+
+// ScalarUniform:20
+	float n_out20p0 = y_cutoff;
+
+// Expression:12
+	float n_out12p0;
+	vec3 n_out12p1;
+	vec3 n_out12p2;
+	vec3 n_out12p3;
+	n_out12p0 = 0.0;
+	n_out12p1 = vec3(0.0, 0.0, 0.0);
+	n_out12p2 = vec3(0.0, 0.0, 0.0);
+	n_out12p3 = vec3(0.0, 0.0, 0.0);
+	{
+		float y_max = -n_out2p0.y * 0.5 + 1.0;
+		float y_min = n_out2p0.y * 0.5;
+		float uv_x = (n_out2p0.x - y_min) / (y_max - y_min);
+		n_out12p1 = vec3(uv_x, 0.0, 0.0);
+		n_out12p2 = vec3(uv_x, 0.4, 0.0);
+		n_out12p3 = vec3(uv_x, 0.8, 0.0);
+		float region = float(n_out2p0.x < y_max) * float(n_out2p0.x > y_min);
+		float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
+		float y_gradient = pow(n_out2p0.y, 1.5);
+		float y_cut = float(n_out2p0.y < n_out20p0);
+		n_out12p0 = region * y_gradient * x_gradient * y_cut * n_out19p0;
+	}
+
+// Texture:15
+	vec3 n_out15p0;
+	float n_out15p1;
+	{
+		vec4 Video_tex_read = texture(Video, n_out12p1.xy);
+		n_out15p0 = Video_tex_read.rgb;
+		n_out15p1 = Video_tex_read.a;
+	}
+
+// Texture:16
+	vec3 n_out16p0;
+	float n_out16p1;
+	{
+		vec4 Video_tex_read = texture(Video, n_out12p2.xy);
+		n_out16p0 = Video_tex_read.rgb;
+		n_out16p1 = Video_tex_read.a;
+	}
+
+// Texture:17
+	vec3 n_out17p0;
+	float n_out17p1;
+	{
+		vec4 Video_tex_read = texture(Video, n_out12p3.xy);
+		n_out17p0 = Video_tex_read.rgb;
+		n_out17p1 = Video_tex_read.a;
+	}
+
+// Expression:18
+	vec3 n_out18p0;
+	n_out18p0 = vec3(0.0, 0.0, 0.0);
+	{
+		n_out18p0 = (n_out15p0 + n_out16p0 + n_out17p0) / 3.0 * n_out12p0;
+	}
+
+// Output:0
+	COLOR.rgb = n_out18p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -546.166, 90.3647 )
+mode = 1
+modes/blend = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 1400, 120 )
+nodes/fragment/2/node = SubResource( 105 )
+nodes/fragment/2/position = Vector2( -540, 240 )
+nodes/fragment/11/node = SubResource( 110 )
+nodes/fragment/11/position = Vector2( 180, -20 )
+nodes/fragment/12/node = SubResource( 111 )
+nodes/fragment/12/position = Vector2( -260, 220 )
+nodes/fragment/12/size = Vector2( 642, 434.8 )
+nodes/fragment/12/input_ports = "0,1,uv;1,0,brightness;2,0,y_cutoff;"
+nodes/fragment/12/output_ports = "0,0,alpha;1,1,uv_1;2,1,uv_2;3,1,uv_3;"
+nodes/fragment/12/expression = "float y_max = -uv.y * 0.5 + 1.0;
+float y_min = uv.y * 0.5;
+float uv_x = (uv.x - y_min) / (y_max - y_min);
+uv_1 = vec3(uv_x, 0.0, 0.0);
+uv_2 = vec3(uv_x, 0.4, 0.0);
+uv_3 = vec3(uv_x, 0.8, 0.0);
+float region = float(uv.x < y_max) * float(uv.x > y_min);
+float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
+float y_gradient = pow(uv.y, 1.5);
+float y_cut = float(uv.y < y_cutoff);
+alpha = region * y_gradient * x_gradient * y_cut * brightness;"
+nodes/fragment/15/node = SubResource( 100 )
+nodes/fragment/15/position = Vector2( 480, 60 )
+nodes/fragment/16/node = SubResource( 101 )
+nodes/fragment/16/position = Vector2( 480, 200 )
+nodes/fragment/17/node = SubResource( 102 )
+nodes/fragment/17/position = Vector2( 480, 340 )
+nodes/fragment/18/node = SubResource( 103 )
+nodes/fragment/18/position = Vector2( 700, 80 )
+nodes/fragment/18/size = Vector2( 564, 400 )
+nodes/fragment/18/input_ports = "0,1,texture_1;1,1,texture_2;2,1,texture_3;3,0,alpha;"
+nodes/fragment/18/output_ports = "0,1,average;"
+nodes/fragment/18/expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
+nodes/fragment/19/node = SubResource( 104 )
+nodes/fragment/19/position = Vector2( -540, 60 )
+nodes/fragment/20/node = SubResource( 106 )
+nodes/fragment/20/position = Vector2( -540, 140 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 12, 0, 11, 2, 15, 2, 12, 1, 15, 0, 12, 2, 16, 0, 12, 3, 17, 0, 11, 2, 16, 2, 11, 2, 17, 2, 15, 0, 18, 0, 16, 0, 18, 1, 17, 0, 18, 2, 12, 0, 18, 3, 18, 0, 0, 0, 20, 0, 12, 2, 19, 0, 12, 1 )
+
+[sub_resource type="ShaderMaterial" id=113]
+resource_local_to_scene = true
+shader = SubResource( 112 )
+shader_param/brightness = 1.0
+shader_param/y_cutoff = 0.97
+
+[sub_resource type="RectangleShape2D" id=90]
+resource_local_to_scene = true
+extents = Vector2( 19.5, 14 )
+
+[sub_resource type="CircleShape2D" id=91]
+resource_local_to_scene = true
+radius = 96.0052
+
+[sub_resource type="RectangleShape2D" id=92]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.25 )
+
+[sub_resource type="VisualShader" id=93]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+render_mode blend_add;
+
+uniform float brightness;
+uniform float y_cutoff;
+uniform sampler2D Video : hint_black_albedo;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:2
+	vec3 n_out2p0 = vec3(UV, 0.0);
+
+// ScalarUniform:19
+	float n_out19p0 = brightness;
+
+// ScalarUniform:20
+	float n_out20p0 = y_cutoff;
+
+// Expression:12
+	float n_out12p0;
+	vec3 n_out12p1;
+	vec3 n_out12p2;
+	vec3 n_out12p3;
+	n_out12p0 = 0.0;
+	n_out12p1 = vec3(0.0, 0.0, 0.0);
+	n_out12p2 = vec3(0.0, 0.0, 0.0);
+	n_out12p3 = vec3(0.0, 0.0, 0.0);
+	{
+		float y_max = -n_out2p0.y * 0.5 + 1.0;
+		float y_min = n_out2p0.y * 0.5;
+		float uv_x = (n_out2p0.x - y_min) / (y_max - y_min);
+		n_out12p1 = vec3(uv_x, 0.0, 0.0);
+		n_out12p2 = vec3(uv_x, 0.4, 0.0);
+		n_out12p3 = vec3(uv_x, 0.8, 0.0);
+		float region = float(n_out2p0.x < y_max) * float(n_out2p0.x > y_min);
+		float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
+		float y_gradient = pow(n_out2p0.y, 1.5);
+		float y_cut = float(n_out2p0.y < n_out20p0);
+		n_out12p0 = region * y_gradient * x_gradient * y_cut * n_out19p0;
+	}
+
+// Texture:15
+	vec3 n_out15p0;
+	float n_out15p1;
+	{
+		vec4 Video_tex_read = texture(Video, n_out12p1.xy);
+		n_out15p0 = Video_tex_read.rgb;
+		n_out15p1 = Video_tex_read.a;
+	}
+
+// Texture:16
+	vec3 n_out16p0;
+	float n_out16p1;
+	{
+		vec4 Video_tex_read = texture(Video, n_out12p2.xy);
+		n_out16p0 = Video_tex_read.rgb;
+		n_out16p1 = Video_tex_read.a;
+	}
+
+// Texture:17
+	vec3 n_out17p0;
+	float n_out17p1;
+	{
+		vec4 Video_tex_read = texture(Video, n_out12p3.xy);
+		n_out17p0 = Video_tex_read.rgb;
+		n_out17p1 = Video_tex_read.a;
+	}
+
+// Expression:18
+	vec3 n_out18p0;
+	n_out18p0 = vec3(0.0, 0.0, 0.0);
+	{
+		n_out18p0 = (n_out15p0 + n_out16p0 + n_out17p0) / 3.0 * n_out12p0;
+	}
+
+// Output:0
+	COLOR.rgb = n_out18p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -546.166, 90.3647 )
+mode = 1
+modes/blend = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 1400, 120 )
+nodes/fragment/2/node = SubResource( 82 )
+nodes/fragment/2/position = Vector2( -540, 240 )
+nodes/fragment/11/node = SubResource( 75 )
+nodes/fragment/11/position = Vector2( 180, -20 )
+nodes/fragment/12/node = SubResource( 76 )
+nodes/fragment/12/position = Vector2( -260, 220 )
+nodes/fragment/12/size = Vector2( 642, 434.8 )
+nodes/fragment/12/input_ports = "0,1,uv;1,0,brightness;2,0,y_cutoff;"
+nodes/fragment/12/output_ports = "0,0,alpha;1,1,uv_1;2,1,uv_2;3,1,uv_3;"
+nodes/fragment/12/expression = "float y_max = -uv.y * 0.5 + 1.0;
+float y_min = uv.y * 0.5;
+float uv_x = (uv.x - y_min) / (y_max - y_min);
+uv_1 = vec3(uv_x, 0.0, 0.0);
+uv_2 = vec3(uv_x, 0.4, 0.0);
+uv_3 = vec3(uv_x, 0.8, 0.0);
+float region = float(uv.x < y_max) * float(uv.x > y_min);
+float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
+float y_gradient = pow(uv.y, 1.5);
+float y_cut = float(uv.y < y_cutoff);
+alpha = region * y_gradient * x_gradient * y_cut * brightness;"
+nodes/fragment/15/node = SubResource( 77 )
+nodes/fragment/15/position = Vector2( 480, 60 )
+nodes/fragment/16/node = SubResource( 78 )
+nodes/fragment/16/position = Vector2( 480, 200 )
+nodes/fragment/17/node = SubResource( 79 )
+nodes/fragment/17/position = Vector2( 480, 340 )
+nodes/fragment/18/node = SubResource( 80 )
+nodes/fragment/18/position = Vector2( 700, 80 )
+nodes/fragment/18/size = Vector2( 564, 400 )
+nodes/fragment/18/input_ports = "0,1,texture_1;1,1,texture_2;2,1,texture_3;3,0,alpha;"
+nodes/fragment/18/output_ports = "0,1,average;"
+nodes/fragment/18/expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
+nodes/fragment/19/node = SubResource( 81 )
+nodes/fragment/19/position = Vector2( -540, 60 )
+nodes/fragment/20/node = SubResource( 83 )
+nodes/fragment/20/position = Vector2( -540, 140 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 12, 0, 11, 2, 15, 2, 12, 1, 15, 0, 12, 2, 16, 0, 12, 3, 17, 0, 11, 2, 16, 2, 11, 2, 17, 2, 15, 0, 18, 0, 16, 0, 18, 1, 17, 0, 18, 2, 12, 0, 18, 3, 18, 0, 0, 0, 20, 0, 12, 2, 19, 0, 12, 1 )
+
+[sub_resource type="ShaderMaterial" id=94]
+resource_local_to_scene = true
+shader = SubResource( 93 )
+shader_param/brightness = 1.0
+shader_param/y_cutoff = 0.97
 
 [sub_resource type="RectangleShape2D" id=87]
 resource_local_to_scene = true
@@ -974,7 +1337,6 @@ shape = SubResource( 26 )
 [node name="VideoPlayer" parent="YSort/TVRetro/ActualThing/Viewport" index="0"]
 margin_right = 85.0
 margin_bottom = 64.0
-stream = ExtResource( 29 )
 
 [node name="Video" parent="YSort/TVRetro/ActualThing" index="3"]
 material = SubResource( 59 )
@@ -1136,7 +1498,6 @@ size = Vector2( 117, 67 )
 [node name="VideoPlayer" parent="YSort/TVMac/ActualThing/Viewport" index="0"]
 margin_right = 117.0
 margin_bottom = 67.0
-stream = ExtResource( 26 )
 
 [node name="Sprite" type="Sprite" parent="YSort/TVMac/ActualThing/Viewport" index="1"]
 visible = false
@@ -1178,7 +1539,6 @@ size = Vector2( 61, 46 )
 [node name="VideoPlayer" parent="YSort/TVArcade/ActualThing/Viewport" index="0"]
 margin_right = 61.0
 margin_bottom = 46.0
-stream = ExtResource( 37 )
 
 [node name="Video" parent="YSort/TVArcade/ActualThing" index="3"]
 material = SubResource( 70 )
@@ -1233,81 +1593,80 @@ position = Vector2( 514, 960 )
 [node name="Wall14" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( 678, 960 )
 
-[node name="FramedChess" parent="YSort" instance=ExtResource( 4 )]
+[node name="FramedChess" parent="YSort" instance=ExtResource( 61 )]
 position = Vector2( 47, 365 )
-script = ExtResource( 55 )
+content_image = ExtResource( 57 )
 
 [node name="Frame" parent="YSort/FramedChess/ActualThing" index="0"]
 texture = ExtResource( 10 )
 
-[node name="ProjectorSpider" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -150, 365 )
+[node name="Image" parent="YSort/FramedChess/ActualThing/Frame" index="0"]
+texture = ExtResource( 35 )
+
+[node name="ProjectorSpider" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( -150, 366 )
 
 [node name="StaticCollision" parent="YSort/ProjectorSpider" index="0"]
-shape = SubResource( 71 )
+shape = SubResource( 95 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorSpider/EventTriggerArea" index="0"]
-shape = SubResource( 72 )
+shape = SubResource( 96 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorSpider/PanelTriggerArea" index="0"]
-shape = SubResource( 73 )
+shape = SubResource( 97 )
 
-[node name="Video" parent="YSort/ProjectorSpider/ActualThing" index="1"]
-texture = SubResource( 74 )
-
-[node name="Temp" parent="YSort/ProjectorSpider/ActualThing" index="2"]
-position = Vector2( 0, -67 )
-texture = ExtResource( 6 )
+[node name="VideoPlayer" parent="YSort/ProjectorSpider/ActualThing/Viewport" index="0"]
+stream = ExtResource( 26 )
 
 [node name="ProjectorLight" parent="YSort/ProjectorSpider/ActualThing" index="3"]
-material = SubResource( 86 )
+material = SubResource( 99 )
 
-[node name="ProjectorGLSLBlackHole" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( -354, 365 )
+[node name="ProjectorGLSLBlackHole" parent="YSort" instance=ExtResource( 29 )]
+position = Vector2( -358, 365 )
 
 [node name="StaticCollision" parent="YSort/ProjectorGLSLBlackHole" index="0"]
-shape = SubResource( 71 )
+shape = SubResource( 107 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorGLSLBlackHole/EventTriggerArea" index="0"]
-shape = SubResource( 72 )
+shape = SubResource( 108 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorGLSLBlackHole/PanelTriggerArea" index="0"]
-shape = SubResource( 73 )
+shape = SubResource( 109 )
 
-[node name="Video" parent="YSort/ProjectorGLSLBlackHole/ActualThing" index="1"]
-texture = SubResource( 74 )
-
-[node name="Temp" parent="YSort/ProjectorGLSLBlackHole/ActualThing" index="2"]
-position = Vector2( 0, -67 )
-texture = ExtResource( 9 )
+[node name="VideoPlayer" parent="YSort/ProjectorGLSLBlackHole/ActualThing/Viewport" index="0"]
+stream = ExtResource( 37 )
 
 [node name="ProjectorLight" parent="YSort/ProjectorGLSLBlackHole/ActualThing" index="3"]
-material = SubResource( 86 )
+material = SubResource( 113 )
 
 [node name="FramedVolcano" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 392, 365 )
-script = ExtResource( 55 )
+content_image = ExtResource( 58 )
+
+[node name="Image" parent="YSort/FramedVolcano/ActualThing/Frame" index="0"]
+texture = ExtResource( 33 )
 
 [node name="ProjectorTrain" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 605, 365 )
+position = Vector2( 603, 365 )
 
 [node name="StaticCollision" parent="YSort/ProjectorTrain" index="0"]
-shape = SubResource( 71 )
+shape = SubResource( 90 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorTrain/EventTriggerArea" index="0"]
-shape = SubResource( 72 )
+shape = SubResource( 91 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorTrain/PanelTriggerArea" index="0"]
-shape = SubResource( 73 )
+shape = SubResource( 92 )
 
-[node name="Video" parent="YSort/ProjectorTrain/ActualThing" index="1"]
-texture = SubResource( 74 )
+[node name="VideoPlayer" parent="YSort/ProjectorTrain/ActualThing/Viewport" index="0"]
+stream = ExtResource( 6 )
 
 [node name="ProjectorLight" parent="YSort/ProjectorTrain/ActualThing" index="3"]
-material = SubResource( 86 )
+material = SubResource( 94 )
 
 [node name="FramedMall" parent="YSort" instance=ExtResource( 51 )]
 position = Vector2( 813, 365 )
+content_image = ExtResource( 59 )
 
 [node name="Frame" parent="YSort/FramedMall/ActualThing" index="0"]
 margin_left = -63.0
@@ -1317,51 +1676,40 @@ margin_bottom = -19.0
 texture = ExtResource( 10 )
 
 [node name="Image" parent="YSort/FramedMall/ActualThing/Frame" index="0"]
-texture = ExtResource( 33 )
+texture = ExtResource( 36 )
 
 [node name="Light" parent="YSort/FramedMall/ActualThing" index="1"]
 texture = ExtResource( 32 )
 
-[node name="FramedPiano" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 407, 666 )
-script = ExtResource( 55 )
+[node name="FramedPiano" parent="YSort" instance=ExtResource( 61 )]
+position = Vector2( 407, 669 )
+content_image = ExtResource( 60 )
 
 [node name="Frame" parent="YSort/FramedPiano/ActualThing" index="0"]
 texture = ExtResource( 10 )
 
-[node name="ProjectorBlackHole" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 624, 669 )
+[node name="Image" parent="YSort/FramedPiano/ActualThing/Frame" index="0"]
+texture = ExtResource( 56 )
 
-[node name="StaticCollision" parent="YSort/ProjectorBlackHole" index="0"]
-shape = SubResource( 71 )
-
-[node name="CollisionShape2D" parent="YSort/ProjectorBlackHole/EventTriggerArea" index="0"]
-shape = SubResource( 72 )
-
-[node name="CollisionShape2D" parent="YSort/ProjectorBlackHole/PanelTriggerArea" index="0"]
-shape = SubResource( 73 )
-
-[node name="Video" parent="YSort/ProjectorBlackHole/ActualThing" index="1"]
-texture = SubResource( 74 )
-
-[node name="Temp" parent="YSort/ProjectorBlackHole/ActualThing" index="2"]
-position = Vector2( 0, -67 )
-texture = ExtResource( 9 )
-
-[node name="ProjectorLight" parent="YSort/ProjectorBlackHole/ActualThing" index="3"]
-material = SubResource( 86 )
+[node name="ProjectorBlackHole" parent="YSort" instance=ExtResource( 29 )]
+position = Vector2( 603, 669 )
 
 [node name="EaselField" parent="YSort" instance=ExtResource( 53 )]
 position = Vector2( 70, 660 )
-script = ExtResource( 55 )
+content_image = ExtResource( 68 )
+
+[node name="Image" parent="YSort/EaselField/ActualThing" index="5"]
+texture = ExtResource( 4 )
 
 [node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 52 )]
 position = Vector2( -120, 660 )
-script = ExtResource( 55 )
+content_image = ExtResource( 70 )
 
-[node name="LaptopMaterial" parent="YSort" instance=ExtResource( 34 )]
+[node name="Image" parent="YSort/EaselSkyscraper/ActualThing" index="5"]
+texture = ExtResource( 66 )
+
+[node name="LaptopMaterial" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -310, 660 )
-script = ExtResource( 55 )
 
 [node name="StaticCollision" parent="YSort/LaptopMaterial" index="0"]
 shape = SubResource( 87 )
@@ -1378,23 +1726,34 @@ material = SubResource( 89 )
 
 [node name="EaselDesk" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( 0, 820 )
-script = ExtResource( 55 )
+content_image = ExtResource( 69 )
+
+[node name="Image" parent="YSort/EaselDesk/ActualThing" index="5"]
+texture = ExtResource( 62 )
 
 [node name="EaselMoon" parent="YSort" instance=ExtResource( 53 )]
 position = Vector2( -190, 820 )
-script = ExtResource( 55 )
+content_image = ExtResource( 34 )
+
+[node name="Image" parent="YSort/EaselMoon/ActualThing" index="5"]
+texture = ExtResource( 67 )
 
 [node name="EaselRoland" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( -380, 820 )
-script = ExtResource( 55 )
+content_image = ExtResource( 71 )
+
+[node name="Image" parent="YSort/EaselRoland/ActualThing" index="5"]
+texture = ExtResource( 63 )
 
 [node name="EaselPoses" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( -70, 980 )
-script = ExtResource( 55 )
+content_image = ExtResource( 72 )
 
-[node name="LaptopChocolate" parent="YSort" instance=ExtResource( 34 )]
+[node name="Image" parent="YSort/EaselPoses/ActualThing" index="5"]
+texture = ExtResource( 64 )
+
+[node name="LaptopChocolate" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -284, 969 )
-script = ExtResource( 55 )
 
 [node name="StaticCollision" parent="YSort/LaptopChocolate" index="0"]
 shape = SubResource( 87 )
@@ -1410,62 +1769,22 @@ light_mask = 2
 material = SubResource( 89 )
 
 [node name="ProjectorTrailer" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 414, 972 )
-
-[node name="StaticCollision" parent="YSort/ProjectorTrailer" index="0"]
-shape = SubResource( 71 )
-
-[node name="CollisionShape2D" parent="YSort/ProjectorTrailer/EventTriggerArea" index="0"]
-shape = SubResource( 72 )
-
-[node name="CollisionShape2D" parent="YSort/ProjectorTrailer/PanelTriggerArea" index="0"]
-shape = SubResource( 73 )
-
-[node name="Video" parent="YSort/ProjectorTrailer/ActualThing" index="1"]
-texture = SubResource( 74 )
-
-[node name="ProjectorLight" parent="YSort/ProjectorTrailer/ActualThing" index="3"]
-material = SubResource( 86 )
+position = Vector2( 412, 973 )
 
 [node name="FramedConcept" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 629, 972 )
-script = ExtResource( 55 )
+content_image = ExtResource( 73 )
+
+[node name="Image" parent="YSort/FramedConcept/ActualThing/Frame" index="0"]
+texture = ExtResource( 65 )
 
 [node name="ArtPanelLayer" type="CanvasLayer" parent="."]
 
 [node name="ArtPanel" parent="ArtPanelLayer" instance=ExtResource( 7 )]
 visible = false
 
-[connection signal="body_entered" from="YSort/TVRetro/EventTriggerArea" to="YSort/TVRetro/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVRetro/EventTriggerArea" to="YSort/TVRetro/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/TVCurved/EventTriggerArea" to="YSort/TVCurved/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVCurved/EventTriggerArea" to="YSort/TVCurved/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/TVCRT/EventTriggerArea" to="YSort/TVCRT/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVCRT/EventTriggerArea" to="YSort/TVCRT/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/TVLaptop/EventTriggerArea" to="YSort/TVLaptop/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVLaptop/EventTriggerArea" to="YSort/TVLaptop/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/TVRound/EventTriggerArea" to="YSort/TVRound/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVRound/EventTriggerArea" to="YSort/TVRound/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/TVMac/EventTriggerArea" to="YSort/TVMac/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVMac/EventTriggerArea" to="YSort/TVMac/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/TVArcade/EventTriggerArea" to="YSort/TVArcade/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/TVArcade/EventTriggerArea" to="YSort/TVArcade/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/FramedChess/EventTriggerArea" to="YSort/FramedChess/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/FramedChess/EventTriggerArea" to="YSort/FramedChess/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/ProjectorSpider/EventTriggerArea" to="YSort/ProjectorSpider/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/ProjectorSpider/EventTriggerArea" to="YSort/ProjectorSpider/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/ProjectorGLSLBlackHole/EventTriggerArea" to="YSort/ProjectorGLSLBlackHole/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/ProjectorGLSLBlackHole/EventTriggerArea" to="YSort/ProjectorGLSLBlackHole/ActualThing" method="_on_EventTriggerArea_body_exited"]
 [connection signal="body_entered" from="YSort/ProjectorTrain/EventTriggerArea" to="YSort/ProjectorTrain/ActualThing" method="_on_EventTriggerArea_body_entered"]
 [connection signal="body_exited" from="YSort/ProjectorTrain/EventTriggerArea" to="YSort/ProjectorTrain/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/FramedMall/EventTriggerArea" to="YSort/FramedMall/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/FramedMall/EventTriggerArea" to="YSort/FramedMall/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/FramedPiano/EventTriggerArea" to="YSort/FramedPiano/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/FramedPiano/EventTriggerArea" to="YSort/FramedPiano/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/ProjectorBlackHole/EventTriggerArea" to="YSort/ProjectorBlackHole/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/ProjectorBlackHole/EventTriggerArea" to="YSort/ProjectorBlackHole/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_exited"]
 
 [editable path="YSort/TVRetro"]
 [editable path="YSort/TVCurved"]
@@ -1477,10 +1796,16 @@ visible = false
 [editable path="YSort/FramedChess"]
 [editable path="YSort/ProjectorSpider"]
 [editable path="YSort/ProjectorGLSLBlackHole"]
+[editable path="YSort/FramedVolcano"]
 [editable path="YSort/ProjectorTrain"]
 [editable path="YSort/FramedMall"]
 [editable path="YSort/FramedPiano"]
-[editable path="YSort/ProjectorBlackHole"]
+[editable path="YSort/EaselField"]
+[editable path="YSort/EaselSkyscraper"]
 [editable path="YSort/LaptopMaterial"]
+[editable path="YSort/EaselDesk"]
+[editable path="YSort/EaselMoon"]
+[editable path="YSort/EaselRoland"]
+[editable path="YSort/EaselPoses"]
 [editable path="YSort/LaptopChocolate"]
-[editable path="YSort/ProjectorTrailer"]
+[editable path="YSort/FramedConcept"]

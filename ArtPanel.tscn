@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://content/camera_large.png" type="Texture" id=2]
 [ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=3]
 [ext_resource path="res://textures/button_uk_inactive.png" type="Texture" id=4]
 [ext_resource path="res://textures/button_uk_hover.png" type="Texture" id=5]
@@ -142,7 +141,6 @@ __meta__ = {
 }
 
 [node name="ContentImage" type="Sprite" parent="Panel/ContentContainer/ContentCenter"]
-texture = ExtResource( 2 )
 
 [node name="ButtonEnglish" type="TextureButton" parent="Panel"]
 margin_left = 401.0

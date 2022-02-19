@@ -3,6 +3,7 @@ extends Node2D
 
 onready var video_player: VideoPlayer = $Viewport/VideoPlayer
 export var dim_color: Color
+onready var viewport_texture: ViewportTexture = $Viewport.get_texture()
 
 
 func _ready():
@@ -10,6 +11,9 @@ func _ready():
 	$Temp.visible = false
 #	video_player.paused = true
 	video_player.modulate = dim_color
+	
+	$Video.texture = viewport_texture
+	$ProjectorLight.material.set_shader_param("Video", viewport_texture)
 
 
 # triggered when player gets within range
