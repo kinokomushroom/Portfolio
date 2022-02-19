@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=2]
+[gd_scene load_steps=164 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -46,7 +46,6 @@
 [ext_resource path="res://textures/room_shadow.png" type="Texture" id=44]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=46]
-[ext_resource path="res://textures/title_text.png" type="Texture" id=47]
 [ext_resource path="res://textures/title_name.png" type="Texture" id=48]
 [ext_resource path="res://textures/title_pixelated.png" type="Texture" id=49]
 [ext_resource path="res://textures/title_portfolio.png" type="Texture" id=50]
@@ -54,6 +53,7 @@
 [ext_resource path="res://Easel_3-4.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Easel_4-3.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Easel_16-9.tscn" type="PackedScene" id=54]
+[ext_resource path="res://ArtPiece.gd" type="Script" id=55]
 [ext_resource path="res://content/piano_small.png" type="Texture" id=56]
 [ext_resource path="res://content/chess_large.png" type="Texture" id=57]
 [ext_resource path="res://content/volcano_large.png" type="Texture" id=58]
@@ -73,6 +73,14 @@
 [ext_resource path="res://content/poses_large.png" type="Texture" id=72]
 [ext_resource path="res://content/concept_large.png" type="Texture" id=73]
 [ext_resource path="res://Laptop.tscn" type="PackedScene" id=74]
+[ext_resource path="res://content/black hole.ogv" type="VideoStream" id=75]
+[ext_resource path="res://ProjectorLightShader.tres" type="Shader" id=76]
+[ext_resource path="res://content/trailer.ogv" type="VideoStream" id=77]
+[ext_resource path="res://content/glsl_black_hole_large.png" type="Texture" id=78]
+[ext_resource path="res://content/black_hole_large.png" type="Texture" id=79]
+[ext_resource path="res://content/trailer_large.png" type="Texture" id=80]
+[ext_resource path="res://content/train_large.png" type="Texture" id=81]
+[ext_resource path="res://content/spider_large.png" type="Texture" id=82]
 
 [sub_resource type="RectangleShape2D" id=24]
 resource_local_to_scene = true
@@ -589,55 +597,20 @@ radius = 96.0052
 resource_local_to_scene = true
 extents = Vector2( 49, 9.25 )
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=75]
-uniform_name = "Video"
-texture_type = 1
-color_default = 1
+[sub_resource type="VisualShaderNodeTexture" id=114]
+source = 2
 
-[sub_resource type="VisualShaderNodeExpression" id=76]
-size = Vector2( 642, 434.8 )
-expression = "float y_max = -uv.y * 0.5 + 1.0;
-float y_min = uv.y * 0.5;
-float uv_x = (uv.x - y_min) / (y_max - y_min);
-uv_1 = vec3(uv_x, 0.0, 0.0);
-uv_2 = vec3(uv_x, 0.4, 0.0);
-uv_3 = vec3(uv_x, 0.8, 0.0);
-float region = float(uv.x < y_max) * float(uv.x > y_min);
-float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-float y_gradient = pow(uv.y, 1.5);
-float y_cut = float(uv.y < y_cutoff);
-alpha = region * y_gradient * x_gradient * y_cut * brightness;"
+[sub_resource type="VisualShaderNodeScalarUniform" id=115]
+uniform_name = "Brightness"
 
-[sub_resource type="VisualShaderNodeTexture" id=77]
-source = 5
+[sub_resource type="VisualShaderNodeVectorOp" id=116]
+operator = 2
 
-[sub_resource type="VisualShaderNodeTexture" id=78]
-source = 5
-
-[sub_resource type="VisualShaderNodeTexture" id=79]
-source = 5
-
-[sub_resource type="VisualShaderNodeExpression" id=80]
-size = Vector2( 564, 400 )
-expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=81]
-uniform_name = "brightness"
-
-[sub_resource type="VisualShaderNodeInput" id=82]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=83]
-uniform_name = "y_cutoff"
-
-[sub_resource type="VisualShader" id=98]
-resource_local_to_scene = true
+[sub_resource type="VisualShader" id=117]
 code = "shader_type canvas_item;
 render_mode blend_add;
 
-uniform float brightness;
-uniform float y_cutoff;
-uniform sampler2D Video : hint_black_albedo;
+uniform float Brightness;
 
 
 
@@ -647,74 +620,23 @@ void vertex() {
 }
 
 void fragment() {
-// Input:2
-	vec3 n_out2p0 = vec3(UV, 0.0);
-
-// ScalarUniform:19
-	float n_out19p0 = brightness;
-
-// ScalarUniform:20
-	float n_out20p0 = y_cutoff;
-
-// Expression:12
-	float n_out12p0;
-	vec3 n_out12p1;
-	vec3 n_out12p2;
-	vec3 n_out12p3;
-	n_out12p0 = 0.0;
-	n_out12p1 = vec3(0.0, 0.0, 0.0);
-	n_out12p2 = vec3(0.0, 0.0, 0.0);
-	n_out12p3 = vec3(0.0, 0.0, 0.0);
+// Texture:2
+	vec3 n_out2p0;
+	float n_out2p1;
 	{
-		float y_max = -n_out2p0.y * 0.5 + 1.0;
-		float y_min = n_out2p0.y * 0.5;
-		float uv_x = (n_out2p0.x - y_min) / (y_max - y_min);
-		n_out12p1 = vec3(uv_x, 0.0, 0.0);
-		n_out12p2 = vec3(uv_x, 0.4, 0.0);
-		n_out12p3 = vec3(uv_x, 0.8, 0.0);
-		float region = float(n_out2p0.x < y_max) * float(n_out2p0.x > y_min);
-		float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-		float y_gradient = pow(n_out2p0.y, 1.5);
-		float y_cut = float(n_out2p0.y < n_out20p0);
-		n_out12p0 = region * y_gradient * x_gradient * y_cut * n_out19p0;
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out2p0 = _tex_read.rgb;
+		n_out2p1 = _tex_read.a;
 	}
 
-// Texture:15
-	vec3 n_out15p0;
-	float n_out15p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p1.xy);
-		n_out15p0 = Video_tex_read.rgb;
-		n_out15p1 = Video_tex_read.a;
-	}
+// ScalarUniform:6
+	float n_out6p0 = Brightness;
 
-// Texture:16
-	vec3 n_out16p0;
-	float n_out16p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p2.xy);
-		n_out16p0 = Video_tex_read.rgb;
-		n_out16p1 = Video_tex_read.a;
-	}
-
-// Texture:17
-	vec3 n_out17p0;
-	float n_out17p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p3.xy);
-		n_out17p0 = Video_tex_read.rgb;
-		n_out17p1 = Video_tex_read.a;
-	}
-
-// Expression:18
-	vec3 n_out18p0;
-	n_out18p0 = vec3(0.0, 0.0, 0.0);
-	{
-		n_out18p0 = (n_out15p0 + n_out16p0 + n_out17p0) / 3.0 * n_out12p0;
-	}
+// VectorOp:7
+	vec3 n_out7p0 = n_out2p0 * vec3(n_out6p0);
 
 // Output:0
-	COLOR.rgb = n_out18p0;
+	COLOR.rgb = n_out7p0;
 
 }
 
@@ -723,53 +645,27 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -546.166, 90.3647 )
+graph_offset = Vector2( -694.899, 77.5718 )
 mode = 1
 modes/blend = 1
 flags/light_only = false
-nodes/fragment/0/position = Vector2( 1400, 120 )
-nodes/fragment/2/node = SubResource( 82 )
-nodes/fragment/2/position = Vector2( -540, 240 )
-nodes/fragment/11/node = SubResource( 75 )
-nodes/fragment/11/position = Vector2( 180, -20 )
-nodes/fragment/12/node = SubResource( 76 )
-nodes/fragment/12/position = Vector2( -260, 220 )
-nodes/fragment/12/size = Vector2( 642, 434.8 )
-nodes/fragment/12/input_ports = "0,1,uv;1,0,brightness;2,0,y_cutoff;"
-nodes/fragment/12/output_ports = "0,0,alpha;1,1,uv_1;2,1,uv_2;3,1,uv_3;"
-nodes/fragment/12/expression = "float y_max = -uv.y * 0.5 + 1.0;
-float y_min = uv.y * 0.5;
-float uv_x = (uv.x - y_min) / (y_max - y_min);
-uv_1 = vec3(uv_x, 0.0, 0.0);
-uv_2 = vec3(uv_x, 0.4, 0.0);
-uv_3 = vec3(uv_x, 0.8, 0.0);
-float region = float(uv.x < y_max) * float(uv.x > y_min);
-float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-float y_gradient = pow(uv.y, 1.5);
-float y_cut = float(uv.y < y_cutoff);
-alpha = region * y_gradient * x_gradient * y_cut * brightness;"
-nodes/fragment/15/node = SubResource( 77 )
-nodes/fragment/15/position = Vector2( 480, 60 )
-nodes/fragment/16/node = SubResource( 78 )
-nodes/fragment/16/position = Vector2( 480, 200 )
-nodes/fragment/17/node = SubResource( 79 )
-nodes/fragment/17/position = Vector2( 480, 340 )
-nodes/fragment/18/node = SubResource( 80 )
-nodes/fragment/18/position = Vector2( 700, 80 )
-nodes/fragment/18/size = Vector2( 564, 400 )
-nodes/fragment/18/input_ports = "0,1,texture_1;1,1,texture_2;2,1,texture_3;3,0,alpha;"
-nodes/fragment/18/output_ports = "0,1,average;"
-nodes/fragment/18/expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
-nodes/fragment/19/node = SubResource( 81 )
-nodes/fragment/19/position = Vector2( -540, 60 )
-nodes/fragment/20/node = SubResource( 83 )
-nodes/fragment/20/position = Vector2( -540, 140 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 12, 0, 11, 2, 15, 2, 12, 1, 15, 0, 12, 2, 16, 0, 12, 3, 17, 0, 11, 2, 16, 2, 11, 2, 17, 2, 15, 0, 18, 0, 16, 0, 18, 1, 17, 0, 18, 2, 12, 0, 18, 3, 18, 0, 0, 0, 20, 0, 12, 2, 19, 0, 12, 1 )
+nodes/fragment/2/node = SubResource( 114 )
+nodes/fragment/2/position = Vector2( -180, 120 )
+nodes/fragment/6/node = SubResource( 115 )
+nodes/fragment/6/position = Vector2( -160, 280 )
+nodes/fragment/7/node = SubResource( 116 )
+nodes/fragment/7/position = Vector2( 160, 160 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 7, 0, 6, 0, 7, 1, 7, 0, 0, 0 )
+
+[sub_resource type="ShaderMaterial" id=118]
+resource_local_to_scene = true
+shader = SubResource( 117 )
+shader_param/Brightness = 0.8
 
 [sub_resource type="ShaderMaterial" id=99]
 resource_local_to_scene = true
-shader = SubResource( 98 )
-shader_param/brightness = 1.0
+shader = ExtResource( 76 )
+shader_param/brightness = 1.2
 shader_param/y_cutoff = 0.97
 
 [sub_resource type="RectangleShape2D" id=107]
@@ -784,187 +680,15 @@ radius = 96.0052
 resource_local_to_scene = true
 extents = Vector2( 49, 9.25 )
 
-[sub_resource type="VisualShaderNodeTextureUniform" id=110]
-uniform_name = "Video"
-texture_type = 1
-color_default = 1
-
-[sub_resource type="VisualShaderNodeExpression" id=111]
-size = Vector2( 642, 434.8 )
-expression = "float y_max = -uv.y * 0.5 + 1.0;
-float y_min = uv.y * 0.5;
-float uv_x = (uv.x - y_min) / (y_max - y_min);
-uv_1 = vec3(uv_x, 0.0, 0.0);
-uv_2 = vec3(uv_x, 0.4, 0.0);
-uv_3 = vec3(uv_x, 0.8, 0.0);
-float region = float(uv.x < y_max) * float(uv.x > y_min);
-float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-float y_gradient = pow(uv.y, 1.5);
-float y_cut = float(uv.y < y_cutoff);
-alpha = region * y_gradient * x_gradient * y_cut * brightness;"
-
-[sub_resource type="VisualShaderNodeTexture" id=100]
-source = 5
-
-[sub_resource type="VisualShaderNodeTexture" id=101]
-source = 5
-
-[sub_resource type="VisualShaderNodeTexture" id=102]
-source = 5
-
-[sub_resource type="VisualShaderNodeExpression" id=103]
-size = Vector2( 564, 400 )
-expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=104]
-uniform_name = "brightness"
-
-[sub_resource type="VisualShaderNodeInput" id=105]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeScalarUniform" id=106]
-uniform_name = "y_cutoff"
-
-[sub_resource type="VisualShader" id=112]
+[sub_resource type="ShaderMaterial" id=119]
 resource_local_to_scene = true
-code = "shader_type canvas_item;
-render_mode blend_add;
-
-uniform float brightness;
-uniform float y_cutoff;
-uniform sampler2D Video : hint_black_albedo;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// Input:2
-	vec3 n_out2p0 = vec3(UV, 0.0);
-
-// ScalarUniform:19
-	float n_out19p0 = brightness;
-
-// ScalarUniform:20
-	float n_out20p0 = y_cutoff;
-
-// Expression:12
-	float n_out12p0;
-	vec3 n_out12p1;
-	vec3 n_out12p2;
-	vec3 n_out12p3;
-	n_out12p0 = 0.0;
-	n_out12p1 = vec3(0.0, 0.0, 0.0);
-	n_out12p2 = vec3(0.0, 0.0, 0.0);
-	n_out12p3 = vec3(0.0, 0.0, 0.0);
-	{
-		float y_max = -n_out2p0.y * 0.5 + 1.0;
-		float y_min = n_out2p0.y * 0.5;
-		float uv_x = (n_out2p0.x - y_min) / (y_max - y_min);
-		n_out12p1 = vec3(uv_x, 0.0, 0.0);
-		n_out12p2 = vec3(uv_x, 0.4, 0.0);
-		n_out12p3 = vec3(uv_x, 0.8, 0.0);
-		float region = float(n_out2p0.x < y_max) * float(n_out2p0.x > y_min);
-		float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-		float y_gradient = pow(n_out2p0.y, 1.5);
-		float y_cut = float(n_out2p0.y < n_out20p0);
-		n_out12p0 = region * y_gradient * x_gradient * y_cut * n_out19p0;
-	}
-
-// Texture:15
-	vec3 n_out15p0;
-	float n_out15p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p1.xy);
-		n_out15p0 = Video_tex_read.rgb;
-		n_out15p1 = Video_tex_read.a;
-	}
-
-// Texture:16
-	vec3 n_out16p0;
-	float n_out16p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p2.xy);
-		n_out16p0 = Video_tex_read.rgb;
-		n_out16p1 = Video_tex_read.a;
-	}
-
-// Texture:17
-	vec3 n_out17p0;
-	float n_out17p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p3.xy);
-		n_out17p0 = Video_tex_read.rgb;
-		n_out17p1 = Video_tex_read.a;
-	}
-
-// Expression:18
-	vec3 n_out18p0;
-	n_out18p0 = vec3(0.0, 0.0, 0.0);
-	{
-		n_out18p0 = (n_out15p0 + n_out16p0 + n_out17p0) / 3.0 * n_out12p0;
-	}
-
-// Output:0
-	COLOR.rgb = n_out18p0;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -546.166, 90.3647 )
-mode = 1
-modes/blend = 1
-flags/light_only = false
-nodes/fragment/0/position = Vector2( 1400, 120 )
-nodes/fragment/2/node = SubResource( 105 )
-nodes/fragment/2/position = Vector2( -540, 240 )
-nodes/fragment/11/node = SubResource( 110 )
-nodes/fragment/11/position = Vector2( 180, -20 )
-nodes/fragment/12/node = SubResource( 111 )
-nodes/fragment/12/position = Vector2( -260, 220 )
-nodes/fragment/12/size = Vector2( 642, 434.8 )
-nodes/fragment/12/input_ports = "0,1,uv;1,0,brightness;2,0,y_cutoff;"
-nodes/fragment/12/output_ports = "0,0,alpha;1,1,uv_1;2,1,uv_2;3,1,uv_3;"
-nodes/fragment/12/expression = "float y_max = -uv.y * 0.5 + 1.0;
-float y_min = uv.y * 0.5;
-float uv_x = (uv.x - y_min) / (y_max - y_min);
-uv_1 = vec3(uv_x, 0.0, 0.0);
-uv_2 = vec3(uv_x, 0.4, 0.0);
-uv_3 = vec3(uv_x, 0.8, 0.0);
-float region = float(uv.x < y_max) * float(uv.x > y_min);
-float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-float y_gradient = pow(uv.y, 1.5);
-float y_cut = float(uv.y < y_cutoff);
-alpha = region * y_gradient * x_gradient * y_cut * brightness;"
-nodes/fragment/15/node = SubResource( 100 )
-nodes/fragment/15/position = Vector2( 480, 60 )
-nodes/fragment/16/node = SubResource( 101 )
-nodes/fragment/16/position = Vector2( 480, 200 )
-nodes/fragment/17/node = SubResource( 102 )
-nodes/fragment/17/position = Vector2( 480, 340 )
-nodes/fragment/18/node = SubResource( 103 )
-nodes/fragment/18/position = Vector2( 700, 80 )
-nodes/fragment/18/size = Vector2( 564, 400 )
-nodes/fragment/18/input_ports = "0,1,texture_1;1,1,texture_2;2,1,texture_3;3,0,alpha;"
-nodes/fragment/18/output_ports = "0,1,average;"
-nodes/fragment/18/expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
-nodes/fragment/19/node = SubResource( 104 )
-nodes/fragment/19/position = Vector2( -540, 60 )
-nodes/fragment/20/node = SubResource( 106 )
-nodes/fragment/20/position = Vector2( -540, 140 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 12, 0, 11, 2, 15, 2, 12, 1, 15, 0, 12, 2, 16, 0, 12, 3, 17, 0, 11, 2, 16, 2, 11, 2, 17, 2, 15, 0, 18, 0, 16, 0, 18, 1, 17, 0, 18, 2, 12, 0, 18, 3, 18, 0, 0, 0, 20, 0, 12, 2, 19, 0, 12, 1 )
+shader = SubResource( 117 )
+shader_param/Brightness = 0.9
 
 [sub_resource type="ShaderMaterial" id=113]
 resource_local_to_scene = true
-shader = SubResource( 112 )
-shader_param/brightness = 1.0
+shader = ExtResource( 76 )
+shader_param/brightness = 1.2
 shader_param/y_cutoff = 0.97
 
 [sub_resource type="RectangleShape2D" id=90]
@@ -979,146 +703,38 @@ radius = 96.0052
 resource_local_to_scene = true
 extents = Vector2( 49, 9.25 )
 
-[sub_resource type="VisualShader" id=93]
+[sub_resource type="ShaderMaterial" id=120]
 resource_local_to_scene = true
-code = "shader_type canvas_item;
-render_mode blend_add;
-
-uniform float brightness;
-uniform float y_cutoff;
-uniform sampler2D Video : hint_black_albedo;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// Input:2
-	vec3 n_out2p0 = vec3(UV, 0.0);
-
-// ScalarUniform:19
-	float n_out19p0 = brightness;
-
-// ScalarUniform:20
-	float n_out20p0 = y_cutoff;
-
-// Expression:12
-	float n_out12p0;
-	vec3 n_out12p1;
-	vec3 n_out12p2;
-	vec3 n_out12p3;
-	n_out12p0 = 0.0;
-	n_out12p1 = vec3(0.0, 0.0, 0.0);
-	n_out12p2 = vec3(0.0, 0.0, 0.0);
-	n_out12p3 = vec3(0.0, 0.0, 0.0);
-	{
-		float y_max = -n_out2p0.y * 0.5 + 1.0;
-		float y_min = n_out2p0.y * 0.5;
-		float uv_x = (n_out2p0.x - y_min) / (y_max - y_min);
-		n_out12p1 = vec3(uv_x, 0.0, 0.0);
-		n_out12p2 = vec3(uv_x, 0.4, 0.0);
-		n_out12p3 = vec3(uv_x, 0.8, 0.0);
-		float region = float(n_out2p0.x < y_max) * float(n_out2p0.x > y_min);
-		float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-		float y_gradient = pow(n_out2p0.y, 1.5);
-		float y_cut = float(n_out2p0.y < n_out20p0);
-		n_out12p0 = region * y_gradient * x_gradient * y_cut * n_out19p0;
-	}
-
-// Texture:15
-	vec3 n_out15p0;
-	float n_out15p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p1.xy);
-		n_out15p0 = Video_tex_read.rgb;
-		n_out15p1 = Video_tex_read.a;
-	}
-
-// Texture:16
-	vec3 n_out16p0;
-	float n_out16p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p2.xy);
-		n_out16p0 = Video_tex_read.rgb;
-		n_out16p1 = Video_tex_read.a;
-	}
-
-// Texture:17
-	vec3 n_out17p0;
-	float n_out17p1;
-	{
-		vec4 Video_tex_read = texture(Video, n_out12p3.xy);
-		n_out17p0 = Video_tex_read.rgb;
-		n_out17p1 = Video_tex_read.a;
-	}
-
-// Expression:18
-	vec3 n_out18p0;
-	n_out18p0 = vec3(0.0, 0.0, 0.0);
-	{
-		n_out18p0 = (n_out15p0 + n_out16p0 + n_out17p0) / 3.0 * n_out12p0;
-	}
-
-// Output:0
-	COLOR.rgb = n_out18p0;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -546.166, 90.3647 )
-mode = 1
-modes/blend = 1
-flags/light_only = false
-nodes/fragment/0/position = Vector2( 1400, 120 )
-nodes/fragment/2/node = SubResource( 82 )
-nodes/fragment/2/position = Vector2( -540, 240 )
-nodes/fragment/11/node = SubResource( 75 )
-nodes/fragment/11/position = Vector2( 180, -20 )
-nodes/fragment/12/node = SubResource( 76 )
-nodes/fragment/12/position = Vector2( -260, 220 )
-nodes/fragment/12/size = Vector2( 642, 434.8 )
-nodes/fragment/12/input_ports = "0,1,uv;1,0,brightness;2,0,y_cutoff;"
-nodes/fragment/12/output_ports = "0,0,alpha;1,1,uv_1;2,1,uv_2;3,1,uv_3;"
-nodes/fragment/12/expression = "float y_max = -uv.y * 0.5 + 1.0;
-float y_min = uv.y * 0.5;
-float uv_x = (uv.x - y_min) / (y_max - y_min);
-uv_1 = vec3(uv_x, 0.0, 0.0);
-uv_2 = vec3(uv_x, 0.4, 0.0);
-uv_3 = vec3(uv_x, 0.8, 0.0);
-float region = float(uv.x < y_max) * float(uv.x > y_min);
-float x_gradient = pow(max(0.0, 1.0 - (abs(uv_x - 0.5) * 2.0)), 0.5);
-float y_gradient = pow(uv.y, 1.5);
-float y_cut = float(uv.y < y_cutoff);
-alpha = region * y_gradient * x_gradient * y_cut * brightness;"
-nodes/fragment/15/node = SubResource( 77 )
-nodes/fragment/15/position = Vector2( 480, 60 )
-nodes/fragment/16/node = SubResource( 78 )
-nodes/fragment/16/position = Vector2( 480, 200 )
-nodes/fragment/17/node = SubResource( 79 )
-nodes/fragment/17/position = Vector2( 480, 340 )
-nodes/fragment/18/node = SubResource( 80 )
-nodes/fragment/18/position = Vector2( 700, 80 )
-nodes/fragment/18/size = Vector2( 564, 400 )
-nodes/fragment/18/input_ports = "0,1,texture_1;1,1,texture_2;2,1,texture_3;3,0,alpha;"
-nodes/fragment/18/output_ports = "0,1,average;"
-nodes/fragment/18/expression = "average = (texture_1 + texture_2 + texture_3) / 3.0 * alpha;"
-nodes/fragment/19/node = SubResource( 81 )
-nodes/fragment/19/position = Vector2( -540, 60 )
-nodes/fragment/20/node = SubResource( 83 )
-nodes/fragment/20/position = Vector2( -540, 140 )
-nodes/fragment/connections = PoolIntArray( 2, 0, 12, 0, 11, 2, 15, 2, 12, 1, 15, 0, 12, 2, 16, 0, 12, 3, 17, 0, 11, 2, 16, 2, 11, 2, 17, 2, 15, 0, 18, 0, 16, 0, 18, 1, 17, 0, 18, 2, 12, 0, 18, 3, 18, 0, 0, 0, 20, 0, 12, 2, 19, 0, 12, 1 )
+shader = SubResource( 117 )
+shader_param/Brightness = 0.7
 
 [sub_resource type="ShaderMaterial" id=94]
 resource_local_to_scene = true
-shader = SubResource( 93 )
+shader = ExtResource( 76 )
 shader_param/brightness = 1.0
+shader_param/y_cutoff = 0.97
+
+[sub_resource type="RectangleShape2D" id=121]
+resource_local_to_scene = true
+extents = Vector2( 19.5, 14 )
+
+[sub_resource type="CircleShape2D" id=122]
+resource_local_to_scene = true
+radius = 96.0052
+
+[sub_resource type="RectangleShape2D" id=123]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.25 )
+
+[sub_resource type="ShaderMaterial" id=124]
+resource_local_to_scene = true
+shader = SubResource( 117 )
+shader_param/Brightness = 0.7
+
+[sub_resource type="ShaderMaterial" id=135]
+resource_local_to_scene = true
+shader = ExtResource( 76 )
+shader_param/brightness = 1.2
 shader_param/y_cutoff = 0.97
 
 [sub_resource type="RectangleShape2D" id=87]
@@ -1132,6 +748,29 @@ viewport_path = NodePath("ActualThing/Viewport")
 resource_local_to_scene = true
 shader = SubResource( 12 )
 shader_param/Video = SubResource( 88 )
+
+[sub_resource type="RectangleShape2D" id=136]
+resource_local_to_scene = true
+extents = Vector2( 19.5, 14 )
+
+[sub_resource type="CircleShape2D" id=137]
+resource_local_to_scene = true
+radius = 96.0052
+
+[sub_resource type="RectangleShape2D" id=138]
+resource_local_to_scene = true
+extents = Vector2( 49, 9.25 )
+
+[sub_resource type="ShaderMaterial" id=139]
+resource_local_to_scene = true
+shader = SubResource( 117 )
+shader_param/Brightness = 0.8
+
+[sub_resource type="ShaderMaterial" id=140]
+resource_local_to_scene = true
+shader = ExtResource( 76 )
+shader_param/brightness = 1.2
+shader_param/y_cutoff = 0.97
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -1147,149 +786,97 @@ __meta__ = {
 }
 
 [node name="LightFloor" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, 207 )
+position = Vector2( -730, 207 )
 
 [node name="LightFloor2" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, 51 )
+position = Vector2( -730, 51 )
 
 [node name="LightFloor3" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, -105 )
+position = Vector2( -730, -105 )
 
 [node name="LightFloor4" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, -261 )
+position = Vector2( -730, -261 )
 
 [node name="LightFloor5" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, -417 )
+position = Vector2( -730, -417 )
 
 [node name="LightFloor6" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, -573 )
+position = Vector2( -730, -573 )
 
 [node name="LightFloor7" parent="Floor" instance=ExtResource( 8 )]
-position = Vector2( -510, -729 )
+position = Vector2( -730, -729 )
 
 [node name="DarkFloor" parent="Floor" instance=ExtResource( 31 )]
-position = Vector2( -510, 364 )
+position = Vector2( -730, 364 )
 
 [node name="DarkFloor2" parent="Floor" instance=ExtResource( 31 )]
-position = Vector2( -510, 520 )
+position = Vector2( -730, 520 )
 
 [node name="DarkFloor3" parent="Floor" instance=ExtResource( 31 )]
-position = Vector2( -510, 676 )
+position = Vector2( -730, 676 )
 
 [node name="DarkFloor4" parent="Floor" instance=ExtResource( 31 )]
-position = Vector2( -510, 832 )
+position = Vector2( -730, 832 )
 
 [node name="DarkFloor5" parent="Floor" instance=ExtResource( 31 )]
-position = Vector2( -510, 989 )
-
-[node name="ColorRect" type="ColorRect" parent="Floor"]
-visible = false
-margin_left = -294.0
-margin_top = 543.0
-margin_right = 889.0
-margin_bottom = 726.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect3" type="ColorRect" parent="Floor"]
-visible = false
-margin_left = -294.0
-margin_top = -779.0
-margin_right = -55.0
-margin_bottom = 778.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect4" type="ColorRect" parent="Floor"]
-visible = false
-margin_left = 595.0
-margin_top = -779.0
-margin_right = 834.0
-margin_bottom = 778.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect2" type="ColorRect" parent="Floor"]
-visible = false
-margin_left = -294.0
-margin_top = -909.0
-margin_right = 889.0
-margin_bottom = -641.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TitleText" type="Sprite" parent="Floor"]
-visible = false
-position = Vector2( 118, 55 )
-scale = Vector2( 1.2, 1.2 )
-texture = ExtResource( 47 )
+position = Vector2( -730, 989 )
 
 [node name="Title" type="Node2D" parent="Floor"]
 modulate = Color( 0.854902, 0.854902, 0.854902, 1 )
-position = Vector2( -7, -48 )
+position = Vector2( -206, -66 )
 
 [node name="TitleShade" type="Node2D" parent="Floor/Title"]
 modulate = Color( 0.643137, 0.580392, 0.494118, 1 )
 position = Vector2( 0, 1 )
 
 [node name="TitleName" type="Sprite" parent="Floor/Title/TitleShade"]
-position = Vector2( 44, 12 )
 texture = ExtResource( 48 )
 centered = false
 
 [node name="TitlePixelated" type="Sprite" parent="Floor/Title/TitleShade"]
-position = Vector2( 49, 40 )
+position = Vector2( 5, 28 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 49 )
 centered = false
 
 [node name="TitlePortfolio" type="Sprite" parent="Floor/Title/TitleShade"]
-position = Vector2( 62, 69 )
+position = Vector2( 18, 57 )
 texture = ExtResource( 50 )
 centered = false
 
 [node name="TitleName2" type="Sprite" parent="Floor/Title/TitleShade"]
-position = Vector2( 44, 13 )
+position = Vector2( 0, 1 )
 texture = ExtResource( 48 )
 centered = false
 
 [node name="TitlePixelated2" type="Sprite" parent="Floor/Title/TitleShade"]
-position = Vector2( 49, 41 )
+position = Vector2( 5, 29 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 49 )
 centered = false
 
 [node name="TitlePortfolio2" type="Sprite" parent="Floor/Title/TitleShade"]
-position = Vector2( 62, 70 )
+position = Vector2( 18, 58 )
 texture = ExtResource( 50 )
 centered = false
 
 [node name="TitleName" type="Sprite" parent="Floor/Title"]
-position = Vector2( 44, 12 )
 texture = ExtResource( 48 )
 centered = false
 
 [node name="TitlePixelated" type="Sprite" parent="Floor/Title"]
-position = Vector2( 49, 40 )
+position = Vector2( 5, 28 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 49 )
 centered = false
 
 [node name="TitlePortfolio" type="Sprite" parent="Floor/Title"]
-position = Vector2( 62, 69 )
+position = Vector2( 18, 57 )
 texture = ExtResource( 50 )
 centered = false
 
 [node name="RoomShadow" type="Light2D" parent="Floor"]
-position = Vector2( 222, 679 )
+position = Vector2( 2, 679 )
 scale = Vector2( 214.5, 116.75 )
 texture = ExtResource( 44 )
 color = Color( 0.427451, 0.427451, 0.427451, 1 )
@@ -1297,7 +884,7 @@ mode = 2
 range_item_cull_mask = 2
 
 [node name="DoorLight" type="Light2D" parent="Floor"]
-position = Vector2( 220, 326 )
+position = Vector2( 0, 326 )
 scale = Vector2( 12, 18 )
 texture = ExtResource( 44 )
 mode = 2
@@ -1306,9 +893,10 @@ range_item_cull_mask = 2
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 0, 116 )
 
 [node name="TVRetro" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 302, -129 )
+position = Vector2( 82, -129 )
 title = "Space Invaders 555"
 content_image = ExtResource( 30 )
 japanese_description = "レトロ風の２Dスペースシューターゲーム。宇宙船を操縦して敵を撃ちながら障害物を回避する。
@@ -1342,7 +930,7 @@ margin_bottom = 64.0
 material = SubResource( 59 )
 
 [node name="TVCurved" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 406, -274 )
+position = Vector2( 186, -274 )
 
 [node name="StaticCollision" parent="YSort/TVCurved" index="0"]
 position = Vector2( 0, 3.5 )
@@ -1372,7 +960,7 @@ position = Vector2( -74, -93 )
 texture = ExtResource( 13 )
 
 [node name="TVCRT" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 135, -397 )
+position = Vector2( -85, -397 )
 
 [node name="StaticCollision" parent="YSort/TVCRT" index="0"]
 position = Vector2( 0, -2 )
@@ -1401,7 +989,7 @@ texture = ExtResource( 16 )
 visible = false
 
 [node name="TVLaptop" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 373, -474 )
+position = Vector2( 153, -474 )
 
 [node name="StaticCollision" parent="YSort/TVLaptop" index="0"]
 position = Vector2( 0, -4 )
@@ -1430,7 +1018,7 @@ texture = ExtResource( 21 )
 visible = false
 
 [node name="TVRound" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 49, -571 )
+position = Vector2( -171, -571 )
 
 [node name="StaticCollision" parent="YSort/TVRound" index="0"]
 position = Vector2( 0, -2.5 )
@@ -1460,7 +1048,7 @@ position = Vector2( -40, -66 )
 texture = ExtResource( 18 )
 
 [node name="TVMac" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 86, -219 )
+position = Vector2( -134, -219 )
 title = "Happy Cooking Game"
 content_image = ExtResource( 28 )
 japanese_description = "大学サークルのゲームジャムで作った２Dアクションゲーム。巨大化・狂暴化した料理の原材料と戦い、原材料を手に入れて料理する。
@@ -1513,7 +1101,7 @@ texture = ExtResource( 22 )
 visible = false
 
 [node name="TVArcade" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 247, -606 )
+position = Vector2( 27, -606 )
 
 [node name="StaticCollision" parent="YSort/TVArcade" index="0"]
 position = Vector2( 0, -4.5 )
@@ -1549,52 +1137,52 @@ texture = ExtResource( 25 )
 visible = false
 
 [node name="Door" parent="YSort" instance=ExtResource( 46 )]
-position = Vector2( 220, 352 )
+position = Vector2( 0, 352 )
 
 [node name="Wall" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 77, 352 )
+position = Vector2( -143, 352 )
 
 [node name="Wall2" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -87, 352 )
+position = Vector2( -307, 352 )
 
 [node name="Wall3" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -251, 352 )
+position = Vector2( -471, 352 )
 
 [node name="Wall9" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -415, 352 )
+position = Vector2( -635, 352 )
 
 [node name="Wall4" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 363, 352 )
+position = Vector2( 143, 352 )
 
 [node name="Wall5" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 527, 352 )
+position = Vector2( 307, 352 )
 
 [node name="Wall6" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 691, 352 )
+position = Vector2( 471, 352 )
 
 [node name="Wall10" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 855, 352 )
+position = Vector2( 635, 352 )
 
 [node name="Wall7" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 350, 656 )
+position = Vector2( 130, 656 )
 
 [node name="Wall8" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 514, 656 )
+position = Vector2( 294, 656 )
 
 [node name="Wall11" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 678, 656 )
+position = Vector2( 458, 656 )
 
 [node name="Wall12" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 350, 960 )
+position = Vector2( 130, 960 )
 
 [node name="Wall13" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 514, 960 )
+position = Vector2( 294, 960 )
 
 [node name="Wall14" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 678, 960 )
+position = Vector2( 458, 960 )
 
 [node name="FramedChess" parent="YSort" instance=ExtResource( 61 )]
-position = Vector2( 47, 365 )
+position = Vector2( -173, 365 )
 content_image = ExtResource( 57 )
 
 [node name="Frame" parent="YSort/FramedChess/ActualThing" index="0"]
@@ -1604,7 +1192,9 @@ texture = ExtResource( 10 )
 texture = ExtResource( 35 )
 
 [node name="ProjectorSpider" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( -150, 366 )
+position = Vector2( -370, 366 )
+script = ExtResource( 55 )
+content_image = ExtResource( 82 )
 
 [node name="StaticCollision" parent="YSort/ProjectorSpider" index="0"]
 shape = SubResource( 95 )
@@ -1618,11 +1208,16 @@ shape = SubResource( 97 )
 [node name="VideoPlayer" parent="YSort/ProjectorSpider/ActualThing/Viewport" index="0"]
 stream = ExtResource( 26 )
 
+[node name="Video" parent="YSort/ProjectorSpider/ActualThing" index="1"]
+material = SubResource( 118 )
+
 [node name="ProjectorLight" parent="YSort/ProjectorSpider/ActualThing" index="3"]
 material = SubResource( 99 )
 
 [node name="ProjectorGLSLBlackHole" parent="YSort" instance=ExtResource( 29 )]
-position = Vector2( -358, 365 )
+position = Vector2( -578, 365 )
+script = ExtResource( 55 )
+content_image = ExtResource( 78 )
 
 [node name="StaticCollision" parent="YSort/ProjectorGLSLBlackHole" index="0"]
 shape = SubResource( 107 )
@@ -1636,18 +1231,22 @@ shape = SubResource( 109 )
 [node name="VideoPlayer" parent="YSort/ProjectorGLSLBlackHole/ActualThing/Viewport" index="0"]
 stream = ExtResource( 37 )
 
+[node name="Video" parent="YSort/ProjectorGLSLBlackHole/ActualThing" index="1"]
+material = SubResource( 119 )
+
 [node name="ProjectorLight" parent="YSort/ProjectorGLSLBlackHole/ActualThing" index="3"]
 material = SubResource( 113 )
 
 [node name="FramedVolcano" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 392, 365 )
+position = Vector2( 172, 365 )
 content_image = ExtResource( 58 )
 
 [node name="Image" parent="YSort/FramedVolcano/ActualThing/Frame" index="0"]
 texture = ExtResource( 33 )
 
 [node name="ProjectorTrain" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 603, 365 )
+position = Vector2( 383, 365 )
+content_image = ExtResource( 81 )
 
 [node name="StaticCollision" parent="YSort/ProjectorTrain" index="0"]
 shape = SubResource( 90 )
@@ -1661,11 +1260,14 @@ shape = SubResource( 92 )
 [node name="VideoPlayer" parent="YSort/ProjectorTrain/ActualThing/Viewport" index="0"]
 stream = ExtResource( 6 )
 
+[node name="Video" parent="YSort/ProjectorTrain/ActualThing" index="1"]
+material = SubResource( 120 )
+
 [node name="ProjectorLight" parent="YSort/ProjectorTrain/ActualThing" index="3"]
 material = SubResource( 94 )
 
 [node name="FramedMall" parent="YSort" instance=ExtResource( 51 )]
-position = Vector2( 813, 365 )
+position = Vector2( 593, 365 )
 content_image = ExtResource( 59 )
 
 [node name="Frame" parent="YSort/FramedMall/ActualThing" index="0"]
@@ -1682,7 +1284,7 @@ texture = ExtResource( 36 )
 texture = ExtResource( 32 )
 
 [node name="FramedPiano" parent="YSort" instance=ExtResource( 61 )]
-position = Vector2( 407, 669 )
+position = Vector2( 187, 669 )
 content_image = ExtResource( 60 )
 
 [node name="Frame" parent="YSort/FramedPiano/ActualThing" index="0"]
@@ -1692,24 +1294,44 @@ texture = ExtResource( 10 )
 texture = ExtResource( 56 )
 
 [node name="ProjectorBlackHole" parent="YSort" instance=ExtResource( 29 )]
-position = Vector2( 603, 669 )
+position = Vector2( 383, 669 )
+script = ExtResource( 55 )
+content_image = ExtResource( 79 )
+
+[node name="StaticCollision" parent="YSort/ProjectorBlackHole" index="0"]
+shape = SubResource( 121 )
+
+[node name="CollisionShape2D" parent="YSort/ProjectorBlackHole/EventTriggerArea" index="0"]
+shape = SubResource( 122 )
+
+[node name="CollisionShape2D" parent="YSort/ProjectorBlackHole/PanelTriggerArea" index="0"]
+shape = SubResource( 123 )
+
+[node name="VideoPlayer" parent="YSort/ProjectorBlackHole/ActualThing/Viewport" index="0"]
+stream = ExtResource( 75 )
+
+[node name="Video" parent="YSort/ProjectorBlackHole/ActualThing" index="1"]
+material = SubResource( 124 )
+
+[node name="ProjectorLight" parent="YSort/ProjectorBlackHole/ActualThing" index="3"]
+material = SubResource( 135 )
 
 [node name="EaselField" parent="YSort" instance=ExtResource( 53 )]
-position = Vector2( 70, 660 )
+position = Vector2( -150, 660 )
 content_image = ExtResource( 68 )
 
 [node name="Image" parent="YSort/EaselField/ActualThing" index="5"]
 texture = ExtResource( 4 )
 
 [node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 52 )]
-position = Vector2( -120, 660 )
+position = Vector2( -340, 660 )
 content_image = ExtResource( 70 )
 
 [node name="Image" parent="YSort/EaselSkyscraper/ActualThing" index="5"]
 texture = ExtResource( 66 )
 
 [node name="LaptopMaterial" parent="YSort" instance=ExtResource( 74 )]
-position = Vector2( -310, 660 )
+position = Vector2( -530, 660 )
 
 [node name="StaticCollision" parent="YSort/LaptopMaterial" index="0"]
 shape = SubResource( 87 )
@@ -1725,35 +1347,35 @@ light_mask = 2
 material = SubResource( 89 )
 
 [node name="EaselDesk" parent="YSort" instance=ExtResource( 54 )]
-position = Vector2( 0, 820 )
+position = Vector2( -220, 820 )
 content_image = ExtResource( 69 )
 
 [node name="Image" parent="YSort/EaselDesk/ActualThing" index="5"]
 texture = ExtResource( 62 )
 
 [node name="EaselMoon" parent="YSort" instance=ExtResource( 53 )]
-position = Vector2( -190, 820 )
+position = Vector2( -410, 820 )
 content_image = ExtResource( 34 )
 
 [node name="Image" parent="YSort/EaselMoon/ActualThing" index="5"]
 texture = ExtResource( 67 )
 
 [node name="EaselRoland" parent="YSort" instance=ExtResource( 54 )]
-position = Vector2( -380, 820 )
+position = Vector2( -600, 820 )
 content_image = ExtResource( 71 )
 
 [node name="Image" parent="YSort/EaselRoland/ActualThing" index="5"]
 texture = ExtResource( 63 )
 
 [node name="EaselPoses" parent="YSort" instance=ExtResource( 54 )]
-position = Vector2( -70, 980 )
+position = Vector2( -290, 980 )
 content_image = ExtResource( 72 )
 
 [node name="Image" parent="YSort/EaselPoses/ActualThing" index="5"]
 texture = ExtResource( 64 )
 
 [node name="LaptopChocolate" parent="YSort" instance=ExtResource( 74 )]
-position = Vector2( -284, 969 )
+position = Vector2( -504, 969 )
 
 [node name="StaticCollision" parent="YSort/LaptopChocolate" index="0"]
 shape = SubResource( 87 )
@@ -1769,10 +1391,29 @@ light_mask = 2
 material = SubResource( 89 )
 
 [node name="ProjectorTrailer" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 412, 973 )
+position = Vector2( 192, 973 )
+content_image = ExtResource( 80 )
+
+[node name="StaticCollision" parent="YSort/ProjectorTrailer" index="0"]
+shape = SubResource( 136 )
+
+[node name="CollisionShape2D" parent="YSort/ProjectorTrailer/EventTriggerArea" index="0"]
+shape = SubResource( 137 )
+
+[node name="CollisionShape2D" parent="YSort/ProjectorTrailer/PanelTriggerArea" index="0"]
+shape = SubResource( 138 )
+
+[node name="VideoPlayer" parent="YSort/ProjectorTrailer/ActualThing/Viewport" index="0"]
+stream = ExtResource( 77 )
+
+[node name="Video" parent="YSort/ProjectorTrailer/ActualThing" index="1"]
+material = SubResource( 139 )
+
+[node name="ProjectorLight" parent="YSort/ProjectorTrailer/ActualThing" index="3"]
+material = SubResource( 140 )
 
 [node name="FramedConcept" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 629, 972 )
+position = Vector2( 409, 972 )
 content_image = ExtResource( 73 )
 
 [node name="Image" parent="YSort/FramedConcept/ActualThing/Frame" index="0"]
@@ -1785,6 +1426,8 @@ visible = false
 
 [connection signal="body_entered" from="YSort/ProjectorTrain/EventTriggerArea" to="YSort/ProjectorTrain/ActualThing" method="_on_EventTriggerArea_body_entered"]
 [connection signal="body_exited" from="YSort/ProjectorTrain/EventTriggerArea" to="YSort/ProjectorTrain/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_exited"]
 
 [editable path="YSort/TVRetro"]
 [editable path="YSort/TVCurved"]
@@ -1800,6 +1443,7 @@ visible = false
 [editable path="YSort/ProjectorTrain"]
 [editable path="YSort/FramedMall"]
 [editable path="YSort/FramedPiano"]
+[editable path="YSort/ProjectorBlackHole"]
 [editable path="YSort/EaselField"]
 [editable path="YSort/EaselSkyscraper"]
 [editable path="YSort/LaptopMaterial"]
@@ -1808,4 +1452,5 @@ visible = false
 [editable path="YSort/EaselRoland"]
 [editable path="YSort/EaselPoses"]
 [editable path="YSort/LaptopChocolate"]
+[editable path="YSort/ProjectorTrailer"]
 [editable path="YSort/FramedConcept"]
