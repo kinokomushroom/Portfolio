@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=2]
+[gd_scene load_steps=137 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -10,23 +10,23 @@
 [ext_resource path="res://LightFloor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Projector_534-476.tscn" type="PackedScene" id=9]
 [ext_resource path="res://textures/frame_white.png" type="Texture" id=10]
-[ext_resource path="res://TV.tscn" type="PackedScene" id=11]
-[ext_resource path="res://textures/curved_bg.png" type="Texture" id=12]
-[ext_resource path="res://textures/curved_fg.png" type="Texture" id=13]
-[ext_resource path="res://textures/curved_screen.png" type="Texture" id=14]
-[ext_resource path="res://textures/crt_bg.png" type="Texture" id=15]
-[ext_resource path="res://textures/crt_screen.png" type="Texture" id=16]
-[ext_resource path="res://textures/round_screen.png" type="Texture" id=17]
-[ext_resource path="res://textures/round_fg.png" type="Texture" id=18]
-[ext_resource path="res://textures/round_bg.png" type="Texture" id=19]
-[ext_resource path="res://textures/laptop_bg.png" type="Texture" id=20]
-[ext_resource path="res://textures/laptop_screen.png" type="Texture" id=21]
-[ext_resource path="res://textures/mac_screen.png" type="Texture" id=22]
-[ext_resource path="res://textures/mac_bg.png" type="Texture" id=23]
-[ext_resource path="res://textures/arcade_bg.png" type="Texture" id=24]
-[ext_resource path="res://textures/arcade_screen.png" type="Texture" id=25]
+[ext_resource path="res://WallTop.tscn" type="PackedScene" id=11]
+[ext_resource path="res://content/happy cooking game.ogv" type="VideoStream" id=12]
+[ext_resource path="res://content/rocket simulator 2020.ogv" type="VideoStream" id=13]
+[ext_resource path="res://Arcade.tscn" type="PackedScene" id=14]
+[ext_resource path="res://content/3D space shooter.ogv" type="VideoStream" id=15]
+[ext_resource path="res://MonitorMac.tscn" type="PackedScene" id=16]
+[ext_resource path="res://content/physics space game.ogv" type="VideoStream" id=17]
+[ext_resource path="res://MonitorCRT.tscn" type="PackedScene" id=18]
+[ext_resource path="res://MonitorCurved.tscn" type="PackedScene" id=19]
+[ext_resource path="res://TVRetro.tscn" type="PackedScene" id=20]
+[ext_resource path="res://content/ik walking animation.ogv" type="VideoStream" id=21]
+[ext_resource path="res://TVRound.tscn" type="PackedScene" id=22]
+[ext_resource path="res://content/piano transcription helper.ogv" type="VideoStream" id=23]
+[ext_resource path="res://content/4d visualiser.ogv" type="VideoStream" id=24]
+[ext_resource path="res://TVShader.tres" type="Shader" id=25]
 [ext_resource path="res://content/spider.ogv" type="VideoStream" id=26]
-[ext_resource path="res://icon.png" type="Texture" id=27]
+[ext_resource path="res://content/3d_space_shooter.png" type="Texture" id=27]
 [ext_resource path="res://content/happy_cooking_game_large.png" type="Texture" id=28]
 [ext_resource path="res://Projector_4-3.tscn" type="PackedScene" id=29]
 [ext_resource path="res://content/space_invaders_555_large.png" type="Texture" id=30]
@@ -37,15 +37,16 @@
 [ext_resource path="res://content/chess_small.png" type="Texture" id=35]
 [ext_resource path="res://content/mall_small.png" type="Texture" id=36]
 [ext_resource path="res://content/GLSL black hole.ogv" type="VideoStream" id=37]
-[ext_resource path="res://textures/laptop_shadow.png" type="Texture" id=38]
-[ext_resource path="res://textures/arcade_shadow.png" type="Texture" id=39]
-[ext_resource path="res://textures/curved_shadow.png" type="Texture" id=40]
-[ext_resource path="res://textures/crt_shadow.png" type="Texture" id=41]
-[ext_resource path="res://textures/round_shadow.png" type="Texture" id=42]
-[ext_resource path="res://textures/mac_shadow.png" type="Texture" id=43]
+[ext_resource path="res://content/piano_transcription_helper.png" type="Texture" id=38]
+[ext_resource path="res://content/4d_visualiser.png" type="Texture" id=39]
+[ext_resource path="res://content/physics_space_game.png" type="Texture" id=40]
+[ext_resource path="res://content/rocket_simulator_2020.png" type="Texture" id=41]
+[ext_resource path="res://content/ik_walking_animation.png" type="Texture" id=42]
+[ext_resource path="res://content/chocolate_small.png" type="Texture" id=43]
 [ext_resource path="res://textures/room_shadow.png" type="Texture" id=44]
 [ext_resource path="res://Wall.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Door.tscn" type="PackedScene" id=46]
+[ext_resource path="res://content/space invaders 555.ogv" type="VideoStream" id=47]
 [ext_resource path="res://textures/title_name.png" type="Texture" id=48]
 [ext_resource path="res://textures/title_pixelated.png" type="Texture" id=49]
 [ext_resource path="res://textures/title_portfolio.png" type="Texture" id=50]
@@ -81,509 +82,82 @@
 [ext_resource path="res://content/trailer_large.png" type="Texture" id=80]
 [ext_resource path="res://content/train_large.png" type="Texture" id=81]
 [ext_resource path="res://content/spider_large.png" type="Texture" id=82]
+[ext_resource path="res://content/chocolate_large.png" type="Texture" id=83]
+[ext_resource path="res://content/material_large.png" type="Texture" id=84]
+[ext_resource path="res://content/material_small.png" type="Texture" id=85]
+[ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=86]
 
-[sub_resource type="RectangleShape2D" id=24]
+[sub_resource type="RectangleShape2D" id=155]
 resource_local_to_scene = true
-extents = Vector2( 70, 18 )
+extents = Vector2( 68, 18.5 )
 
-[sub_resource type="CircleShape2D" id=25]
+[sub_resource type="ShaderMaterial" id=156]
 resource_local_to_scene = true
-radius = 109.0
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.0
 
-[sub_resource type="RectangleShape2D" id=26]
+[sub_resource type="RectangleShape2D" id=157]
 resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
+extents = Vector2( 76, 10 )
 
-[sub_resource type="VisualShaderNodeVectorOp" id=63]
-
-[sub_resource type="VisualShaderNodeTextureUniform" id=64]
-uniform_name = "Video"
-texture_type = 1
-
-[sub_resource type="VisualShaderNodeTexture" id=65]
-source = 2
-
-[sub_resource type="VisualShader" id=18]
+[sub_resource type="ShaderMaterial" id=162]
 resource_local_to_scene = true
-code = "shader_type canvas_item;
-uniform sampler2D Video : hint_albedo;
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.0
 
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 n_tex_read = texture(Video, UV.xy);
-		n_out3p0 = n_tex_read.rgb;
-		n_out3p1 = n_tex_read.a;
-	}
-
-// Texture:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out4p0 = _tex_read.rgb;
-		n_out4p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out3p0 + n_out4p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out4p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -494, 82 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 63 )
-nodes/fragment/2/position = Vector2( 180, 140 )
-nodes/fragment/3/node = SubResource( 64 )
-nodes/fragment/3/position = Vector2( -100, 140 )
-nodes/fragment/4/node = SubResource( 65 )
-nodes/fragment/4/position = Vector2( -100, 380 )
-nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 2, 0, 0, 0, 3, 0, 2, 0 )
-
-[sub_resource type="ViewportTexture" id=61]
-viewport_path = NodePath("YSort/TVRetro/ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=59]
+[sub_resource type="RectangleShape2D" id=163]
 resource_local_to_scene = true
-shader = SubResource( 18 )
-shader_param/Video = SubResource( 61 )
+extents = Vector2( 67, 8.75 )
 
-[sub_resource type="RectangleShape2D" id=19]
+[sub_resource type="ShaderMaterial" id=168]
 resource_local_to_scene = true
-extents = Vector2( 77, 8.5 )
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.0
 
-[sub_resource type="CircleShape2D" id=20]
+[sub_resource type="RectangleShape2D" id=169]
 resource_local_to_scene = true
-radius = 109.0
+extents = Vector2( 48, 16.75 )
 
-[sub_resource type="RectangleShape2D" id=21]
+[sub_resource type="ShaderMaterial" id=174]
 resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.3
 
-[sub_resource type="VisualShaderNodeVectorOp" id=15]
-
-[sub_resource type="VisualShaderNodeTextureUniform" id=16]
-uniform_name = "TextureUniform"
-texture_type = 1
-
-[sub_resource type="VisualShaderNodeTexture" id=17]
-source = 2
-
-[sub_resource type="VisualShader" id=66]
+[sub_resource type="RectangleShape2D" id=175]
 resource_local_to_scene = true
-code = "shader_type canvas_item;
-uniform sampler2D TextureUniform : hint_albedo;
+extents = Vector2( 44, 17.5 )
 
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 n_tex_read = texture(TextureUniform, UV.xy);
-		n_out3p0 = n_tex_read.rgb;
-		n_out3p1 = n_tex_read.a;
-	}
-
-// Texture:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out4p0 = _tex_read.rgb;
-		n_out4p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out3p0 + n_out4p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out4p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -481, 99 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 15 )
-nodes/fragment/2/position = Vector2( 180, 140 )
-nodes/fragment/3/node = SubResource( 16 )
-nodes/fragment/3/position = Vector2( -100, 140 )
-nodes/fragment/4/node = SubResource( 17 )
-nodes/fragment/4/position = Vector2( -100, 380 )
-nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
-
-[sub_resource type="ViewportTexture" id=22]
-viewport_path = NodePath("YSort/TVCurved/ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=23]
+[sub_resource type="ShaderMaterial" id=180]
 resource_local_to_scene = true
-shader = SubResource( 66 )
-shader_param/TextureUniform = SubResource( 22 )
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.4
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=181]
 resource_local_to_scene = true
-extents = Vector2( 48, 14 )
+extents = Vector2( 71, 16.5 )
 
-[sub_resource type="CircleShape2D" id=30]
+[sub_resource type="ShaderMaterial" id=186]
 resource_local_to_scene = true
-radius = 109.0
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.0
 
-[sub_resource type="RectangleShape2D" id=31]
+[sub_resource type="RectangleShape2D" id=187]
 resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
+extents = Vector2( 48, 16.5 )
 
-[sub_resource type="VisualShader" id=32]
+[sub_resource type="ShaderMaterial" id=188]
 resource_local_to_scene = true
-code = "shader_type canvas_item;
-uniform sampler2D TextureUniform : hint_albedo;
+shader = ExtResource( 25 )
+shader_param/Brightness = 1.8
 
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 n_tex_read = texture(TextureUniform, UV.xy);
-		n_out3p0 = n_tex_read.rgb;
-		n_out3p1 = n_tex_read.a;
-	}
-
-// Texture:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out4p0 = _tex_read.rgb;
-		n_out4p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out3p0 + n_out4p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out4p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -481, 99 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 15 )
-nodes/fragment/2/position = Vector2( 180, 140 )
-nodes/fragment/3/node = SubResource( 16 )
-nodes/fragment/3/position = Vector2( -100, 140 )
-nodes/fragment/4/node = SubResource( 17 )
-nodes/fragment/4/position = Vector2( -100, 380 )
-nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
-
-[sub_resource type="ViewportTexture" id=33]
-viewport_path = NodePath("YSort/TVCRT/ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=34]
+[sub_resource type="RectangleShape2D" id=189]
 resource_local_to_scene = true
-shader = SubResource( 32 )
-shader_param/TextureUniform = SubResource( 33 )
+extents = Vector2( 48, 16.75 )
 
-[sub_resource type="RectangleShape2D" id=35]
+[sub_resource type="ShaderMaterial" id=190]
 resource_local_to_scene = true
-extents = Vector2( 47, 16 )
-
-[sub_resource type="CircleShape2D" id=36]
-resource_local_to_scene = true
-radius = 109.0
-
-[sub_resource type="RectangleShape2D" id=37]
-resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
-
-[sub_resource type="VisualShader" id=38]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-uniform sampler2D TextureUniform : hint_albedo;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 n_tex_read = texture(TextureUniform, UV.xy);
-		n_out3p0 = n_tex_read.rgb;
-		n_out3p1 = n_tex_read.a;
-	}
-
-// Texture:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out4p0 = _tex_read.rgb;
-		n_out4p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out3p0 + n_out4p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out4p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -481, 99 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 15 )
-nodes/fragment/2/position = Vector2( 180, 140 )
-nodes/fragment/3/node = SubResource( 16 )
-nodes/fragment/3/position = Vector2( -100, 140 )
-nodes/fragment/4/node = SubResource( 17 )
-nodes/fragment/4/position = Vector2( -100, 380 )
-nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
-
-[sub_resource type="ViewportTexture" id=39]
-viewport_path = NodePath("YSort/TVLaptop/ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=40]
-resource_local_to_scene = true
-shader = SubResource( 38 )
-shader_param/TextureUniform = SubResource( 39 )
-
-[sub_resource type="RectangleShape2D" id=41]
-resource_local_to_scene = true
-extents = Vector2( 71, 14.5 )
-
-[sub_resource type="CircleShape2D" id=42]
-resource_local_to_scene = true
-radius = 109.0
-
-[sub_resource type="RectangleShape2D" id=43]
-resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
-
-[sub_resource type="VisualShader" id=44]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-uniform sampler2D TextureUniform : hint_albedo;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 n_tex_read = texture(TextureUniform, UV.xy);
-		n_out3p0 = n_tex_read.rgb;
-		n_out3p1 = n_tex_read.a;
-	}
-
-// Texture:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out4p0 = _tex_read.rgb;
-		n_out4p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out3p0 + n_out4p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out4p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -481, 99 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 15 )
-nodes/fragment/2/position = Vector2( 180, 140 )
-nodes/fragment/3/node = SubResource( 16 )
-nodes/fragment/3/position = Vector2( -100, 140 )
-nodes/fragment/4/node = SubResource( 17 )
-nodes/fragment/4/position = Vector2( -100, 380 )
-nodes/fragment/connections = PoolIntArray( 4, 1, 0, 1, 4, 0, 2, 1, 3, 0, 2, 0, 2, 0, 0, 0 )
-
-[sub_resource type="ViewportTexture" id=45]
-viewport_path = NodePath("YSort/TVRound/ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=46]
-resource_local_to_scene = true
-shader = SubResource( 44 )
-shader_param/TextureUniform = SubResource( 45 )
-
-[sub_resource type="RectangleShape2D" id=47]
-resource_local_to_scene = true
-extents = Vector2( 65, 6 )
-
-[sub_resource type="CircleShape2D" id=48]
-resource_local_to_scene = true
-radius = 109.0
-
-[sub_resource type="RectangleShape2D" id=49]
-resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
-
-[sub_resource type="VisualShaderNodeVectorOp" id=9]
-
-[sub_resource type="VisualShaderNodeTexture" id=10]
-source = 2
-
-[sub_resource type="VisualShaderNodeTextureUniform" id=11]
-uniform_name = "Video"
-texture_type = 1
-color_default = 1
-
-[sub_resource type="VisualShader" id=12]
-code = "shader_type canvas_item;
-uniform sampler2D Video : hint_black_albedo;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 n_tex_read = texture(Video, UV.xy);
-		n_out4p0 = n_tex_read.rgb;
-		n_out4p1 = n_tex_read.a;
-	}
-
-// Texture:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out3p0 = _tex_read.rgb;
-		n_out3p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out4p0 + n_out3p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out3p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -546.166, 90.3647 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 9 )
-nodes/fragment/2/position = Vector2( 130, 157 )
-nodes/fragment/3/node = SubResource( 10 )
-nodes/fragment/3/position = Vector2( -140, 320 )
-nodes/fragment/4/node = SubResource( 11 )
-nodes/fragment/4/position = Vector2( -140, 100 )
-nodes/fragment/connections = PoolIntArray( 3, 1, 0, 1, 3, 0, 2, 1, 4, 0, 2, 0, 2, 0, 0, 0 )
-
-[sub_resource type="ViewportTexture" id=67]
-viewport_path = NodePath("ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=68]
-resource_local_to_scene = true
-shader = SubResource( 12 )
-shader_param/Video = SubResource( 67 )
-
-[sub_resource type="RectangleShape2D" id=53]
-resource_local_to_scene = true
-extents = Vector2( 45, 16.5 )
-
-[sub_resource type="CircleShape2D" id=54]
-resource_local_to_scene = true
-radius = 109.0
-
-[sub_resource type="RectangleShape2D" id=55]
-resource_local_to_scene = true
-extents = Vector2( 49, 9.5 )
-
-[sub_resource type="ViewportTexture" id=69]
-viewport_path = NodePath("ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=70]
-resource_local_to_scene = true
-shader = SubResource( 12 )
-shader_param/Video = SubResource( 69 )
+shader = ExtResource( 25 )
+shader_param/Brightness = 0.7
 
 [sub_resource type="RectangleShape2D" id=95]
 resource_local_to_scene = true
@@ -737,17 +311,19 @@ shader = ExtResource( 76 )
 shader_param/brightness = 1.2
 shader_param/y_cutoff = 0.97
 
-[sub_resource type="RectangleShape2D" id=87]
+[sub_resource type="RectangleShape2D" id=146]
 resource_local_to_scene = true
-extents = Vector2( 46.5, 16.5 )
+extents = Vector2( 48, 16.5 )
 
-[sub_resource type="ViewportTexture" id=88]
-viewport_path = NodePath("ActualThing/Viewport")
-
-[sub_resource type="ShaderMaterial" id=89]
+[sub_resource type="ShaderMaterial" id=191]
 resource_local_to_scene = true
-shader = SubResource( 12 )
-shader_param/Video = SubResource( 88 )
+shader = ExtResource( 25 )
+shader_param/Brightness = 0.8
+
+[sub_resource type="ShaderMaterial" id=147]
+resource_local_to_scene = true
+shader = ExtResource( 25 )
+shader_param/Brightness = 0.8
 
 [sub_resource type="RectangleShape2D" id=136]
 resource_local_to_scene = true
@@ -771,6 +347,14 @@ resource_local_to_scene = true
 shader = ExtResource( 76 )
 shader_param/brightness = 1.2
 shader_param/y_cutoff = 0.97
+
+[sub_resource type="RectangleShape2D" id=141]
+resource_local_to_scene = true
+extents = Vector2( 14, 925.5 )
+
+[sub_resource type="RectangleShape2D" id=148]
+resource_local_to_scene = true
+extents = Vector2( 743, 14.5 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -823,54 +407,63 @@ position = Vector2( -730, 989 )
 
 [node name="Title" type="Node2D" parent="Floor"]
 modulate = Color( 0.854902, 0.854902, 0.854902, 1 )
-position = Vector2( -206, -66 )
+position = Vector2( -209, -66 )
 
 [node name="TitleShade" type="Node2D" parent="Floor/Title"]
 modulate = Color( 0.643137, 0.580392, 0.494118, 1 )
 position = Vector2( 0, 1 )
 
 [node name="TitleName" type="Sprite" parent="Floor/Title/TitleShade"]
+light_mask = 2
 texture = ExtResource( 48 )
 centered = false
 
 [node name="TitlePixelated" type="Sprite" parent="Floor/Title/TitleShade"]
+light_mask = 2
 position = Vector2( 5, 28 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 49 )
 centered = false
 
 [node name="TitlePortfolio" type="Sprite" parent="Floor/Title/TitleShade"]
+light_mask = 2
 position = Vector2( 18, 57 )
 texture = ExtResource( 50 )
 centered = false
 
 [node name="TitleName2" type="Sprite" parent="Floor/Title/TitleShade"]
+light_mask = 2
 position = Vector2( 0, 1 )
 texture = ExtResource( 48 )
 centered = false
 
 [node name="TitlePixelated2" type="Sprite" parent="Floor/Title/TitleShade"]
+light_mask = 2
 position = Vector2( 5, 29 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 49 )
 centered = false
 
 [node name="TitlePortfolio2" type="Sprite" parent="Floor/Title/TitleShade"]
+light_mask = 2
 position = Vector2( 18, 58 )
 texture = ExtResource( 50 )
 centered = false
 
 [node name="TitleName" type="Sprite" parent="Floor/Title"]
+light_mask = 2
 texture = ExtResource( 48 )
 centered = false
 
 [node name="TitlePixelated" type="Sprite" parent="Floor/Title"]
+light_mask = 2
 position = Vector2( 5, 28 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 49 )
 centered = false
 
 [node name="TitlePortfolio" type="Sprite" parent="Floor/Title"]
+light_mask = 2
 position = Vector2( 18, 57 )
 texture = ExtResource( 50 )
 centered = false
@@ -890,251 +483,197 @@ texture = ExtResource( 44 )
 mode = 2
 range_item_cull_mask = 2
 
+[node name="Label" type="Label" parent="Floor"]
+margin_left = 47.0
+margin_top = -83.0
+margin_right = 227.0
+margin_bottom = -16.0
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/font = ExtResource( 86 )
+text = "WORK IN PROGRESS!
+
+Please come back after several days.
+
+(last updated 2020-02-20)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 0, 116 )
 
-[node name="TVRetro" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 82, -129 )
-title = "Space Invaders 555"
+[node name="SpaceInvaders555" parent="YSort" instance=ExtResource( 20 )]
+position = Vector2( 249, -186 )
+script = ExtResource( 55 )
 content_image = ExtResource( 30 )
-japanese_description = "レトロ風の２Dスペースシューターゲーム。宇宙船を操縦して敵を撃ちながら障害物を回避する。
-高校の学校祭の企画のために制作した。４面のワールド、４体のボス、３２のステージから構成される。グラフィックとコースデザインは同級生に協力してもらった。BGMはオリジナルである。
 
-使用ツール：
-	Godot Engine, Paint.NET, LMMS"
-english_description = "A retro-style 2D space shooter game. The player pilots a spaceship and shoots enemies while avoiding obstacles.
-This was made for our high school festival. The game consists of 4 worlds, 4 bosses, and 32 stages. My classmate helped with the graphics and level designs. The BGM is original to this game.
+[node name="StaticCollision" parent="YSort/SpaceInvaders555" index="0"]
+shape = SubResource( 155 )
 
-Tools used:
-	Godot Engine, Paint.NET, LMMS"
-video_link = "https://www.youtube.com/watch?v=Md-o17kBvVo"
-download_link = "https://kinokomushroom.itch.io/space-invaders-555"
+[node name="VideoPlayer" parent="YSort/SpaceInvaders555/ActualThing/Viewport" index="0"]
+stream = ExtResource( 47 )
 
-[node name="StaticCollision" parent="YSort/TVRetro" index="0"]
-position = Vector2( 0, -7 )
-shape = SubResource( 24 )
+[node name="Video" parent="YSort/SpaceInvaders555/ActualThing" index="3"]
+material = SubResource( 156 )
 
-[node name="CollisionShape2D" parent="YSort/TVRetro/EventTriggerArea" index="0"]
-shape = SubResource( 25 )
+[node name="3DSpaceShooter" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( 519, -197 )
+script = ExtResource( 55 )
+content_image = ExtResource( 27 )
 
-[node name="CollisionShape2D" parent="YSort/TVRetro/PanelTriggerArea" index="0"]
-shape = SubResource( 26 )
+[node name="StaticCollision" parent="YSort/3DSpaceShooter" index="0"]
+shape = SubResource( 157 )
 
-[node name="VideoPlayer" parent="YSort/TVRetro/ActualThing/Viewport" index="0"]
-margin_right = 85.0
-margin_bottom = 64.0
+[node name="VideoPlayer" parent="YSort/3DSpaceShooter/ActualThing/Viewport" index="0"]
+margin_right = 152.0
+stream = ExtResource( 15 )
 
-[node name="Video" parent="YSort/TVRetro/ActualThing" index="3"]
-material = SubResource( 59 )
+[node name="Video" parent="YSort/3DSpaceShooter/ActualThing" index="3"]
+material = SubResource( 162 )
 
-[node name="TVCurved" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 186, -274 )
-
-[node name="StaticCollision" parent="YSort/TVCurved" index="0"]
-position = Vector2( 0, 3.5 )
-shape = SubResource( 19 )
-
-[node name="CollisionShape2D" parent="YSort/TVCurved/EventTriggerArea" index="0"]
-shape = SubResource( 20 )
-
-[node name="CollisionShape2D" parent="YSort/TVCurved/PanelTriggerArea" index="0"]
-shape = SubResource( 21 )
-
-[node name="Shadow" parent="YSort/TVCurved/ActualThing" index="0"]
-position = Vector2( 4, 6 )
-texture = ExtResource( 40 )
-
-[node name="Background" parent="YSort/TVCurved/ActualThing" index="1"]
-position = Vector2( -26, -32 )
-texture = ExtResource( 12 )
-
-[node name="Video" parent="YSort/TVCurved/ActualThing" index="3"]
-material = SubResource( 23 )
-position = Vector2( -74, -93 )
-texture = ExtResource( 14 )
-
-[node name="Foreground" parent="YSort/TVCurved/ActualThing" index="4"]
-position = Vector2( -74, -93 )
-texture = ExtResource( 13 )
-
-[node name="TVCRT" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( -85, -397 )
-
-[node name="StaticCollision" parent="YSort/TVCRT" index="0"]
-position = Vector2( 0, -2 )
-shape = SubResource( 29 )
-
-[node name="CollisionShape2D" parent="YSort/TVCRT/EventTriggerArea" index="0"]
-shape = SubResource( 30 )
-
-[node name="CollisionShape2D" parent="YSort/TVCRT/PanelTriggerArea" index="0"]
-shape = SubResource( 31 )
-
-[node name="Shadow" parent="YSort/TVCRT/ActualThing" index="0"]
-position = Vector2( 4, -4 )
-texture = ExtResource( 41 )
-
-[node name="Background" parent="YSort/TVCRT/ActualThing" index="1"]
-position = Vector2( -45, -95 )
-texture = ExtResource( 15 )
-
-[node name="Video" parent="YSort/TVCRT/ActualThing" index="3"]
-material = SubResource( 34 )
-position = Vector2( -34, -67 )
-texture = ExtResource( 16 )
-
-[node name="Foreground" parent="YSort/TVCRT/ActualThing" index="4"]
-visible = false
-
-[node name="TVLaptop" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 153, -474 )
-
-[node name="StaticCollision" parent="YSort/TVLaptop" index="0"]
-position = Vector2( 0, -4 )
-shape = SubResource( 35 )
-
-[node name="CollisionShape2D" parent="YSort/TVLaptop/EventTriggerArea" index="0"]
-shape = SubResource( 36 )
-
-[node name="CollisionShape2D" parent="YSort/TVLaptop/PanelTriggerArea" index="0"]
-shape = SubResource( 37 )
-
-[node name="Shadow" parent="YSort/TVLaptop/ActualThing" index="0"]
-position = Vector2( 2, -3 )
-texture = ExtResource( 38 )
-
-[node name="Background" parent="YSort/TVLaptop/ActualThing" index="1"]
-position = Vector2( -45, -72 )
-texture = ExtResource( 20 )
-
-[node name="Video" parent="YSort/TVLaptop/ActualThing" index="3"]
-material = SubResource( 40 )
-position = Vector2( -43, -70 )
-texture = ExtResource( 21 )
-
-[node name="Foreground" parent="YSort/TVLaptop/ActualThing" index="4"]
-visible = false
-
-[node name="TVRound" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( -171, -571 )
-
-[node name="StaticCollision" parent="YSort/TVRound" index="0"]
-position = Vector2( 0, -2.5 )
-shape = SubResource( 41 )
-
-[node name="CollisionShape2D" parent="YSort/TVRound/EventTriggerArea" index="0"]
-shape = SubResource( 42 )
-
-[node name="CollisionShape2D" parent="YSort/TVRound/PanelTriggerArea" index="0"]
-shape = SubResource( 43 )
-
-[node name="Shadow" parent="YSort/TVRound/ActualThing" index="0"]
-position = Vector2( 3, -1 )
-texture = ExtResource( 42 )
-
-[node name="Background" parent="YSort/TVRound/ActualThing" index="1"]
-position = Vector2( -69, -78 )
-texture = ExtResource( 19 )
-
-[node name="Video" parent="YSort/TVRound/ActualThing" index="3"]
-material = SubResource( 46 )
-position = Vector2( -40, -66 )
-texture = ExtResource( 17 )
-
-[node name="Foreground" parent="YSort/TVRound/ActualThing" index="4"]
-position = Vector2( -40, -66 )
-texture = ExtResource( 18 )
-
-[node name="TVMac" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( -134, -219 )
-title = "Happy Cooking Game"
+[node name="HappyCookingGame" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( -248, -200 )
+script = ExtResource( 55 )
 content_image = ExtResource( 28 )
-japanese_description = "大学サークルのゲームジャムで作った２Dアクションゲーム。巨大化・狂暴化した料理の原材料と戦い、原材料を手に入れて料理する。
 
-使用ツール：
-	Godot Engine, Affinity Designer"
-english_description = "A 2D action game made in a game jam. The player battles gigantic and aggressive cooking ingredients, and cooks meals after acquiring ingredients.
+[node name="StaticCollision" parent="YSort/HappyCookingGame" index="0"]
+shape = SubResource( 163 )
 
-Tools used:
-	Godot Engine, Affinity Designer"
-video_link = "https://www.youtube.com/watch?v=VUzHeUCZa-U"
-download_link = "https://kinokomushroom.itch.io/happy-cooking-game"
+[node name="VideoPlayer" parent="YSort/HappyCookingGame/ActualThing/Viewport" index="0"]
+margin_bottom = 72.0
+stream = ExtResource( 12 )
 
-[node name="StaticCollision" parent="YSort/TVMac" index="0"]
-position = Vector2( 0, 6 )
-shape = SubResource( 47 )
+[node name="Video" parent="YSort/HappyCookingGame/ActualThing" index="3"]
+material = SubResource( 168 )
 
-[node name="CollisionShape2D" parent="YSort/TVMac/EventTriggerArea" index="0"]
-shape = SubResource( 48 )
+[node name="PhysicsSpaceGame" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( -525, -189 )
+script = ExtResource( 55 )
+content_image = ExtResource( 40 )
 
-[node name="CollisionShape2D" parent="YSort/TVMac/PanelTriggerArea" index="0"]
-shape = SubResource( 49 )
+[node name="StaticCollision" parent="YSort/PhysicsSpaceGame" index="0"]
+shape = SubResource( 169 )
 
-[node name="Shadow" parent="YSort/TVMac/ActualThing" index="0"]
-position = Vector2( 2, 7 )
-texture = ExtResource( 43 )
+[node name="VideoPlayer" parent="YSort/PhysicsSpaceGame/ActualThing/Viewport" index="0"]
+margin_right = 74.0
+margin_bottom = 56.0
+stream = ExtResource( 17 )
 
-[node name="Background" parent="YSort/TVMac/ActualThing" index="1"]
-position = Vector2( -64, -92 )
-texture = ExtResource( 23 )
+[node name="Video" parent="YSort/PhysicsSpaceGame/ActualThing" index="3"]
+material = SubResource( 174 )
 
-[node name="Viewport" parent="YSort/TVMac/ActualThing" index="2"]
-size = Vector2( 117, 67 )
+[node name="RocketSimulator2020" parent="YSort" instance=ExtResource( 14 )]
+position = Vector2( -182, -487 )
+script = ExtResource( 55 )
+content_image = ExtResource( 41 )
 
-[node name="VideoPlayer" parent="YSort/TVMac/ActualThing/Viewport" index="0"]
-margin_right = 117.0
-margin_bottom = 67.0
+[node name="StaticCollision" parent="YSort/RocketSimulator2020" index="0"]
+shape = SubResource( 175 )
 
-[node name="Sprite" type="Sprite" parent="YSort/TVMac/ActualThing/Viewport" index="1"]
-visible = false
-texture = ExtResource( 27 )
-centered = false
+[node name="VideoPlayer" parent="YSort/RocketSimulator2020/ActualThing/Viewport" index="0"]
+margin_right = 82.0
+stream = ExtResource( 13 )
 
-[node name="Video" parent="YSort/TVMac/ActualThing" index="3"]
-material = SubResource( 68 )
-position = Vector2( -59, -87 )
-texture = ExtResource( 22 )
+[node name="Video" parent="YSort/RocketSimulator2020/ActualThing" index="3"]
+material = SubResource( 180 )
 
-[node name="Foreground" parent="YSort/TVMac/ActualThing" index="4"]
-visible = false
+[node name="IKWalkingAnimation" parent="YSort" instance=ExtResource( 22 )]
+position = Vector2( -478, -493 )
+script = ExtResource( 55 )
+content_image = ExtResource( 42 )
 
-[node name="TVArcade" parent="YSort" instance=ExtResource( 11 )]
-position = Vector2( 27, -606 )
+[node name="StaticCollision" parent="YSort/IKWalkingAnimation" index="0"]
+shape = SubResource( 181 )
 
-[node name="StaticCollision" parent="YSort/TVArcade" index="0"]
-position = Vector2( 0, -4.5 )
-shape = SubResource( 53 )
+[node name="VideoPlayer" parent="YSort/IKWalkingAnimation/ActualThing/Viewport" index="0"]
+margin_left = -5.0
+margin_right = 95.0
+stream = ExtResource( 21 )
 
-[node name="CollisionShape2D" parent="YSort/TVArcade/EventTriggerArea" index="0"]
-shape = SubResource( 54 )
+[node name="Video" parent="YSort/IKWalkingAnimation/ActualThing" index="3"]
+material = SubResource( 186 )
 
-[node name="CollisionShape2D" parent="YSort/TVArcade/PanelTriggerArea" index="0"]
-shape = SubResource( 55 )
+[node name="PianoTranscriptionHelper" parent="YSort" instance=ExtResource( 74 )]
+position = Vector2( 183, -498 )
+script = ExtResource( 55 )
+content_image = ExtResource( 38 )
 
-[node name="Shadow" parent="YSort/TVArcade/ActualThing" index="0"]
-position = Vector2( 6, -5 )
-texture = ExtResource( 39 )
+[node name="StaticCollision" parent="YSort/PianoTranscriptionHelper" index="0"]
+shape = SubResource( 187 )
 
-[node name="Background" parent="YSort/TVArcade/ActualThing" index="1"]
-position = Vector2( -42, -178 )
-texture = ExtResource( 24 )
+[node name="VideoPlayer" parent="YSort/PianoTranscriptionHelper/ActualThing/Viewport" index="0"]
+stream = ExtResource( 23 )
 
-[node name="Viewport" parent="YSort/TVArcade/ActualThing" index="2"]
-size = Vector2( 61, 46 )
+[node name="Video" parent="YSort/PianoTranscriptionHelper/ActualThing" index="3"]
+material = SubResource( 188 )
 
-[node name="VideoPlayer" parent="YSort/TVArcade/ActualThing/Viewport" index="0"]
-margin_right = 61.0
-margin_bottom = 46.0
+[node name="4DVisualiser" parent="YSort" instance=ExtResource( 18 )]
+position = Vector2( 472, -491 )
+script = ExtResource( 55 )
+content_image = ExtResource( 39 )
 
-[node name="Video" parent="YSort/TVArcade/ActualThing" index="3"]
-material = SubResource( 70 )
-position = Vector2( -31, -125 )
-texture = ExtResource( 25 )
+[node name="StaticCollision" parent="YSort/4DVisualiser" index="0"]
+shape = SubResource( 189 )
 
-[node name="Foreground" parent="YSort/TVArcade/ActualThing" index="4"]
-visible = false
+[node name="VideoPlayer" parent="YSort/4DVisualiser/ActualThing/Viewport" index="0"]
+margin_bottom = 56.0
+stream = ExtResource( 24 )
+
+[node name="Video" parent="YSort/4DVisualiser/ActualThing" index="3"]
+material = SubResource( 190 )
+
+[node name="Wall15" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 0, -537 )
+
+[node name="Wall16" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 164, -537 )
+
+[node name="Wall26" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 328, -537 )
+
+[node name="Wall27" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 492, -537 )
+
+[node name="Wall28" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 656, -537 )
+
+[node name="Wall17" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -164, -537 )
+
+[node name="Wall29" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -328, -537 )
+
+[node name="Wall30" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -492, -537 )
+
+[node name="Wall31" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -656, -537 )
+
+[node name="Wall18" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 164, -233 )
+
+[node name="Wall19" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 328, -233 )
+
+[node name="Wall20" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 492, -233 )
+
+[node name="Wall21" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( 656, -233 )
+
+[node name="Wall22" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -656, -233 )
+
+[node name="Wall23" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -492, -233 )
+
+[node name="Wall24" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -328, -233 )
+
+[node name="Wall25" parent="YSort" instance=ExtResource( 45 )]
+position = Vector2( -164, -233 )
 
 [node name="Door" parent="YSort" instance=ExtResource( 46 )]
 position = Vector2( 0, 352 )
@@ -1331,20 +870,26 @@ content_image = ExtResource( 70 )
 texture = ExtResource( 66 )
 
 [node name="LaptopMaterial" parent="YSort" instance=ExtResource( 74 )]
-position = Vector2( -530, 660 )
+position = Vector2( -530, 654 )
+script = ExtResource( 55 )
+content_image = ExtResource( 84 )
 
 [node name="StaticCollision" parent="YSort/LaptopMaterial" index="0"]
-shape = SubResource( 87 )
+position = Vector2( 0, -6 )
+shape = SubResource( 146 )
 
 [node name="Shadow" parent="YSort/LaptopMaterial/ActualThing" index="0"]
-position = Vector2( 0, -4 )
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
 
 [node name="Background" parent="YSort/LaptopMaterial/ActualThing" index="1"]
 light_mask = 2
 
+[node name="Sprite" type="Sprite" parent="YSort/LaptopMaterial/ActualThing/Viewport" index="1"]
+texture = ExtResource( 85 )
+centered = false
+
 [node name="Video" parent="YSort/LaptopMaterial/ActualThing" index="3"]
-material = SubResource( 89 )
+material = SubResource( 191 )
 
 [node name="EaselDesk" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( -220, 820 )
@@ -1371,24 +916,33 @@ texture = ExtResource( 63 )
 position = Vector2( -290, 980 )
 content_image = ExtResource( 72 )
 
+[node name="ShadowShaded" parent="YSort/EaselPoses/ActualThing" index="2"]
+color = Color( 0.380392, 0.380392, 0.380392, 1 )
+
 [node name="Image" parent="YSort/EaselPoses/ActualThing" index="5"]
 texture = ExtResource( 64 )
 
 [node name="LaptopChocolate" parent="YSort" instance=ExtResource( 74 )]
-position = Vector2( -504, 969 )
+position = Vector2( -480, 973 )
+script = ExtResource( 55 )
+content_image = ExtResource( 83 )
 
 [node name="StaticCollision" parent="YSort/LaptopChocolate" index="0"]
-shape = SubResource( 87 )
+position = Vector2( 0, -6 )
+shape = SubResource( 146 )
 
 [node name="Shadow" parent="YSort/LaptopChocolate/ActualThing" index="0"]
-position = Vector2( 0, -4 )
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
 
 [node name="Background" parent="YSort/LaptopChocolate/ActualThing" index="1"]
 light_mask = 2
 
+[node name="Sprite" type="Sprite" parent="YSort/LaptopChocolate/ActualThing/Viewport" index="1"]
+texture = ExtResource( 43 )
+centered = false
+
 [node name="Video" parent="YSort/LaptopChocolate/ActualThing" index="3"]
-material = SubResource( 89 )
+material = SubResource( 147 )
 
 [node name="ProjectorTrailer" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 192, 973 )
@@ -1419,6 +973,40 @@ content_image = ExtResource( 73 )
 [node name="Image" parent="YSort/FramedConcept/ActualThing/Frame" index="0"]
 texture = ExtResource( 65 )
 
+[node name="WallTop" type="Node2D" parent="."]
+
+[node name="WallTop" parent="WallTop" instance=ExtResource( 11 )]
+position = Vector2( 729, 200 )
+
+[node name="StaticCollision" parent="WallTop/WallTop" index="0"]
+position = Vector2( 0, 22.5 )
+shape = SubResource( 141 )
+
+[node name="Wall" parent="WallTop/WallTop" index="1"]
+position = Vector2( -12, -901 )
+scale = Vector2( 1, 76.9583 )
+
+[node name="WallTop2" parent="WallTop" instance=ExtResource( 11 )]
+position = Vector2( -729, 200 )
+
+[node name="StaticCollision" parent="WallTop/WallTop2" index="0"]
+position = Vector2( 0, 22.5 )
+shape = SubResource( 141 )
+
+[node name="Wall" parent="WallTop/WallTop2" index="1"]
+position = Vector2( -12, -901 )
+scale = Vector2( 1, 76.9583 )
+
+[node name="WallTop3" parent="WallTop" instance=ExtResource( 11 )]
+position = Vector2( 0, 1134 )
+
+[node name="StaticCollision" parent="WallTop/WallTop3" index="0"]
+shape = SubResource( 148 )
+
+[node name="Wall" parent="WallTop/WallTop3" index="1"]
+position = Vector2( -741, -12 )
+scale = Vector2( 61.75, 1 )
+
 [node name="ArtPanelLayer" type="CanvasLayer" parent="."]
 
 [node name="ArtPanel" parent="ArtPanelLayer" instance=ExtResource( 7 )]
@@ -1429,13 +1017,14 @@ visible = false
 [connection signal="body_entered" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_entered"]
 [connection signal="body_exited" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_exited"]
 
-[editable path="YSort/TVRetro"]
-[editable path="YSort/TVCurved"]
-[editable path="YSort/TVCRT"]
-[editable path="YSort/TVLaptop"]
-[editable path="YSort/TVRound"]
-[editable path="YSort/TVMac"]
-[editable path="YSort/TVArcade"]
+[editable path="YSort/SpaceInvaders555"]
+[editable path="YSort/3DSpaceShooter"]
+[editable path="YSort/HappyCookingGame"]
+[editable path="YSort/PhysicsSpaceGame"]
+[editable path="YSort/RocketSimulator2020"]
+[editable path="YSort/IKWalkingAnimation"]
+[editable path="YSort/PianoTranscriptionHelper"]
+[editable path="YSort/4DVisualiser"]
 [editable path="YSort/FramedChess"]
 [editable path="YSort/ProjectorSpider"]
 [editable path="YSort/ProjectorGLSLBlackHole"]
@@ -1454,3 +1043,6 @@ visible = false
 [editable path="YSort/LaptopChocolate"]
 [editable path="YSort/ProjectorTrailer"]
 [editable path="YSort/FramedConcept"]
+[editable path="WallTop/WallTop"]
+[editable path="WallTop/WallTop2"]
+[editable path="WallTop/WallTop3"]

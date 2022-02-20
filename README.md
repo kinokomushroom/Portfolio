@@ -3,15 +3,15 @@ My portfolio
 
 # What to include
 ## Games and Apps
-- Space Invaders 555 : retro TV
-- Space Shooter 3D : curved monitor
-- Happy Cooking Game : mac display
-- Rocket Simulator 2020 : arcade machine
-- Space Junk Removal Game
-- Robot Walking : futuristic TV
-- 4D Visualizer
-- Piano Transcription Helper : laptop
-- Special Relativity Visualizer : CRT monitor
+- Space Invaders 555 : retro TV (upload DONE, short DONE)
+- Space Shooter 3D : curved monitor (upload DONE, short DONE)
+- Happy Cooking Game : mac display (upload DONE, short DONE)
+- Rocket Simulator 2020 : arcade machine (upload DONE, short DONE)
+- Space Junk Removal Game : CRT monitor (upload DONE, short DONE)
+- Robot Walking : futuristic TV (upload DONE, short DONE)
+- 4D Visualizer : CRT monitor (upload DONE, short DONE)
+- Piano Transcription Helper : laptop (upload DONE, short DONE)
+- Special Relativity Visualizer
 - Portfolio
 
 ## Art
@@ -30,17 +30,17 @@ My portfolio
 - poses
 - mall
 ### Blender videos
-- train
-- black hole
+- train (upload DONE)
+- black hole (upload DONE)
 - audio visualizer
-- school fest trailer
+- school fest trailer (upload DONE)
 ### Tutorial videos
 - material tutorial
 - chocolate tutorial
 ### C++/OpenGL
 - chess
-- spider
-- GLSL black hole
+- spider (upload DONE)
+- GLSL black hole (upload DONE)
 
 ## UI Buttons
 - video

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://textures/retro_fg.png" type="Texture" id=1]
 [ext_resource path="res://textures/retro_screen.png" type="Texture" id=2]
@@ -6,10 +6,11 @@
 [ext_resource path="res://textures/retro_shadow.png" type="Texture" id=4]
 [ext_resource path="res://TV.gd" type="Script" id=5]
 [ext_resource path="res://ArtPiece.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TVShader.tres" type="Shader" id=7]
 
 [sub_resource type="RectangleShape2D" id=5]
 resource_local_to_scene = true
-extents = Vector2( 46.5, 16.5 )
+extents = Vector2( 68, 19.25 )
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 103.044
@@ -17,83 +18,15 @@ radius = 103.044
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 49, 9.5 )
 
-[sub_resource type="VisualShaderNodeVectorOp" id=9]
-
-[sub_resource type="VisualShaderNodeTexture" id=10]
-source = 2
-
-[sub_resource type="VisualShaderNodeTextureUniform" id=11]
-uniform_name = "Video"
-texture_type = 1
-color_default = 1
-
-[sub_resource type="VisualShader" id=12]
-code = "shader_type canvas_item;
-uniform sampler2D Video : hint_black_albedo;
-
-
-
-void vertex() {
-// Output:0
-
-}
-
-void fragment() {
-// TextureUniform:4
-	vec3 n_out4p0;
-	float n_out4p1;
-	{
-		vec4 n_tex_read = texture(Video, UV.xy);
-		n_out4p0 = n_tex_read.rgb;
-		n_out4p1 = n_tex_read.a;
-	}
-
-// Texture:3
-	vec3 n_out3p0;
-	float n_out3p1;
-	{
-		vec4 _tex_read = texture(TEXTURE , UV.xy);
-		n_out3p0 = _tex_read.rgb;
-		n_out3p1 = _tex_read.a;
-	}
-
-// VectorOp:2
-	vec3 n_out2p0 = n_out4p0 + n_out3p0;
-
-// Output:0
-	COLOR.rgb = n_out2p0;
-	COLOR.a = n_out3p1;
-
-}
-
-void light() {
-// Output:0
-
-}
-"
-graph_offset = Vector2( -546.166, 90.3647 )
-mode = 1
-flags/light_only = false
-nodes/fragment/2/node = SubResource( 9 )
-nodes/fragment/2/position = Vector2( 130, 157 )
-nodes/fragment/3/node = SubResource( 10 )
-nodes/fragment/3/position = Vector2( -140, 320 )
-nodes/fragment/4/node = SubResource( 11 )
-nodes/fragment/4/position = Vector2( -140, 100 )
-nodes/fragment/connections = PoolIntArray( 3, 1, 0, 1, 3, 0, 2, 1, 4, 0, 2, 0, 2, 0, 0, 0 )
-
-[sub_resource type="ViewportTexture" id=13]
-viewport_path = NodePath("ActualThing/Viewport")
-
 [sub_resource type="ShaderMaterial" id=14]
 resource_local_to_scene = true
-shader = SubResource( 12 )
-shader_param/Video = SubResource( 13 )
+shader = ExtResource( 7 )
+shader_param/Brightness = 1.0
 
 [node name="TV" instance=ExtResource( 6 )]
 
 [node name="StaticCollision" parent="." index="0"]
-position = Vector2( 0, 2.5 )
+position = Vector2( 0, -8.75 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape2D" parent="EventTriggerArea" index="0"]
@@ -127,8 +60,8 @@ render_target_v_flip = true
 render_target_update_mode = 3
 
 [node name="VideoPlayer" type="VideoPlayer" parent="ActualThing/Viewport" index="0"]
-margin_right = 146.0
-margin_bottom = 146.0
+margin_right = 85.0
+margin_bottom = 64.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
