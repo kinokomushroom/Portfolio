@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=2]
+[gd_scene load_steps=140 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -86,6 +86,11 @@
 [ext_resource path="res://content/material_large.png" type="Texture" id=84]
 [ext_resource path="res://content/material_small.png" type="Texture" id=85]
 [ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=86]
+[ext_resource path="res://textures/sign.png" type="Texture" id=87]
+[ext_resource path="res://textures/sign_shadow.png" type="Texture" id=88]
+
+[sub_resource type="RectangleShape2D" id=193]
+extents = Vector2( 52, 5 )
 
 [sub_resource type="RectangleShape2D" id=155]
 resource_local_to_scene = true
@@ -483,18 +488,18 @@ texture = ExtResource( 44 )
 mode = 2
 range_item_cull_mask = 2
 
-[node name="Label" type="Label" parent="Floor"]
-margin_left = 47.0
-margin_top = -83.0
-margin_right = 227.0
-margin_bottom = -16.0
+[node name="WorkInProgressText" type="Label" parent="Floor"]
+margin_left = -231.0
+margin_top = 101.0
+margin_right = -51.0
+margin_bottom = 168.0
 custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
 custom_fonts/font = ExtResource( 86 )
 text = "WORK IN PROGRESS!
 
-Please come back after several days.
+It's still incomplete but viewable.
 
-(last updated 2020-02-20)"
+(last updated 2020-02-22)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -504,13 +509,47 @@ __meta__ = {
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( 0, 116 )
 
+[node name="Sign" type="StaticBody2D" parent="YSort"]
+position = Vector2( 147, 54 )
+
+[node name="Sprite" type="Sprite" parent="YSort/Sign"]
+position = Vector2( -50, -71 )
+texture = ExtResource( 87 )
+centered = false
+
+[node name="Shadow" type="Light2D" parent="YSort/Sign"]
+position = Vector2( 0, -1 )
+texture = ExtResource( 88 )
+color = Color( 0.866667, 0.847059, 0.815686, 1 )
+mode = 2
+range_item_cull_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Sign"]
+shape = SubResource( 193 )
+
 [node name="SpaceInvaders555" parent="YSort" instance=ExtResource( 20 )]
 position = Vector2( 249, -186 )
-script = ExtResource( 55 )
+title = "Space Invaders 555"
 content_image = ExtResource( 30 )
+japanese_description = "高校の学校祭の企画で作ったゲーム。
+宇宙船を操縦し、障害物を避け敵やボスを倒しながら進む。
+全４ワールド、３２コース、４体のボスで構成され、それぞれのワールドとボスはユニークなテーマを持つ。
+一部のグラフィックとコースデザインは同級生に手伝ってもらった。
+ＢＧＭは自作である。"
+english_description = "This game was made for a school festival.
+In this game you fly a spaceship while dodging obstacles and shooting enemies.
+There are 4 worlds, 32 levels, and 4 bosses in total. Each world and boss has a unique theme.
+My classmate helped me with some of the graphics and level designs.
+The background score is composed by me."
+tools_used = "Godot Engine, Paint.NET, LMMS"
+video_link = "https://youtu.be/Md-o17kBvVo"
+download_link = "https://kinokomushroom.itch.io/space-invaders-555"
 
 [node name="StaticCollision" parent="YSort/SpaceInvaders555" index="0"]
 shape = SubResource( 155 )
+
+[node name="FootprintAnimation" parent="YSort/SpaceInvaders555/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/SpaceInvaders555/ActualThing/Viewport" index="0"]
 stream = ExtResource( 47 )
@@ -520,11 +559,27 @@ material = SubResource( 156 )
 
 [node name="3DSpaceShooter" parent="YSort" instance=ExtResource( 19 )]
 position = Vector2( 519, -197 )
-script = ExtResource( 55 )
+title = "48h Space Shooter"
 content_image = ExtResource( 27 )
+japanese_description = "４８時間のゲームジャムで作ったゲーム。
+３Ｄ空間で宇宙船を操縦し、敵宇宙船と空中戦をする。
+宇宙船の操作を直感的にするために飛行機の操作に似せた。
+敵のＡＩにはレイキャストを用い、障害物を避けて飛行するようにした。
+３Ｄモデルは全て自作である。"
+english_description = "A game that I made in a 48-hour game jam.
+In this game you fly a spaceship in 3D space and dogfight enemy spaceships.
+To make the spaceship controls intuitive, I made them similar to aeroplanes.
+Ray-casting is used by the enemy's AI to fly while avoiding obstacles.
+Every 3D model is made by me."
+tools_used = "Godot Engine, Blender"
+video_link = "https://youtu.be/pXfnFOTymVI"
+download_link = "https://kinokomushroom.itch.io/3d-space-shooter-made-in-48-hours"
 
 [node name="StaticCollision" parent="YSort/3DSpaceShooter" index="0"]
 shape = SubResource( 157 )
+
+[node name="FootprintAnimation" parent="YSort/3DSpaceShooter/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/3DSpaceShooter/ActualThing/Viewport" index="0"]
 margin_right = 152.0
@@ -535,11 +590,25 @@ material = SubResource( 162 )
 
 [node name="HappyCookingGame" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( -248, -200 )
-script = ExtResource( 55 )
+title = "Happy Cooking Game"
 content_image = ExtResource( 28 )
+japanese_description = "このゲームでは大きく狂暴になった食材と包丁で戦い、倒して得た材料で料理をして進む。
+トマト、チーズ、タマネギなど全７体のボスが登場し、それぞれユニークな攻撃をしてくる。
+ボスから得た食材を手順通りに切ってフライパンで焼くと料理が出来上がり、先へ通ずる門が開く。
+それぞれの食材に「カット済み」「加熱済み」等という属性をつけることにより調理の過程を判別できるようにした。"
+english_description = "In this game you combat food ingredients that have turned massive and violent, and cook their remains to progress forward.
+There are seven bosses in total, including a tomato, slice of cheese, and an onion. Every one of them gives you a unique battle.
+You must slice and cook the ingredients that the bosses drop to open the gates that block the way.
+Each food item is given properties such as \"is cut\" and \"is cooked\" to determine the cooking progress."
+tools_used = "Godot Engine, Affinity Designer"
+video_link = "https://youtu.be/VUzHeUCZa-U"
+download_link = "https://kinokomushroom.itch.io/happy-cooking-game"
 
 [node name="StaticCollision" parent="YSort/HappyCookingGame" index="0"]
 shape = SubResource( 163 )
+
+[node name="FootprintAnimation" parent="YSort/HappyCookingGame/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/HappyCookingGame/ActualThing/Viewport" index="0"]
 margin_bottom = 72.0
@@ -550,11 +619,25 @@ material = SubResource( 168 )
 
 [node name="PhysicsSpaceGame" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( -525, -189 )
-script = ExtResource( 55 )
+title = "Space Junk Cleanup Game"
 content_image = ExtResource( 40 )
+japanese_description = "大学の物理エンジンをテーマとした授業で作ったゲームである。物理エンジンはBulletを用い、グラフィックの描画にはOpenGLを用いた。
+シミュレーションされた小さな惑星系の中でプレイヤーは宇宙船を操縦し、惑星系に散りばめられた宇宙ゴミを撃って除去する。
+惑星系内の天体は全て互いの重力の影響を受け、中心には２つの恒星が互いの周りを公転する。
+宇宙船や砲弾、宇宙ゴミも重力の影響を受けるので注意して操縦しなければならない。宇宙船を少しでも操縦しやすくするために天体との相対速度を自動的に合わせる機能を入れた。"
+english_description = "A game I made in a physics engine class in university. The physics simulations are implemented with the Bullet library, and the graphics are drawn using OpenGL.
+In this game you control a spaceship and eliminate space junk in a simulated small planetary system.
+Every astronomical body in the planetary system is affected by the gravity of others, and binary stars orbit each other in the center.
+The player's spaceship, projectiles, and space junk are also affected by gravity, so you must maneuver skilfully.
+To make piloting easier, the spaceship has a feature that enables you to automatically align its velocity to a nearby body."
+tools_used = "C++, Bullet Physics Library, OpenGL"
+video_link = "https://youtu.be/uo7iIwLsQO4"
 
 [node name="StaticCollision" parent="YSort/PhysicsSpaceGame" index="0"]
 shape = SubResource( 169 )
+
+[node name="FootprintAnimation" parent="YSort/PhysicsSpaceGame/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/PhysicsSpaceGame/ActualThing/Viewport" index="0"]
 margin_right = 74.0
@@ -566,11 +649,26 @@ material = SubResource( 174 )
 
 [node name="RocketSimulator2020" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( -182, -487 )
-script = ExtResource( 55 )
+title = "Rocket Simulator 2020"
 content_image = ExtResource( 41 )
+japanese_description = "ロケットを操縦して小惑星を避けるゲーム。
+ロケットは上下にのみ動き慣性の力も働くので、操縦にはスキルが必要である。
+難易度は高いが小惑星の位置や動きは毎回決まっている。コースを入念に設計するために時間をコントロールすることのできるコースエディターを作った。
+ＢＧＭは自作である。"
+english_description = "A game about avoid asteroids in a rocket ship.
+The rocket only moves vertically and also has inertia, so you need skills to operate the ship.
+The game isn't easy but the positions and movements of the asteroids are predetermined.
+To precisely craft the levels, I developed a level editor where you can specify the in-game time.
+The background score is composed by me."
+tools_used = "Godot Engine, Affinity Designer, Tracktion 7"
+video_link = "https://youtu.be/OHRMV6BU9vY"
+download_link = "https://kinokomushroom.itch.io/rocket-simulator-2020"
 
 [node name="StaticCollision" parent="YSort/RocketSimulator2020" index="0"]
 shape = SubResource( 175 )
+
+[node name="FootprintAnimation" parent="YSort/RocketSimulator2020/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/RocketSimulator2020/ActualThing/Viewport" index="0"]
 margin_right = 82.0
@@ -581,11 +679,15 @@ material = SubResource( 180 )
 
 [node name="IKWalkingAnimation" parent="YSort" instance=ExtResource( 22 )]
 position = Vector2( -478, -493 )
-script = ExtResource( 55 )
+title = "IK Walking Animation"
 content_image = ExtResource( 42 )
+video_link = "https://youtu.be/Q797ZNX8e5A"
 
 [node name="StaticCollision" parent="YSort/IKWalkingAnimation" index="0"]
 shape = SubResource( 181 )
+
+[node name="FootprintAnimation" parent="YSort/IKWalkingAnimation/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/IKWalkingAnimation/ActualThing/Viewport" index="0"]
 margin_left = -5.0
@@ -597,11 +699,17 @@ material = SubResource( 186 )
 
 [node name="PianoTranscriptionHelper" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( 183, -498 )
-script = ExtResource( 55 )
+title = "Piano Transcription Helper"
 content_image = ExtResource( 38 )
+video_link = "https://youtu.be/XoLhj2HoO08"
+download_link = "https://github.com/kinokomushroom/Godot-Piano-Transcription-Helper/releases/tag/v1.2"
+source_link = "https://github.com/kinokomushroom/Godot-Piano-Transcription-Helper"
 
 [node name="StaticCollision" parent="YSort/PianoTranscriptionHelper" index="0"]
 shape = SubResource( 187 )
+
+[node name="FootprintAnimation" parent="YSort/PianoTranscriptionHelper/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/PianoTranscriptionHelper/ActualThing/Viewport" index="0"]
 stream = ExtResource( 23 )
@@ -611,11 +719,17 @@ material = SubResource( 188 )
 
 [node name="4DVisualiser" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 472, -491 )
-script = ExtResource( 55 )
+title = "4D Visualiser"
 content_image = ExtResource( 39 )
+video_link = "https://youtu.be/l9GY1OJayBs"
+download_link = "https://github.com/kinokomushroom/4DVisualization/releases/tag/v1.0"
+source_link = "https://github.com/kinokomushroom/4DVisualization"
 
 [node name="StaticCollision" parent="YSort/4DVisualiser" index="0"]
 shape = SubResource( 189 )
+
+[node name="FootprintAnimation" parent="YSort/4DVisualiser/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/4DVisualiser/ActualThing/Viewport" index="0"]
 margin_bottom = 56.0
@@ -722,7 +836,12 @@ position = Vector2( 458, 960 )
 
 [node name="FramedChess" parent="YSort" instance=ExtResource( 61 )]
 position = Vector2( -173, 365 )
+title = "Ray-Traced Chess"
 content_image = ExtResource( 57 )
+original_link = "https://user-images.githubusercontent.com/57708300/155035677-cb0f83a9-129d-439e-b576-26c57c4e6cff.png"
+
+[node name="FootprintAnimation" parent="YSort/FramedChess/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Frame" parent="YSort/FramedChess/ActualThing" index="0"]
 texture = ExtResource( 10 )
@@ -732,8 +851,9 @@ texture = ExtResource( 35 )
 
 [node name="ProjectorSpider" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( -370, 366 )
-script = ExtResource( 55 )
+title = "Arachnid of Destruction"
 content_image = ExtResource( 82 )
+video_link = "https://youtu.be/_3MoMVVEDhc"
 
 [node name="StaticCollision" parent="YSort/ProjectorSpider" index="0"]
 shape = SubResource( 95 )
@@ -743,6 +863,9 @@ shape = SubResource( 96 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorSpider/PanelTriggerArea" index="0"]
 shape = SubResource( 97 )
+
+[node name="FootprintAnimation" parent="YSort/ProjectorSpider/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/ProjectorSpider/ActualThing/Viewport" index="0"]
 stream = ExtResource( 26 )
@@ -755,8 +878,9 @@ material = SubResource( 99 )
 
 [node name="ProjectorGLSLBlackHole" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( -578, 365 )
-script = ExtResource( 55 )
+title = "GLSL Gravitational Lens"
 content_image = ExtResource( 78 )
+video_link = "https://youtu.be/MuNl5CJoHrg"
 
 [node name="StaticCollision" parent="YSort/ProjectorGLSLBlackHole" index="0"]
 shape = SubResource( 107 )
@@ -766,6 +890,9 @@ shape = SubResource( 108 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorGLSLBlackHole/PanelTriggerArea" index="0"]
 shape = SubResource( 109 )
+
+[node name="FootprintAnimation" parent="YSort/ProjectorGLSLBlackHole/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/ProjectorGLSLBlackHole/ActualThing/Viewport" index="0"]
 stream = ExtResource( 37 )
@@ -778,14 +905,21 @@ material = SubResource( 113 )
 
 [node name="FramedVolcano" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 172, 365 )
+title = "Low Poly Volcano"
 content_image = ExtResource( 58 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117622-40d0f7f1-9eef-4821-948f-206c77abc605.png"
+
+[node name="FootprintAnimation" parent="YSort/FramedVolcano/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/FramedVolcano/ActualThing/Frame" index="0"]
 texture = ExtResource( 33 )
 
 [node name="ProjectorTrain" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 383, 365 )
+title = "Near-Polar Express"
 content_image = ExtResource( 81 )
+video_link = "https://youtu.be/rhWL83xo2RE"
 
 [node name="StaticCollision" parent="YSort/ProjectorTrain" index="0"]
 shape = SubResource( 90 )
@@ -795,6 +929,9 @@ shape = SubResource( 91 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorTrain/PanelTriggerArea" index="0"]
 shape = SubResource( 92 )
+
+[node name="FootprintAnimation" parent="YSort/ProjectorTrain/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/ProjectorTrain/ActualThing/Viewport" index="0"]
 stream = ExtResource( 6 )
@@ -807,7 +944,12 @@ material = SubResource( 94 )
 
 [node name="FramedMall" parent="YSort" instance=ExtResource( 51 )]
 position = Vector2( 593, 365 )
+title = "Orthographic Shopping Mall"
 content_image = ExtResource( 59 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117600-2b5c8b83-ff74-4fda-a4e8-c13c9f0f6bf6.png"
+
+[node name="FootprintAnimation" parent="YSort/FramedMall/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Frame" parent="YSort/FramedMall/ActualThing" index="0"]
 margin_left = -63.0
@@ -824,7 +966,12 @@ texture = ExtResource( 32 )
 
 [node name="FramedPiano" parent="YSort" instance=ExtResource( 61 )]
 position = Vector2( 187, 669 )
+title = "Piano Closeup"
 content_image = ExtResource( 60 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117610-65914ef1-67df-4ce4-beb4-ea9540040642.png"
+
+[node name="FootprintAnimation" parent="YSort/FramedPiano/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Frame" parent="YSort/FramedPiano/ActualThing" index="0"]
 texture = ExtResource( 10 )
@@ -834,8 +981,9 @@ texture = ExtResource( 56 )
 
 [node name="ProjectorBlackHole" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( 383, 669 )
-script = ExtResource( 55 )
+title = "Black Hole"
 content_image = ExtResource( 79 )
+video_link = "https://youtu.be/_kc9LCQovKo"
 
 [node name="StaticCollision" parent="YSort/ProjectorBlackHole" index="0"]
 shape = SubResource( 121 )
@@ -845,6 +993,9 @@ shape = SubResource( 122 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorBlackHole/PanelTriggerArea" index="0"]
 shape = SubResource( 123 )
+
+[node name="FootprintAnimation" parent="YSort/ProjectorBlackHole/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/ProjectorBlackHole/ActualThing/Viewport" index="0"]
 stream = ExtResource( 75 )
@@ -857,26 +1008,48 @@ material = SubResource( 135 )
 
 [node name="EaselField" parent="YSort" instance=ExtResource( 53 )]
 position = Vector2( -150, 660 )
+script = ExtResource( 55 )
+title = "Tree in a Field"
 content_image = ExtResource( 68 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117590-23886dcc-5881-4dde-b805-9bf7b7ebf0ae.png"
+
+[node name="CollisionShape2D" parent="YSort/EaselField/PanelTriggerArea" index="0"]
+position = Vector2( 0.5, 10.5 )
+
+[node name="FootprintAnimation" parent="YSort/EaselField/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/EaselField/ActualThing" index="5"]
 texture = ExtResource( 4 )
 
 [node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 52 )]
 position = Vector2( -340, 660 )
+script = ExtResource( 55 )
+title = "The Two Towers"
 content_image = ExtResource( 70 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117617-150c1997-6db0-4904-a395-3dfb592da9e2.png"
+
+[node name="CollisionShape2D" parent="YSort/EaselSkyscraper/PanelTriggerArea" index="0"]
+position = Vector2( 0.5, 10.5 )
+
+[node name="FootprintAnimation" parent="YSort/EaselSkyscraper/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/EaselSkyscraper/ActualThing" index="5"]
 texture = ExtResource( 66 )
 
 [node name="LaptopMaterial" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -530, 654 )
-script = ExtResource( 55 )
+title = "Blender Material Tutorial"
 content_image = ExtResource( 84 )
+video_link = "https://youtu.be/CYDBZY5OrCE"
 
 [node name="StaticCollision" parent="YSort/LaptopMaterial" index="0"]
 position = Vector2( 0, -6 )
 shape = SubResource( 146 )
+
+[node name="FootprintAnimation" parent="YSort/LaptopMaterial/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Shadow" parent="YSort/LaptopMaterial/ActualThing" index="0"]
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
@@ -893,43 +1066,80 @@ material = SubResource( 191 )
 
 [node name="EaselDesk" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( -220, 820 )
+script = ExtResource( 55 )
+title = "Photorealism Practice"
 content_image = ExtResource( 69 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117604-4720c8a4-d2fa-451d-a07f-516329184081.png"
+
+[node name="CollisionShape2D" parent="YSort/EaselDesk/PanelTriggerArea" index="0"]
+position = Vector2( 0.5, 10.5 )
+
+[node name="FootprintAnimation" parent="YSort/EaselDesk/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/EaselDesk/ActualThing" index="5"]
 texture = ExtResource( 62 )
 
 [node name="EaselMoon" parent="YSort" instance=ExtResource( 53 )]
 position = Vector2( -410, 820 )
+script = ExtResource( 55 )
+title = "Moon from Afar"
 content_image = ExtResource( 34 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117608-6f78c58a-9df0-4171-a4ec-65b9c5cab031.png"
+
+[node name="CollisionShape2D" parent="YSort/EaselMoon/PanelTriggerArea" index="0"]
+position = Vector2( 0.5, 10.5 )
+
+[node name="FootprintAnimation" parent="YSort/EaselMoon/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/EaselMoon/ActualThing" index="5"]
 texture = ExtResource( 67 )
 
 [node name="EaselRoland" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( -600, 820 )
+script = ExtResource( 55 )
+title = "Roland VR-730"
 content_image = ExtResource( 71 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117614-e54567bd-478f-418f-81c4-2d74844dbafe.png"
+
+[node name="CollisionShape2D" parent="YSort/EaselRoland/PanelTriggerArea" index="0"]
+position = Vector2( 0.5, 10.5 )
+
+[node name="FootprintAnimation" parent="YSort/EaselRoland/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/EaselRoland/ActualThing" index="5"]
 texture = ExtResource( 63 )
 
 [node name="EaselPoses" parent="YSort" instance=ExtResource( 54 )]
 position = Vector2( -290, 980 )
+script = ExtResource( 55 )
+title = "Pose Practice"
 content_image = ExtResource( 72 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117612-73f62607-98eb-4c37-a0a3-50487e42d9bd.png"
 
-[node name="ShadowShaded" parent="YSort/EaselPoses/ActualThing" index="2"]
-color = Color( 0.380392, 0.380392, 0.380392, 1 )
+[node name="CollisionShape2D" parent="YSort/EaselPoses/PanelTriggerArea" index="0"]
+position = Vector2( 0.5, 10.5 )
+
+[node name="FootprintAnimation" parent="YSort/EaselPoses/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/EaselPoses/ActualThing" index="5"]
 texture = ExtResource( 64 )
 
 [node name="LaptopChocolate" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -480, 973 )
-script = ExtResource( 55 )
+title = "Blender Chocolate Tutorial"
 content_image = ExtResource( 83 )
+video_link = "https://youtu.be/gwhMeUN6q-A"
 
 [node name="StaticCollision" parent="YSort/LaptopChocolate" index="0"]
 position = Vector2( 0, -6 )
 shape = SubResource( 146 )
+
+[node name="FootprintAnimation" parent="YSort/LaptopChocolate/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Shadow" parent="YSort/LaptopChocolate/ActualThing" index="0"]
 color = Color( 0.380392, 0.380392, 0.380392, 1 )
@@ -946,7 +1156,9 @@ material = SubResource( 147 )
 
 [node name="ProjectorTrailer" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 192, 973 )
+title = "School Festival Trailer"
 content_image = ExtResource( 80 )
+video_link = "https://youtu.be/P9QZ-fQPcSQ"
 
 [node name="StaticCollision" parent="YSort/ProjectorTrailer" index="0"]
 shape = SubResource( 136 )
@@ -956,6 +1168,9 @@ shape = SubResource( 137 )
 
 [node name="CollisionShape2D" parent="YSort/ProjectorTrailer/PanelTriggerArea" index="0"]
 shape = SubResource( 138 )
+
+[node name="FootprintAnimation" parent="YSort/ProjectorTrailer/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="VideoPlayer" parent="YSort/ProjectorTrailer/ActualThing/Viewport" index="0"]
 stream = ExtResource( 77 )
@@ -968,7 +1183,12 @@ material = SubResource( 140 )
 
 [node name="FramedConcept" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 409, 972 )
+title = "Space Game Concept"
 content_image = ExtResource( 73 )
+original_link = "https://user-images.githubusercontent.com/57708300/154117596-619befb7-9ca0-401e-9607-8d240e41372a.png"
+
+[node name="FootprintAnimation" parent="YSort/FramedConcept/PanelTriggerArea/CollisionShape2D" index="0"]
+autoplay = ""
 
 [node name="Image" parent="YSort/FramedConcept/ActualThing/Frame" index="0"]
 texture = ExtResource( 65 )
@@ -1012,10 +1232,18 @@ scale = Vector2( 61.75, 1 )
 [node name="ArtPanel" parent="ArtPanelLayer" instance=ExtResource( 7 )]
 visible = false
 
-[connection signal="body_entered" from="YSort/ProjectorTrain/EventTriggerArea" to="YSort/ProjectorTrain/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/ProjectorTrain/EventTriggerArea" to="YSort/ProjectorTrain/ActualThing" method="_on_EventTriggerArea_body_exited"]
-[connection signal="body_entered" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_entered"]
-[connection signal="body_exited" from="YSort/ProjectorTrailer/EventTriggerArea" to="YSort/ProjectorTrailer/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselField/EventTriggerArea" to="YSort/EaselField/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselField/EventTriggerArea" to="YSort/EaselField/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselSkyscraper/EventTriggerArea" to="YSort/EaselSkyscraper/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselSkyscraper/EventTriggerArea" to="YSort/EaselSkyscraper/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselDesk/EventTriggerArea" to="YSort/EaselDesk/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselDesk/EventTriggerArea" to="YSort/EaselDesk/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselMoon/EventTriggerArea" to="YSort/EaselMoon/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselMoon/EventTriggerArea" to="YSort/EaselMoon/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselRoland/EventTriggerArea" to="YSort/EaselRoland/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselRoland/EventTriggerArea" to="YSort/EaselRoland/ActualThing" method="_on_EventTriggerArea_body_exited"]
+[connection signal="body_entered" from="YSort/EaselPoses/EventTriggerArea" to="YSort/EaselPoses/ActualThing" method="_on_EventTriggerArea_body_entered"]
+[connection signal="body_exited" from="YSort/EaselPoses/EventTriggerArea" to="YSort/EaselPoses/ActualThing" method="_on_EventTriggerArea_body_exited"]
 
 [editable path="YSort/SpaceInvaders555"]
 [editable path="YSort/3DSpaceShooter"]
