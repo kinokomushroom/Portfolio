@@ -890,7 +890,7 @@ japanese_description = "大学のＣＧの授業の課題で作った作品。C+
 ３Ｄモデルは全てBlenderで作った。"
 english_description = "This image was rendered with a ray tracer that was implemented with C++ and OpenGL.
 I made it so that rays refract correctly between materials with different IORs.
-I also implemented volumetric light absorption inside transparent objects to render tinted glass and liquids.
+Volumetric light absorption inside transparent objects was implemented to render tinted glass and liquids.
 The rainbow flashes on the diamonds were implemented by varying the IOR based on the wavelength of light, simulating dispersion.
 I also made transparent objects cast coloured shadows.
 Every 3D model was made in Blender."
@@ -907,6 +907,16 @@ texture = ExtResource( 35 )
 position = Vector2( -370, 366 )
 title = "Arachnid of Destruction"
 content_image = ExtResource( 82 )
+japanese_description = "大学のＣＧの授業の課題で作ったアニメーション作品。C++とOpenGLで実装した。
+実際のクモの動き方を観察してリアルな歩行アニメーションを作った。
+クモの脚にはＩＫを実装し、クモの位置により自動的に脚の先端位置が決まるようにした。
+ガトリング砲やレーザービームを撃っている間はカメラを小刻みに振動させ、視覚的なインパクトを与えた。
+３Ｄモデルは全てコードで生成した。"
+english_description = "An animation that I made for a university class using C++ and OpenGL.
+I studied how actual spiders move to make a realistic walking animation.
+The spider leg positions are automatically calculated from the spider's position, using an IK system that I implemented.
+I added small vibrations to the camera while the gatling gun and laser beam are fired, to make them feel more impactful.
+Every 3D model was generated with code."
 tools_used = "C++, OpenGL"
 video_link = "https://youtu.be/_3MoMVVEDhc"
 
@@ -930,6 +940,10 @@ material = SubResource( 99 )
 position = Vector2( -578, 365 )
 title = "GLSL Gravitational Lens"
 content_image = ExtResource( 78 )
+japanese_description = "GLSLで作ったブラックホールのシェーダー。
+ブラックホールの中心に近いほど屈折角が大きくなるようにし、重力による光路の歪みを再現した。"
+english_description = "A black hole shader that I coded with GLSL.
+I recreated gravitational lensing by increasing the refraction angle towards the center of the black hole."
 tools_used = "C++, OpenGL"
 video_link = "https://youtu.be/MuNl5CJoHrg"
 
@@ -953,7 +967,9 @@ material = SubResource( 113 )
 position = Vector2( 172, 365 )
 title = "Low Poly Volcano"
 content_image = ExtResource( 58 )
-tools_used = "Blender"
+japanese_description = "Blenderで作ったローポリスタイルの火山。"
+english_description = "A low poly style volcano that I made in Blender."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117622-40d0f7f1-9eef-4821-948f-206c77abc605.png"
 
 [node name="Image" parent="YSort/FramedVolcano/ActualThing/Frame" index="0"]
@@ -961,9 +977,15 @@ texture = ExtResource( 33 )
 
 [node name="ProjectorTrain" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 383, 365 )
-title = "Near-Polar Express"
+title = "Frigid Railway"
 content_image = ExtResource( 81 )
-tools_used = "Blender"
+japanese_description = "Blenderで作ったローポリスタイルの汽車のアニメーション。Eeveeでレンダリングした。
+大気で光が散乱しているように見せ、影や光に立体感を持たせた。
+煙はパーティクルシステムで作り、元のメッシュの形を工夫することによってローポリスタイルになじむ見た目にした。"
+english_description = "A low poly style animation of a steam train made in Blender and rendered in Eevee.
+Volumetric scattering was used to make atmospheric light shafts.
+I managed to make the smoke fit in with the low poly style by generating carefully crafted meshes with a particle system."
+tools_used = "Blender (Eevee)"
 video_link = "https://youtu.be/rhWL83xo2RE"
 
 [node name="StaticCollision" parent="YSort/ProjectorTrain" index="0"]
@@ -985,7 +1007,13 @@ material = SubResource( 94 )
 position = Vector2( 593, 365 )
 title = "Orthographic Shopping Mall"
 content_image = ExtResource( 59 )
-tools_used = "Blender"
+japanese_description = "ローポリスタイルのショッピングモール。Blenderで作りEeveeでレンダリングした。
+依頼を受けて作り、英語教材として利用された。
+フラットなスタイルを統一するために専用のシェーダーを作った。"
+english_description = "A low poly style shopping mall, made in Blender and rendered with Eevee.
+This was made for a commission and was used as an English teaching material.
+I made the colours flat and sharp using a shader."
+tools_used = "Blender (Eevee)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117600-2b5c8b83-ff74-4fda-a4e8-c13c9f0f6bf6.png"
 
 [node name="Frame" parent="YSort/FramedMall/ActualThing" index="0"]
@@ -1005,7 +1033,11 @@ texture = ExtResource( 32 )
 position = Vector2( 187, 669 )
 title = "Piano Closeup"
 content_image = ExtResource( 60 )
-tools_used = "Blender"
+japanese_description = "Blenderで作ったピアノ。
+キーの高さをわずかに不揃いにし、指紋や傷のテクスチャーを用いてリアルさを出した。"
+english_description = "A closeup of a piano made in Blender.
+Some imperfections such as variations to the key heights, faint fingerprints, and tiny scratches were applied for realism."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117610-65914ef1-67df-4ce4-beb4-ea9540040642.png"
 
 [node name="Frame" parent="YSort/FramedPiano/ActualThing" index="0"]
@@ -1018,7 +1050,13 @@ texture = ExtResource( 56 )
 position = Vector2( 383, 669 )
 title = "Black Hole"
 content_image = ExtResource( 79 )
-tools_used = "Blender"
+japanese_description = "Blenderで作りEeveeでレンダリングしたブラックホール。
+円盤のテクスチャーはノードでプロシージャルに作った。
+中心に近づくほど光が曲がるようにし、重力による空間の歪みを再現した。"
+english_description = "A black hole that I made in Blender and rendered with Eevee.
+The accretion disk texture was made procedurally with nodes.
+I made light bend around the center of the black hole to make it look like gravitational lensing."
+tools_used = "Blender (Eevee)"
 video_link = "https://youtu.be/_kc9LCQovKo"
 
 [node name="StaticCollision" parent="YSort/ProjectorBlackHole" index="0"]
@@ -1041,7 +1079,13 @@ material = SubResource( 135 )
 position = Vector2( -150, 660 )
 title = "Tree in a Field"
 content_image = ExtResource( 68 )
-tools_used = "Blender"
+japanese_description = "Blenderで作った草原と木。
+木はModular Treeアドオンで作り、草はパーティクルシステムで生成した。
+木と草の葉のマテリアルに透明な質感を加えることにより、光が通過してリアルな見た目になった。"
+english_description = "A grass field and a tree made in Blender.
+I made the tree wih the Modular Tree addon, and generated the grass with a particle system.
+Some translucency was added to the grass blade and tree leaf materials, which increased their realism by letting some light pass through."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117590-23886dcc-5881-4dde-b805-9bf7b7ebf0ae.png"
 
 [node name="CollisionShape2D" parent="YSort/EaselField/EventTriggerArea" index="0"]
@@ -1052,9 +1096,13 @@ texture = ExtResource( 4 )
 
 [node name="EaselSkyscraper" parent="YSort" instance=ExtResource( 52 )]
 position = Vector2( -340, 660 )
-title = "The Two Towers"
+title = "Skyscrapers"
 content_image = ExtResource( 70 )
-tools_used = "Blender"
+japanese_description = "Blenderで作った高層ビル。
+窓ガラスのマテリアルの反射と透過のバランスにこだわり、リアルな見た目を出した。"
+english_description = "Skyscrapers made in Blender.
+I carefully adjusted the reflectivity and transmissivity of the glass windows to make them look as realistic as possible."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117617-150c1997-6db0-4904-a395-3dfb592da9e2.png"
 
 [node name="CollisionShape2D" parent="YSort/EaselSkyscraper/EventTriggerArea" index="0"]
@@ -1067,8 +1115,12 @@ texture = ExtResource( 66 )
 position = Vector2( -530, 654 )
 title = "Blender Material Tutorial"
 content_image = ExtResource( 84 )
+japanese_description = "Blenderでマテリアルを作る方法を説明した動画。
+視聴者が任意のマテリアルを再現できるようになることを目標とし、物体に質感が生まれる光の原理の説明から始めた。"
+english_description = "A tutorial on how to make materials in Blender.
+The video begins with a explanation of how light works in real life, to provide the viewers an idea on how to recreate any material they want."
 tools_used = "Blender, PowerPoint, DaVinci Resolve"
-video_link = "https://youtu.be/CYDBZY5OrCE"
+video_link = "https://youtu.be/https://youtu.be/CYDBZY5OrCE"
 
 [node name="StaticCollision" parent="YSort/LaptopMaterial" index="0"]
 position = Vector2( 0, -6 )
@@ -1088,7 +1140,13 @@ material = SubResource( 191 )
 position = Vector2( -220, 820 )
 title = "Photorealism Practice"
 content_image = ExtResource( 69 )
-tools_used = "Blender"
+japanese_description = "Blenderでフォトリアリズムを目指して作った画像。
+みかんのテクスチャーはプロシージャルに作った。
+消しゴムはSSS（表面下散乱）で光を通過させることによりリアルさを出した。"
+english_description = "An attempt at photorealism in Blender.
+The mandarin orange texture is procedurally generated.
+I used SSS (subsurface scattering) on the eraser to let light pass through and increase realism."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117604-4720c8a4-d2fa-451d-a07f-516329184081.png"
 
 [node name="CollisionShape2D" parent="YSort/EaselDesk/EventTriggerArea" index="0"]
@@ -1101,7 +1159,13 @@ texture = ExtResource( 62 )
 position = Vector2( -410, 820 )
 title = "Moon from Afar"
 content_image = ExtResource( 34 )
-tools_used = "Blender"
+japanese_description = "Blenderで作った月。
+ブルジュ・ハリファの３Ｄモデルを作って月の手前に置いた。
+月の表面には法線マップを用い、クレーターに凹凸を付けた。"
+english_description = "The moon created in Blender.
+The silhouette in front of the moon is a 3D model of Burj Khalifa.
+A normal map is used on the moon surface to give the craters a bumpy look."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117608-6f78c58a-9df0-4171-a4ec-65b9c5cab031.png"
 
 [node name="CollisionShape2D" parent="YSort/EaselMoon/EventTriggerArea" index="0"]
@@ -1114,7 +1178,11 @@ texture = ExtResource( 67 )
 position = Vector2( -600, 820 )
 title = "Roland VR-730"
 content_image = ExtResource( 71 )
-tools_used = "Blender"
+japanese_description = "モデリング練習のためにBlenderで作ったRoland VR-730。
+テクスチャを用いないで出来るだけディテールを入れることを目標とした。"
+english_description = "A Roland VR-730 that I made in Blender for modeling practice.
+I attempted to make it as detailed as possible without the use of any textures."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117614-e54567bd-478f-418f-81c4-2d74844dbafe.png"
 
 [node name="CollisionShape2D" parent="YSort/EaselRoland/EventTriggerArea" index="0"]
@@ -1127,7 +1195,11 @@ texture = ExtResource( 63 )
 position = Vector2( -290, 980 )
 title = "Pose Practice"
 content_image = ExtResource( 72 )
-tools_used = "Blender"
+japanese_description = "キャラクターリギングの練習で作った様々なポーズ。
+Blenderで人間型のキャラクターモデルを作ってリギングし、ＩＫを用いてポーズを作った。"
+english_description = "Various poses made for a character rigging practice.
+I made a humanoid character model in Blender, rigged it, and posed it using IK."
+tools_used = "Blender (Cycles)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117612-73f62607-98eb-4c37-a0a3-50487e42d9bd.png"
 
 [node name="CollisionShape2D" parent="YSort/EaselPoses/EventTriggerArea" index="0"]
@@ -1140,6 +1212,10 @@ texture = ExtResource( 64 )
 position = Vector2( -480, 973 )
 title = "Blender Chocolate Tutorial"
 content_image = ExtResource( 83 )
+japanese_description = "Blenderでチョコレートを作る方法のチュートリアル。
+短時間で高品質な結果を作れるようにした。"
+english_description = "A tutorial on how to make chocolate bars in Blender.
+I made the tutorial give viewers high quality results in a short amount of time."
 tools_used = "Blender, DaVinci Resolve"
 video_link = "https://youtu.be/gwhMeUN6q-A"
 
@@ -1161,7 +1237,11 @@ material = SubResource( 147 )
 position = Vector2( 192, 973 )
 title = "School Festival Trailer"
 content_image = ExtResource( 80 )
-tools_used = "Blender, Godot Engine"
+japanese_description = "高校の学校祭でクラス企画のゲームセンターを宣伝するために作ったトレーラー映像。
+前半はBlenderで作った３Ｄアニメーション、後半は自作ゲーム「Space Invaders 555」の映像である。"
+english_description = "A trailer that I made for a school festival, advertising out class's gaming arcade project.
+The first half is a 3D animation made in Blender, and the second half is footage from my game \"Space Invaders 555\"."
+tools_used = "Blender (Eevee), Godot Engine"
 video_link = "https://youtu.be/P9QZ-fQPcSQ"
 
 [node name="StaticCollision" parent="YSort/ProjectorTrailer" index="0"]
@@ -1183,7 +1263,11 @@ material = SubResource( 140 )
 position = Vector2( 409, 972 )
 title = "Space Game Concept"
 content_image = ExtResource( 73 )
-tools_used = "Blender"
+japanese_description = "３Ｄスペースシューターゲームのコンセプトアート。
+カートゥーンのようなスタイルにするために、シェーダーで光沢や影のグラデーションの色をフラットにした。"
+english_description = "A concept art of a 3D space shooter game.
+I used a shader to flatten the colours of highlights and shadows to achieve a cartoonish look."
+tools_used = "Blender (Eevee)"
 original_link = "https://user-images.githubusercontent.com/57708300/154117596-619befb7-9ca0-401e-9607-8d240e41372a.png"
 
 [node name="Image" parent="YSort/FramedConcept/ActualThing/Frame" index="0"]
