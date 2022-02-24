@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[resource]
+TooltipLabel/colors/font_color = Color( 1, 1, 1, 1 )
+TooltipLabel/colors/font_color_shadow = Color( 0, 0, 0, 0.1 )
+TooltipLabel/fonts/font = ExtResource( 1 )
+TooltipPanel/styles/panel = SubResource( 12 )

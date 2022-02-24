@@ -13,6 +13,7 @@ extents = Vector2( 67, 8.75 )
 [sub_resource type="ShaderMaterial" id=147]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
+shader_param/Brightness = null
 
 [node name="MonitorMac" instance=ExtResource( 1 )]
 
@@ -21,7 +22,7 @@ position = Vector2( 0, 1.75 )
 shape = SubResource( 146 )
 
 [node name="Shadow" parent="ActualThing" index="0"]
-position = Vector2( 0, 3 )
+position = Vector2( 0, 1 )
 texture = ExtResource( 4 )
 
 [node name="Background" parent="ActualThing" index="1"]

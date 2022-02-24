@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://textures/retro_fg.png" type="Texture" id=1]
 [ext_resource path="res://textures/retro_screen.png" type="Texture" id=2]
@@ -15,9 +15,6 @@ extents = Vector2( 68, 19.25 )
 [sub_resource type="CircleShape2D" id=6]
 radius = 103.044
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 49, 9.5 )
-
 [sub_resource type="ShaderMaterial" id=14]
 resource_local_to_scene = true
 shader = ExtResource( 7 )
@@ -32,9 +29,8 @@ shape = SubResource( 5 )
 [node name="CollisionShape2D" parent="EventTriggerArea" index="0"]
 shape = SubResource( 6 )
 
-[node name="CollisionShape2D" parent="PanelTriggerArea" index="0"]
-position = Vector2( 0, 19.5 )
-shape = SubResource( 7 )
+[node name="PanelCollision" parent="PanelTriggerArea" index="0"]
+position = Vector2( 0, 21 )
 
 [node name="ActualThing" parent="." index="3"]
 script = ExtResource( 5 )

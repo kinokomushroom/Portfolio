@@ -7,8 +7,6 @@ export var lit_color: Color
 
 func _ready():
 	$Light.visible = false
-	$ShadowLit.visible = false
-	$ShadowShaded.visible = true
 	self.modulate = shaded_color
 
 
@@ -16,8 +14,6 @@ func _ready():
 # turn on spotlight
 func _on_EventTriggerArea_body_entered(body):
 	$Light.visible = true
-	$ShadowLit.visible = true
-	$ShadowShaded.visible = false
 	self.modulate = lit_color
 
 
@@ -25,6 +21,4 @@ func _on_EventTriggerArea_body_entered(body):
 # turn off spotlight
 func _on_EventTriggerArea_body_exited(body):
 	$Light.visible = false
-	$ShadowLit.visible = false
-	$ShadowShaded.visible = true
 	self.modulate = shaded_color

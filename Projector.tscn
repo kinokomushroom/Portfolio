@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ArtPiece.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Projector.gd" type="Script" id=2]
@@ -13,10 +13,6 @@ extents = Vector2( 19.5, 14 )
 [sub_resource type="CircleShape2D" id=6]
 resource_local_to_scene = true
 radius = 96.0052
-
-[sub_resource type="RectangleShape2D" id=7]
-resource_local_to_scene = true
-extents = Vector2( 49, 9.25 )
 
 [sub_resource type="ShaderMaterial" id=8]
 
@@ -101,10 +97,6 @@ shape = SubResource( 5 )
 position = Vector2( 0, 63 )
 shape = SubResource( 6 )
 
-[node name="CollisionShape2D" parent="PanelTriggerArea" index="0"]
-position = Vector2( 0, 9 )
-shape = SubResource( 7 )
-
 [node name="ActualThing" parent="." index="3"]
 z_index = 1
 script = ExtResource( 2 )
@@ -147,7 +139,7 @@ __meta__ = {
 }
 
 [node name="Projector" type="Sprite" parent="ActualThing" index="4"]
-light_mask = 2
+light_mask = 4
 position = Vector2( -10, 116 )
 z_as_relative = false
 texture = ExtResource( 5 )

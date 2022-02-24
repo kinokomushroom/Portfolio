@@ -1,25 +1,29 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://fonts/TitleFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://CustomScrollbarTheme.tres" type="Theme" id=2]
 [ext_resource path="res://fonts/DescriptionFont.tres" type="DynamicFont" id=3]
-[ext_resource path="res://textures/button_uk_inactive.png" type="Texture" id=4]
+[ext_resource path="res://textures/button_uk_normal.png" type="Texture" id=4]
 [ext_resource path="res://textures/button_uk_hover.png" type="Texture" id=5]
-[ext_resource path="res://textures/button_uk_active.png" type="Texture" id=6]
+[ext_resource path="res://textures/button_uk_pressed.png" type="Texture" id=6]
 [ext_resource path="res://textures/button_japan_hover.png" type="Texture" id=7]
-[ext_resource path="res://textures/button_japan_active.png" type="Texture" id=8]
-[ext_resource path="res://textures/button_japan_inactive.png" type="Texture" id=9]
+[ext_resource path="res://textures/button_japan_pressed.png" type="Texture" id=8]
+[ext_resource path="res://textures/button_japan_normal.png" type="Texture" id=9]
 [ext_resource path="res://ArtPanel.gd" type="Script" id=10]
 [ext_resource path="res://ButtonLink.tscn" type="PackedScene" id=11]
+[ext_resource path="res://textures/button_cancel_normal.png" type="Texture" id=12]
+[ext_resource path="res://textures/button_cancel_hover.png" type="Texture" id=13]
 [ext_resource path="res://textures/button_hd_hover.png" type="Texture" id=14]
-[ext_resource path="res://textures/button_download_active.png" type="Texture" id=15]
-[ext_resource path="res://textures/button_download_inactive.png" type="Texture" id=16]
-[ext_resource path="res://textures/button_source_inactive.png" type="Texture" id=17]
-[ext_resource path="res://textures/button_source_active.png" type="Texture" id=18]
+[ext_resource path="res://textures/button_download_pressed.png" type="Texture" id=15]
+[ext_resource path="res://textures/button_download_normal.png" type="Texture" id=16]
+[ext_resource path="res://textures/button_source_normal.png" type="Texture" id=17]
+[ext_resource path="res://textures/button_source_pressed.png" type="Texture" id=18]
 [ext_resource path="res://textures/button_source_hover.png" type="Texture" id=19]
 [ext_resource path="res://textures/button_download_hover.png" type="Texture" id=20]
-[ext_resource path="res://textures/button_hd_active.png" type="Texture" id=21]
-[ext_resource path="res://textures/button_hd_inactive.png" type="Texture" id=22]
+[ext_resource path="res://textures/button_hd_pressed.png" type="Texture" id=21]
+[ext_resource path="res://textures/button_hd_normal.png" type="Texture" id=22]
+[ext_resource path="res://textures/button_cancel_pressed.png" type="Texture" id=23]
+[ext_resource path="res://TooltipTheme.tres" type="Theme" id=24]
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.827451, 0.827451, 0.827451, 1 )
@@ -92,7 +96,7 @@ __meta__ = {
 
 [node name="DescriptionContainer" type="Control" parent="Panel"]
 margin_left = 289.0
-margin_top = 29.0
+margin_top = 34.0
 margin_right = 438.0
 margin_bottom = 175.0
 __meta__ = {
@@ -146,10 +150,12 @@ __meta__ = {
 [node name="ContentImage" type="Sprite" parent="Panel/ContentContainer/ContentCenter"]
 
 [node name="ButtonEnglish" type="TextureButton" parent="Panel"]
-margin_left = 401.0
-margin_top = 6.0
-margin_right = 414.0
-margin_bottom = 25.0
+margin_left = 290.0
+margin_top = 9.0
+margin_right = 303.0
+margin_bottom = 28.0
+hint_tooltip = "English/Japanese"
+theme = ExtResource( 24 )
 toggle_mode = true
 action_mode = 0
 texture_normal = ExtResource( 4 )
@@ -160,10 +166,12 @@ __meta__ = {
 }
 
 [node name="ButtonJapan" type="TextureButton" parent="Panel"]
-margin_left = 414.0
-margin_top = 6.0
-margin_right = 427.0
-margin_bottom = 25.0
+margin_left = 303.0
+margin_top = 9.0
+margin_right = 316.0
+margin_bottom = 28.0
+hint_tooltip = "English/Japanese"
+theme = ExtResource( 24 )
 toggle_mode = true
 pressed = true
 action_mode = 0
@@ -188,11 +196,15 @@ __meta__ = {
 [node name="ButtonVideo" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
 margin_left = 30.0
 margin_right = 59.0
+hint_tooltip = "View video"
+theme = ExtResource( 24 )
 
 [node name="ButtonHD" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
 visible = false
 margin_left = 78.0
 margin_right = 107.0
+hint_tooltip = "View original"
+theme = ExtResource( 24 )
 texture_normal = ExtResource( 22 )
 texture_pressed = ExtResource( 21 )
 texture_hover = ExtResource( 14 )
@@ -200,6 +212,8 @@ texture_hover = ExtResource( 14 )
 [node name="ButtonDownload" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
 margin_left = 78.0
 margin_right = 107.0
+hint_tooltip = "Download"
+theme = ExtResource( 24 )
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 15 )
 texture_hover = ExtResource( 20 )
@@ -207,9 +221,29 @@ texture_hover = ExtResource( 20 )
 [node name="ButtonSource" parent="Panel/ButtonContainer" instance=ExtResource( 11 )]
 margin_left = 126.0
 margin_right = 155.0
+hint_tooltip = "Source code"
+theme = ExtResource( 24 )
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 18 )
 texture_hover = ExtResource( 19 )
 
+[node name="ButtonClose" type="TextureButton" parent="Panel"]
+margin_left = 422.0
+margin_top = 11.0
+margin_right = 438.0
+margin_bottom = 29.0
+hint_tooltip = "Close"
+theme = ExtResource( 24 )
+action_mode = 0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="toggled" from="Panel/ButtonEnglish" to="." method="_on_ButtonEnglish_toggled"]
 [connection signal="toggled" from="Panel/ButtonJapan" to="." method="_on_ButtonJapan_toggled"]
+[connection signal="pressed" from="Panel/ButtonClose" to="." method="_on_ButtonCancel_pressed"]

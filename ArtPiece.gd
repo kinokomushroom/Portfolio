@@ -14,28 +14,23 @@ export var original_link: String = ""
 export var download_link: String = ""
 export var source_link: String = ""
 
-onready var animationplayer: AnimationPlayer = $PanelTriggerArea/CollisionShape2D/FootprintAnimation
-onready var footprints: Sprite = $PanelTriggerArea/CollisionShape2D/Footprints
+onready var panel_collision: CollisionShape2D = $PanelTriggerArea/PanelCollision
 
 
 func _ready():
 	$PanelTriggerArea.connect("body_entered", panel, "_on_PanelTriggerArea_body_entered", [title, content_image, japanese_description, english_description, tools_used, video_link, original_link, download_link, source_link])
 	$PanelTriggerArea.connect("body_exited", panel, "_on_PanelTriggerArea_body_exited")
 	
-	footprints.visible = false
-	animationplayer.stop()
+	panel_collision.hide_footprints()
 
 
 # triggered when player gets within range
 # turn on footprints
 func _on_EventTriggerArea_body_entered(body):
-	footprints.visible = true
-	animationplayer.seek(0)
-	animationplayer.play("footprints")
+	panel_collision.show_footprints()
 
 
 # triggered when player exits range
 # turn off footprints
 func _on_EventTriggerArea_body_exited(body):
-	footprints.visible = false
-	animationplayer.stop()
+	panel_collision.hide_footprints()

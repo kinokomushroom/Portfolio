@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://textures/button_video_active.png" type="Texture" id=1]
+[ext_resource path="res://textures/button_video_pressed.png" type="Texture" id=1]
 [ext_resource path="res://textures/button_video_hover.png" type="Texture" id=2]
-[ext_resource path="res://textures/button_video_inactive.png" type="Texture" id=3]
+[ext_resource path="res://textures/button_video_normal.png" type="Texture" id=3]
 [ext_resource path="res://ButtonLink.gd" type="Script" id=4]
 
 [node name="ButtonLink" type="TextureButton"]
