@@ -16,7 +16,23 @@ func move_player(input_vector: Vector2) -> void:
 		has_moved = false
 		animationplayer.stop()
 		$RenderPos/Keys.visible = false
-		
+	
+	$RenderPos/move_right.visible = false
+	$RenderPos/move_left.visible = false
+	$RenderPos/move_forward.visible = false
+	$RenderPos/idle.visible = false
+	if input_vector.x != 0:
+		if input_vector.x > 0:
+			$RenderPos/move_right.visible = true
+		if input_vector.x < 0:
+			$RenderPos/move_left.visible = true
+	elif input_vector.y != 0:
+		if input_vector.y > 0:
+			$RenderPos/move_forward.visible = true
+		if input_vector.y < 0:
+			$RenderPos/move_forward.visible = true
+	else:
+		$RenderPos/idle.visible = true
 
 
 func _ready() -> void:

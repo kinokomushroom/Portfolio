@@ -445,11 +445,11 @@ position = Vector2( -730, 832 )
 position = Vector2( -730, 989 )
 
 [node name="Title" type="Node2D" parent="Floor"]
-modulate = Color( 0.854902, 0.854902, 0.854902, 1 )
+modulate = Color( 0.905882, 0.905882, 0.905882, 1 )
 position = Vector2( -209, -66 )
 
 [node name="TitleShade" type="Node2D" parent="Floor/Title"]
-modulate = Color( 0.643137, 0.580392, 0.494118, 1 )
+modulate = Color( 0.67451, 0.556863, 0.415686, 1 )
 position = Vector2( 0, 1 )
 
 [node name="TitleName" type="Sprite" parent="Floor/Title/TitleShade"]
@@ -523,6 +523,8 @@ mode = 2
 range_item_cull_mask = 4
 
 [node name="WorkInProgressText" type="Label" parent="Floor"]
+modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
+light_mask = 2
 margin_left = -231.0
 margin_top = 85.0
 margin_right = -51.0
@@ -534,7 +536,7 @@ text = "WORK IN PROGRESS!
 It's still incomplete but viewable.
 まだ開発中ですが閲覧可能です。
 
-(last updated 2020-02-24)"
+(last updated 2020-02-25)"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -549,7 +551,7 @@ texture = ExtResource( 44 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 0, 116 )
+position = Vector2( 0, 129 )
 
 [node name="Sign" type="StaticBody2D" parent="YSort"]
 position = Vector2( 147, 54 )
@@ -692,7 +694,7 @@ The game isn't easy but the positions and movements of the asteroids are predete
 To precisely craft the levels, I developed a level editor where you can specify the in-game time.
 The background score is composed by me."
 tools_used = "Godot Engine, Affinity Designer, Tracktion 7"
-video_link = "https://youtu.be/OHRMV6BU9vY"
+video_link = "https://youtu.be/ZjurYhPIXjQ"
 download_link = "https://kinokomushroom.itch.io/rocket-simulator-2020"
 
 [node name="StaticCollision" parent="YSort/RocketSimulator2020" index="0"]
