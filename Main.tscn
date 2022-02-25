@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=2]
+[gd_scene load_steps=148 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://Easel_3-4.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Easel_4-3.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Easel_16-9.tscn" type="PackedScene" id=54]
+[ext_resource path="res://textures/stars_3.png" type="Texture" id=55]
 [ext_resource path="res://content/piano_small.png" type="Texture" id=56]
 [ext_resource path="res://content/chess_large.png" type="Texture" id=57]
 [ext_resource path="res://content/volcano_large.png" type="Texture" id=58]
@@ -89,6 +90,10 @@
 [ext_resource path="res://textures/sign_shadow.png" type="Texture" id=88]
 [ext_resource path="res://textures/touch_button_normal.png" type="Texture" id=89]
 [ext_resource path="res://textures/touch_button_pressed.png" type="Texture" id=90]
+[ext_resource path="res://StarryShader.tres" type="Shader" id=91]
+[ext_resource path="res://StarrySky.gd" type="Script" id=92]
+[ext_resource path="res://textures/stars_2.png" type="Texture" id=93]
+[ext_resource path="res://textures/stars_1.png" type="Texture" id=94]
 
 [sub_resource type="VisualShaderNodeInput" id=194]
 input_name = "screen_uv"
@@ -140,6 +145,20 @@ nodes/fragment/connections = PoolIntArray( 2, 0, 3, 0, 3, 0, 0, 0 )
 
 [sub_resource type="ShaderMaterial" id=197]
 shader = SubResource( 196 )
+
+[sub_resource type="RectangleShape2D" id=141]
+resource_local_to_scene = true
+extents = Vector2( 14, 925.5 )
+
+[sub_resource type="RectangleShape2D" id=148]
+resource_local_to_scene = true
+extents = Vector2( 743, 14.5 )
+
+[sub_resource type="ShaderMaterial" id=201]
+shader = ExtResource( 91 )
+
+[sub_resource type="ViewportTexture" id=202]
+viewport_path = NodePath("StarrySky")
 
 [sub_resource type="RectangleShape2D" id=193]
 extents = Vector2( 52, 5 )
@@ -387,14 +406,6 @@ shader = ExtResource( 76 )
 shader_param/brightness = 1.2
 shader_param/y_cutoff = 0.97
 
-[sub_resource type="RectangleShape2D" id=141]
-resource_local_to_scene = true
-extents = Vector2( 14, 925.5 )
-
-[sub_resource type="RectangleShape2D" id=148]
-resource_local_to_scene = true
-extents = Vector2( 743, 14.5 )
-
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
@@ -522,21 +533,45 @@ texture = ExtResource( 44 )
 mode = 2
 range_item_cull_mask = 4
 
-[node name="WorkInProgressText" type="Label" parent="Floor"]
+[node name="LastUpdatedText" type="Label" parent="Floor"]
 modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
 light_mask = 2
-margin_left = -231.0
-margin_top = 85.0
-margin_right = -51.0
-margin_bottom = 166.0
+margin_left = -234.0
+margin_top = 157.0
+margin_right = -109.0
+margin_bottom = 168.0
 custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
 custom_fonts/font = ExtResource( 86 )
-text = "WORK IN PROGRESS!
+text = "(last updated 2022-02-25)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-It's still incomplete but viewable.
-まだ開発中ですが閲覧可能です。
+[node name="EasterEggText1" type="Label" parent="Floor"]
+modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
+light_mask = 2
+margin_left = 492.0
+margin_top = 156.0
+margin_right = 685.0
+margin_bottom = 200.0
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/font = ExtResource( 86 )
+text = "Nothing to see here - yet"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-(last updated 2020-02-25)"
+[node name="EasterEggText2" type="Label" parent="Floor"]
+modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
+light_mask = 2
+margin_left = -688.0
+margin_top = 156.0
+margin_right = -495.0
+margin_bottom = 200.0
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/font = ExtResource( 86 )
+text = "The princess is in another castle!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -547,6 +582,95 @@ material = SubResource( 197 )
 position = Vector2( -1.00003, 679 )
 scale = Vector2( 185.5, 116.75 )
 texture = ExtResource( 44 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="WallTop" parent="Background" instance=ExtResource( 11 )]
+position = Vector2( 729, 200 )
+
+[node name="StaticCollision" parent="Background/WallTop" index="0"]
+position = Vector2( 0, 22.5 )
+shape = SubResource( 141 )
+
+[node name="Wall" parent="Background/WallTop" index="1"]
+position = Vector2( -12, -901 )
+scale = Vector2( 1, 76.9583 )
+
+[node name="WallTop2" parent="Background" instance=ExtResource( 11 )]
+position = Vector2( -729, 200 )
+
+[node name="StaticCollision" parent="Background/WallTop2" index="0"]
+position = Vector2( 0, 22.5 )
+shape = SubResource( 141 )
+
+[node name="Wall" parent="Background/WallTop2" index="1"]
+position = Vector2( -12, -901 )
+scale = Vector2( 1, 76.9583 )
+
+[node name="WallTop3" parent="Background" instance=ExtResource( 11 )]
+position = Vector2( 0, 1134 )
+
+[node name="StaticCollision" parent="Background/WallTop3" index="0"]
+shape = SubResource( 148 )
+
+[node name="Wall" parent="Background/WallTop3" index="1"]
+position = Vector2( -741, -12 )
+scale = Vector2( 61.75, 1 )
+
+[node name="StarrySky" type="Sprite" parent="Background"]
+material = SubResource( 201 )
+position = Vector2( 3.57628e-05, -836 )
+scale = Vector2( 2.9875, 1 )
+texture = SubResource( 202 )
+
+[node name="StarrySky2" type="Sprite" parent="Background"]
+material = SubResource( 201 )
+position = Vector2( 3.57628e-05, 1257 )
+scale = Vector2( 2.9875, 1 )
+texture = SubResource( 202 )
+
+[node name="StarrySky3" type="Sprite" parent="Background"]
+material = SubResource( 201 )
+position = Vector2( -878.5, 211 )
+scale = Vector2( 0.672917, 8.74815 )
+texture = SubResource( 202 )
+
+[node name="StarrySky4" type="Sprite" parent="Background"]
+material = SubResource( 201 )
+position = Vector2( 878, 211 )
+scale = Vector2( 0.672917, 8.74815 )
+texture = SubResource( 202 )
+
+[node name="EasterEggText3" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.411765 )
+light_mask = 2
+margin_left = 730.0
+margin_top = 975.0
+margin_right = 923.0
+margin_bottom = 1019.0
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/font = ExtResource( 86 )
+text = "Don't fall off the edge!"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EasterEggText4" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.411765 )
+light_mask = 2
+margin_left = -920.0
+margin_top = 1093.0
+margin_right = -727.0
+margin_bottom = 1137.0
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/font = ExtResource( 86 )
+text = "Why is my portfolio floating in space?
+
+Nobody knows..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -797,7 +921,7 @@ position = Vector2( 328, -537 )
 position = Vector2( 492, -537 )
 
 [node name="Wall28" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 656, -537 )
+position = Vector2( 633, -537 )
 
 [node name="Wall17" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( -164, -537 )
@@ -809,7 +933,7 @@ position = Vector2( -328, -537 )
 position = Vector2( -492, -537 )
 
 [node name="Wall31" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -656, -537 )
+position = Vector2( -633, -537 )
 
 [node name="Wall18" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( 164, -233 )
@@ -821,10 +945,10 @@ position = Vector2( 328, -233 )
 position = Vector2( 492, -233 )
 
 [node name="Wall21" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 656, -233 )
+position = Vector2( 633, -233 )
 
 [node name="Wall22" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -656, -233 )
+position = Vector2( -633, -233 )
 
 [node name="Wall23" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( -492, -233 )
@@ -1275,40 +1399,6 @@ original_link = "https://user-images.githubusercontent.com/57708300/154117596-61
 [node name="Image" parent="YSort/FramedConcept/ActualThing/Frame" index="0"]
 texture = ExtResource( 65 )
 
-[node name="WallTop" type="Node2D" parent="."]
-
-[node name="WallTop" parent="WallTop" instance=ExtResource( 11 )]
-position = Vector2( 729, 200 )
-
-[node name="StaticCollision" parent="WallTop/WallTop" index="0"]
-position = Vector2( 0, 22.5 )
-shape = SubResource( 141 )
-
-[node name="Wall" parent="WallTop/WallTop" index="1"]
-position = Vector2( -12, -901 )
-scale = Vector2( 1, 76.9583 )
-
-[node name="WallTop2" parent="WallTop" instance=ExtResource( 11 )]
-position = Vector2( -729, 200 )
-
-[node name="StaticCollision" parent="WallTop/WallTop2" index="0"]
-position = Vector2( 0, 22.5 )
-shape = SubResource( 141 )
-
-[node name="Wall" parent="WallTop/WallTop2" index="1"]
-position = Vector2( -12, -901 )
-scale = Vector2( 1, 76.9583 )
-
-[node name="WallTop3" parent="WallTop" instance=ExtResource( 11 )]
-position = Vector2( 0, 1134 )
-
-[node name="StaticCollision" parent="WallTop/WallTop3" index="0"]
-shape = SubResource( 148 )
-
-[node name="Wall" parent="WallTop/WallTop3" index="1"]
-position = Vector2( -741, -12 )
-scale = Vector2( 61.75, 1 )
-
 [node name="ArtPanelLayer" type="CanvasLayer" parent="."]
 
 [node name="ArtPanel" parent="ArtPanelLayer" instance=ExtResource( 7 )]
@@ -1350,6 +1440,56 @@ pressed = ExtResource( 90 )
 action = "move_right"
 visibility_mode = 1
 
+[node name="StarrySky" type="Viewport" parent="."]
+size = Vector2( 480, 270 )
+script = ExtResource( 92 )
+player_path = NodePath("../YSort/Player")
+
+[node name="Layer1" type="Node2D" parent="StarrySky"]
+
+[node name="TextureRect" type="TextureRect" parent="StarrySky/Layer1"]
+margin_left = -716.0
+margin_top = -704.0
+margin_right = 708.0
+margin_bottom = 1116.0
+texture = ExtResource( 94 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Layer2" type="Node2D" parent="StarrySky"]
+
+[node name="TextureRect" type="TextureRect" parent="StarrySky/Layer2"]
+margin_left = -716.0
+margin_top = -704.0
+margin_right = 708.0
+margin_bottom = 1116.0
+texture = ExtResource( 93 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Layer3" type="Node2D" parent="StarrySky"]
+
+[node name="TextureRect" type="TextureRect" parent="StarrySky/Layer3"]
+margin_left = -716.0
+margin_top = -704.0
+margin_right = 708.0
+margin_bottom = 1116.0
+texture = ExtResource( 55 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera2D" type="Camera2D" parent="StarrySky"]
+current = true
+
+[editable path="Background/WallTop"]
+[editable path="Background/WallTop2"]
+[editable path="Background/WallTop3"]
 [editable path="YSort/SpaceInvaders555"]
 [editable path="YSort/3DSpaceShooter"]
 [editable path="YSort/HappyCookingGame"]
@@ -1376,6 +1516,3 @@ visibility_mode = 1
 [editable path="YSort/LaptopChocolate"]
 [editable path="YSort/ProjectorTrailer"]
 [editable path="YSort/FramedConcept"]
-[editable path="WallTop/WallTop"]
-[editable path="WallTop/WallTop2"]
-[editable path="WallTop/WallTop3"]
