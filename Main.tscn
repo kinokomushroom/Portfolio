@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=2]
+[gd_scene load_steps=149 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -54,7 +54,7 @@
 [ext_resource path="res://Easel_3-4.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Easel_4-3.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Easel_16-9.tscn" type="PackedScene" id=54]
-[ext_resource path="res://textures/stars_3.png" type="Texture" id=55]
+[ext_resource path="res://ArtPiece.gd" type="Script" id=55]
 [ext_resource path="res://content/piano_small.png" type="Texture" id=56]
 [ext_resource path="res://content/chess_large.png" type="Texture" id=57]
 [ext_resource path="res://content/volcano_large.png" type="Texture" id=58]
@@ -94,6 +94,7 @@
 [ext_resource path="res://StarrySky.gd" type="Script" id=92]
 [ext_resource path="res://textures/stars_2.png" type="Texture" id=93]
 [ext_resource path="res://textures/stars_1.png" type="Texture" id=94]
+[ext_resource path="res://textures/stars_3.png" type="Texture" id=95]
 
 [sub_resource type="VisualShaderNodeInput" id=194]
 input_name = "screen_uv"
@@ -631,14 +632,14 @@ texture = SubResource( 202 )
 
 [node name="StarrySky3" type="Sprite" parent="Background"]
 material = SubResource( 201 )
-position = Vector2( -878.5, 211 )
-scale = Vector2( 0.672917, 8.74815 )
+position = Vector2( -880, 211 )
+scale = Vector2( 0.679167, 8.74815 )
 texture = SubResource( 202 )
 
 [node name="StarrySky4" type="Sprite" parent="Background"]
 material = SubResource( 201 )
-position = Vector2( 878, 211 )
-scale = Vector2( 0.672917, 8.74815 )
+position = Vector2( 881, 211 )
+scale = Vector2( 0.683333, 8.74815 )
 texture = SubResource( 202 )
 
 [node name="EasterEggText3" type="Label" parent="."]
@@ -697,6 +698,7 @@ shape = SubResource( 193 )
 
 [node name="SpaceInvaders555" parent="YSort" instance=ExtResource( 20 )]
 position = Vector2( 249, -186 )
+script = ExtResource( 55 )
 title = "Space Invaders 555"
 content_image = ExtResource( 30 )
 japanese_description = "高校の学校祭の企画で作ったゲーム。
@@ -724,6 +726,7 @@ material = SubResource( 156 )
 
 [node name="3DSpaceShooter" parent="YSort" instance=ExtResource( 19 )]
 position = Vector2( 519, -197 )
+script = ExtResource( 55 )
 title = "48h Space Shooter"
 content_image = ExtResource( 27 )
 japanese_description = "４８時間のゲームジャムで作ったゲーム。
@@ -733,7 +736,7 @@ japanese_description = "４８時間のゲームジャムで作ったゲーム�
 ３Ｄモデルは全て自作。"
 english_description = "A game that I made in a 48-hour game jam.
 In this game you fly a spaceship in 3D space and dogfight enemy spaceships.
-To make the spaceship controls intuitive, I made them similar to aeroplanes.
+To make the spaceship controls intuitive, I made them similar to aeroplanes'.
 Ray-casting is used by the enemy's AI to fly while avoiding obstacles.
 Every 3D model is made by me."
 tools_used = "Godot Engine, Blender"
@@ -752,6 +755,7 @@ material = SubResource( 162 )
 
 [node name="HappyCookingGame" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( -248, -198 )
+script = ExtResource( 55 )
 title = "Happy Cooking Game"
 content_image = ExtResource( 28 )
 japanese_description = "このゲームでは大きく狂暴になった食材と包丁で戦い、倒して得た材料で料理をして進む。
@@ -778,6 +782,7 @@ material = SubResource( 168 )
 
 [node name="PhysicsSpaceGame" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( -525, -189 )
+script = ExtResource( 55 )
 title = "Space Junk Cleanup Game"
 content_image = ExtResource( 40 )
 japanese_description = "大学の物理エンジンをテーマとした授業で作ったゲーム。
@@ -806,6 +811,7 @@ material = SubResource( 174 )
 
 [node name="RocketSimulator2020" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( -182, -487 )
+script = ExtResource( 55 )
 title = "Rocket Simulator 2020"
 content_image = ExtResource( 41 )
 japanese_description = "ロケットを操縦して小惑星を避けるゲーム。
@@ -833,6 +839,7 @@ material = SubResource( 180 )
 
 [node name="IKWalkingAnimation" parent="YSort" instance=ExtResource( 22 )]
 position = Vector2( -478, -493 )
+script = ExtResource( 55 )
 title = "IK Walking Animation"
 content_image = ExtResource( 42 )
 japanese_description = "ロボットが地形に沿って歩行するインタラクティブアニメーション。
@@ -857,13 +864,14 @@ material = SubResource( 186 )
 
 [node name="PianoTranscriptionHelper" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( 183, -498 )
+script = ExtResource( 55 )
 title = "Piano Transcription Helper"
 content_image = ExtResource( 38 )
 japanese_description = "曲をピアノ用にアレンジする手助けをするアプリケーション。ピアノアレンジの過程を楽にしたいと思い開発した。
 このアプリで.mp3ファイルを開いて再生するとリアルタイムで周波数が分析され、ピアノのそれぞれのキーに対応する音の強さが表示される。
 生のデータは見にくいため、時間方向に平滑化をする機能や周囲より音が大きいキーだけ強調する機能を付けた。
 三和音のコードを分析する機能も入っている。"
-english_description = "An application that helps you arrange music for the piano. I made this in hope of making piano transcription tasks easier.
+english_description = "An application that helps you arrange music for the piano. I made this in the hope of making piano transcription tasks easier.
 This app can open .mp3 files and play them while analysing the frequencies in real time and displaying the strength of each note above a piano keyboard.
 In order to make the raw data easier to understand, I implemented a feature that smooths the data in the temporal direction, and a feature that highlights notes with the locally largest magnitude.
 I also included a feature for analysing triad chords."
@@ -883,6 +891,7 @@ material = SubResource( 188 )
 
 [node name="4DVisualiser" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 472, -491 )
+script = ExtResource( 55 )
 title = "4D Visualiser"
 content_image = ExtResource( 39 )
 japanese_description = "４次元図形を視覚化できるアプリケーション。
@@ -891,7 +900,7 @@ japanese_description = "４次元図形を視覚化できるアプリケーシ�
 現在は超立方体、立方体、１点で交わる２枚の平面、五胞体、超球面の描画が可能である。"
 english_description = "An application that lets you visualise 4-dimensional geometry.
 It works by projecting 4D shapes to 3D space by either perspective or orthographic projection.
-You can change the position of the view point in 4D space by e.g. simultaneously pressing the X and W keys to rotate it atop the XW plane.
+You can change the position of the view point in 4D space by, for example, simultaneously pressing the X and W keys to rotate it atop the XW plane.
 The app can currently display a tesseract, a cube, two planes intersecting at one point, a 5-cell, and a hypersphere."
 tools_used = "Godot Engine"
 video_link = "https://youtu.be/l9GY1OJayBs"
@@ -921,7 +930,7 @@ position = Vector2( 328, -537 )
 position = Vector2( 492, -537 )
 
 [node name="Wall28" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 633, -537 )
+position = Vector2( 635, -537 )
 
 [node name="Wall17" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( -164, -537 )
@@ -933,7 +942,7 @@ position = Vector2( -328, -537 )
 position = Vector2( -492, -537 )
 
 [node name="Wall31" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -633, -537 )
+position = Vector2( -635, -537 )
 
 [node name="Wall18" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( 164, -233 )
@@ -945,10 +954,10 @@ position = Vector2( 328, -233 )
 position = Vector2( 492, -233 )
 
 [node name="Wall21" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( 633, -233 )
+position = Vector2( 635, -233 )
 
 [node name="Wall22" parent="YSort" instance=ExtResource( 45 )]
-position = Vector2( -633, -233 )
+position = Vector2( -635, -233 )
 
 [node name="Wall23" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( -492, -233 )
@@ -1031,6 +1040,7 @@ texture = ExtResource( 35 )
 
 [node name="ProjectorSpider" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( -370, 366 )
+script = ExtResource( 55 )
 title = "Arachnid of Destruction"
 content_image = ExtResource( 82 )
 japanese_description = "大学のＣＧの授業の課題で作ったアニメーション作品。C++とOpenGLで実装した。
@@ -1064,6 +1074,7 @@ material = SubResource( 99 )
 
 [node name="ProjectorGLSLBlackHole" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( -578, 365 )
+script = ExtResource( 55 )
 title = "GLSL Gravitational Lens"
 content_image = ExtResource( 78 )
 japanese_description = "GLSLで作ったブラックホールのシェーダー。
@@ -1174,6 +1185,7 @@ texture = ExtResource( 56 )
 
 [node name="ProjectorBlackHole" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( 383, 669 )
+script = ExtResource( 55 )
 title = "Black Hole"
 content_image = ExtResource( 79 )
 japanese_description = "Blenderで作りEeveeでレンダリングしたブラックホール。
@@ -1239,6 +1251,7 @@ texture = ExtResource( 66 )
 
 [node name="LaptopMaterial" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -530, 654 )
+script = ExtResource( 55 )
 title = "Blender Material Tutorial"
 content_image = ExtResource( 84 )
 japanese_description = "Blenderでマテリアルを作る方法を説明した動画。
@@ -1336,12 +1349,13 @@ texture = ExtResource( 64 )
 
 [node name="LaptopChocolate" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -480, 973 )
+script = ExtResource( 55 )
 title = "Blender Chocolate Tutorial"
 content_image = ExtResource( 83 )
 japanese_description = "Blenderでチョコレートを作る方法のチュートリアル。
 短時間で高品質な結果を作れるようにした。"
 english_description = "A tutorial on how to make chocolate bars in Blender.
-I made the tutorial give viewers high quality results in a short amount of time."
+I made this tutorial so that viewers can get high quality results in a short amount of time."
 tools_used = "Blender, DaVinci Resolve"
 video_link = "https://youtu.be/gwhMeUN6q-A"
 
@@ -1365,7 +1379,7 @@ title = "School Festival Trailer"
 content_image = ExtResource( 80 )
 japanese_description = "高校の学校祭でクラス企画のゲームセンターを宣伝するために作ったトレーラー映像。
 前半はBlenderで作った３Ｄアニメーション、後半は自作ゲーム「Space Invaders 555」の映像である。"
-english_description = "A trailer that I made for a school festival, advertising out class's gaming arcade project.
+english_description = "A trailer that I made for a school festival, advertising our class's gaming arcade project.
 The first half is a 3D animation made in Blender, and the second half is footage from my game \"Space Invaders 555\"."
 tools_used = "Blender (Eevee), Godot Engine"
 video_link = "https://youtu.be/P9QZ-fQPcSQ"
@@ -1442,6 +1456,7 @@ visibility_mode = 1
 
 [node name="StarrySky" type="Viewport" parent="."]
 size = Vector2( 480, 270 )
+usage = 0
 script = ExtResource( 92 )
 player_path = NodePath("../YSort/Player")
 
@@ -1478,7 +1493,7 @@ margin_left = -716.0
 margin_top = -704.0
 margin_right = 708.0
 margin_bottom = 1116.0
-texture = ExtResource( 55 )
+texture = ExtResource( 95 )
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
