@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=2]
+[gd_scene load_steps=155 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -54,7 +54,7 @@
 [ext_resource path="res://Easel_3-4.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Easel_4-3.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Easel_16-9.tscn" type="PackedScene" id=54]
-[ext_resource path="res://ArtPiece.gd" type="Script" id=55]
+[ext_resource path="res://content/portfolio_large.png" type="Texture" id=55]
 [ext_resource path="res://content/piano_small.png" type="Texture" id=56]
 [ext_resource path="res://content/chess_large.png" type="Texture" id=57]
 [ext_resource path="res://content/volcano_large.png" type="Texture" id=58]
@@ -95,6 +95,9 @@
 [ext_resource path="res://textures/stars_2.png" type="Texture" id=93]
 [ext_resource path="res://textures/stars_1.png" type="Texture" id=94]
 [ext_resource path="res://textures/stars_3.png" type="Texture" id=95]
+[ext_resource path="res://textures/curved_screen.png" type="Texture" id=96]
+[ext_resource path="res://PortfolioTVShader.tres" type="Shader" id=97]
+[ext_resource path="res://ScreenVideo.tscn" type="PackedScene" id=99]
 
 [sub_resource type="VisualShaderNodeInput" id=194]
 input_name = "screen_uv"
@@ -186,7 +189,7 @@ shader_param/Brightness = 1.0
 resource_local_to_scene = true
 extents = Vector2( 67, 8.75 )
 
-[sub_resource type="ShaderMaterial" id=168]
+[sub_resource type="ShaderMaterial" id=203]
 resource_local_to_scene = true
 shader = ExtResource( 25 )
 shader_param/Brightness = 1.0
@@ -235,6 +238,20 @@ extents = Vector2( 48, 16.75 )
 resource_local_to_scene = true
 shader = ExtResource( 25 )
 shader_param/Brightness = 0.7
+
+[sub_resource type="RectangleShape2D" id=204]
+resource_local_to_scene = true
+extents = Vector2( 76, 10 )
+
+[sub_resource type="ShaderMaterial" id=205]
+resource_local_to_scene = true
+shader = ExtResource( 25 )
+shader_param/Brightness = null
+
+[sub_resource type="ShaderMaterial" id=206]
+shader = ExtResource( 97 )
+shader_param/DefaultColor = Color( 0.694118, 0.8, 0.713726, 1 )
+shader_param/ScreenTexture = ExtResource( 96 )
 
 [sub_resource type="RectangleShape2D" id=95]
 resource_local_to_scene = true
@@ -537,13 +554,30 @@ range_item_cull_mask = 4
 [node name="LastUpdatedText" type="Label" parent="Floor"]
 modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
 light_mask = 2
-margin_left = -234.0
+margin_left = 94.0
 margin_top = 157.0
-margin_right = -109.0
+margin_right = 232.0
 margin_bottom = 168.0
 custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
 custom_fonts/font = ExtResource( 86 )
-text = "(last updated 2022-02-25)"
+text = "Last updated 2022-03-07"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContactText" type="Label" parent="Floor"]
+modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
+light_mask = 2
+margin_left = -230.0
+margin_top = 141.0
+margin_right = -6.0
+margin_bottom = 168.0
+custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/font = ExtResource( 86 )
+text = "Contact:
+joegriffithsoba@gmail.com"
+valign = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -559,20 +593,6 @@ custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
 custom_fonts/font = ExtResource( 86 )
 text = "Nothing to see here - yet"
 align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EasterEggText2" type="Label" parent="Floor"]
-modulate = Color( 0.647059, 0.470588, 0.298039, 1 )
-light_mask = 2
-margin_left = -688.0
-margin_top = 156.0
-margin_right = -495.0
-margin_bottom = 200.0
-custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
-custom_fonts/font = ExtResource( 86 )
-text = "The princess is in another castle!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -646,9 +666,9 @@ texture = SubResource( 202 )
 modulate = Color( 1, 1, 1, 0.411765 )
 light_mask = 2
 margin_left = 730.0
-margin_top = 975.0
+margin_top = 778.0
 margin_right = 923.0
-margin_bottom = 1019.0
+margin_bottom = 822.0
 custom_colors/font_color = Color( 0.929412, 0.929412, 0.929412, 1 )
 custom_fonts/font = ExtResource( 86 )
 text = "Don't fall off the edge!"
@@ -698,7 +718,6 @@ shape = SubResource( 193 )
 
 [node name="SpaceInvaders555" parent="YSort" instance=ExtResource( 20 )]
 position = Vector2( 249, -186 )
-script = ExtResource( 55 )
 title = "Space Invaders 555"
 content_image = ExtResource( 30 )
 japanese_description = "高校の学校祭の企画で作ったゲーム。
@@ -726,7 +745,6 @@ material = SubResource( 156 )
 
 [node name="3DSpaceShooter" parent="YSort" instance=ExtResource( 19 )]
 position = Vector2( 519, -197 )
-script = ExtResource( 55 )
 title = "48h Space Shooter"
 content_image = ExtResource( 27 )
 japanese_description = "４８時間のゲームジャムで作ったゲーム。
@@ -755,7 +773,6 @@ material = SubResource( 162 )
 
 [node name="HappyCookingGame" parent="YSort" instance=ExtResource( 16 )]
 position = Vector2( -248, -198 )
-script = ExtResource( 55 )
 title = "Happy Cooking Game"
 content_image = ExtResource( 28 )
 japanese_description = "このゲームでは大きく狂暴になった食材と包丁で戦い、倒して得た材料で料理をして進む。
@@ -778,11 +795,10 @@ margin_bottom = 72.0
 stream = ExtResource( 12 )
 
 [node name="Video" parent="YSort/HappyCookingGame/ActualThing" index="3"]
-material = SubResource( 168 )
+material = SubResource( 203 )
 
 [node name="PhysicsSpaceGame" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( -525, -189 )
-script = ExtResource( 55 )
 title = "Space Junk Cleanup Game"
 content_image = ExtResource( 40 )
 japanese_description = "大学の物理エンジンをテーマとした授業で作ったゲーム。
@@ -811,7 +827,6 @@ material = SubResource( 174 )
 
 [node name="RocketSimulator2020" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( -182, -487 )
-script = ExtResource( 55 )
 title = "Rocket Simulator 2020"
 content_image = ExtResource( 41 )
 japanese_description = "ロケットを操縦して小惑星を避けるゲーム。
@@ -839,7 +854,6 @@ material = SubResource( 180 )
 
 [node name="IKWalkingAnimation" parent="YSort" instance=ExtResource( 22 )]
 position = Vector2( -478, -493 )
-script = ExtResource( 55 )
 title = "IK Walking Animation"
 content_image = ExtResource( 42 )
 japanese_description = "ロボットが地形に沿って歩行するインタラクティブアニメーション。
@@ -864,7 +878,6 @@ material = SubResource( 186 )
 
 [node name="PianoTranscriptionHelper" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( 183, -498 )
-script = ExtResource( 55 )
 title = "Piano Transcription Helper"
 content_image = ExtResource( 38 )
 japanese_description = "曲をピアノ用にアレンジする手助けをするアプリケーション。ピアノアレンジの過程を楽にしたいと思い開発した。
@@ -891,7 +904,6 @@ material = SubResource( 188 )
 
 [node name="4DVisualiser" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 472, -491 )
-script = ExtResource( 55 )
 title = "4D Visualiser"
 content_image = ExtResource( 39 )
 japanese_description = "４次元図形を視覚化できるアプリケーション。
@@ -916,6 +928,41 @@ stream = ExtResource( 24 )
 
 [node name="Video" parent="YSort/4DVisualiser/ActualThing" index="3"]
 material = SubResource( 190 )
+
+[node name="Portfolio" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( -479, 77 )
+title = "Portfolio"
+content_image = ExtResource( 55 )
+japanese_description = "このポートフォリオそのもの。
+過去に作ったゲーム・アプリケーション・ＣＧ作品を展示している。
+ゲーム形式のウェブページであり、Godot Engineで制作した。
+ロード時間とパフォーマンスを改善するために、低解像度のピクセルアートスタイルで統一し、テクスチャーや画像のファイルサイズをできるだけ小さくした。
+全ての展示作品について日本語と英語の両方の解説文があり、ボタンで切り替え可能である。
+ゲーム内で独自のシェーダーを複数用いたが、プロジェクターから出る光は一つの例である。この光の色にはリアルタイムで投影動画が反映されている。"
+english_description = "This portfolio itself.
+My past works of video games, applications, and computer graphics are exhibited here.
+This is a web page in style of a video game, made with Godot Engine.
+To improve the loading time and performance, I made the whole game in a low-resolution pixel art style, which enabled me to shrink the file size of textures and videos.
+Every displayed work here has both an English and Japanese description, toggleable with a button.
+I used several custom shaders across the game, one example being the light cone emitted from the projector. Its colours are calculated in real time from the projected video itself."
+tools_used = "Godot Engine, Affinity Designer, Krita, DaVinci Resolve"
+source_link = "https://github.com/kinokomushroom/Portfolio"
+
+[node name="StaticCollision" parent="YSort/Portfolio" index="0"]
+shape = SubResource( 204 )
+
+[node name="VideoPlayer" parent="YSort/Portfolio/ActualThing/Viewport" index="0"]
+visible = false
+
+[node name="Video" parent="YSort/Portfolio/ActualThing" index="3"]
+material = SubResource( 205 )
+
+[node name="ScreenVideo" parent="YSort/Portfolio/ActualThing" index="4" instance=ExtResource( 99 )]
+material = SubResource( 206 )
+margin_left = -74.0
+margin_top = -103.0
+margin_right = 74.0
+margin_bottom = -15.0
 
 [node name="Wall15" parent="YSort" instance=ExtResource( 45 )]
 position = Vector2( 0, -537 )
@@ -1040,7 +1087,6 @@ texture = ExtResource( 35 )
 
 [node name="ProjectorSpider" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( -370, 366 )
-script = ExtResource( 55 )
 title = "Arachnid of Destruction"
 content_image = ExtResource( 82 )
 japanese_description = "大学のＣＧの授業の課題で作ったアニメーション作品。C++とOpenGLで実装した。
@@ -1074,7 +1120,6 @@ material = SubResource( 99 )
 
 [node name="ProjectorGLSLBlackHole" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( -578, 365 )
-script = ExtResource( 55 )
 title = "GLSL Gravitational Lens"
 content_image = ExtResource( 78 )
 japanese_description = "GLSLで作ったブラックホールのシェーダー。
@@ -1185,7 +1230,6 @@ texture = ExtResource( 56 )
 
 [node name="ProjectorBlackHole" parent="YSort" instance=ExtResource( 29 )]
 position = Vector2( 383, 669 )
-script = ExtResource( 55 )
 title = "Black Hole"
 content_image = ExtResource( 79 )
 japanese_description = "Blenderで作りEeveeでレンダリングしたブラックホール。
@@ -1251,7 +1295,6 @@ texture = ExtResource( 66 )
 
 [node name="LaptopMaterial" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -530, 654 )
-script = ExtResource( 55 )
 title = "Blender Material Tutorial"
 content_image = ExtResource( 84 )
 japanese_description = "Blenderでマテリアルを作る方法を説明した動画。
@@ -1349,7 +1392,6 @@ texture = ExtResource( 64 )
 
 [node name="LaptopChocolate" parent="YSort" instance=ExtResource( 74 )]
 position = Vector2( -480, 973 )
-script = ExtResource( 55 )
 title = "Blender Chocolate Tutorial"
 content_image = ExtResource( 83 )
 japanese_description = "Blenderでチョコレートを作る方法のチュートリアル。
@@ -1513,6 +1555,7 @@ current = true
 [editable path="YSort/IKWalkingAnimation"]
 [editable path="YSort/PianoTranscriptionHelper"]
 [editable path="YSort/4DVisualiser"]
+[editable path="YSort/Portfolio"]
 [editable path="YSort/FramedChess"]
 [editable path="YSort/ProjectorSpider"]
 [editable path="YSort/ProjectorGLSLBlackHole"]

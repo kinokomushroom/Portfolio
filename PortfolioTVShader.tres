@@ -1,0 +1,143 @@
+[gd_resource type="VisualShader" load_steps=11 format=2]
+
+[sub_resource type="VisualShaderNodeVectorOp" id=215]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorFunc" id=216]
+
+[sub_resource type="VisualShaderNodeTexture" id=204]
+source = 2
+
+[sub_resource type="VisualShaderNodeColorUniform" id=245]
+uniform_name = "DefaultColor"
+
+[sub_resource type="VisualShaderNodeTextureUniform" id=251]
+uniform_name = "ScreenTexture"
+
+[sub_resource type="VisualShaderNodeExpression" id=252]
+size = Vector2( 516, 232 )
+expression = "value = fract(sin(dot(time * uv.xy, vec2(12.9898, 78.233)))
+ * 43758.5453) * 0.06;"
+
+[sub_resource type="VisualShaderNodeInput" id=253]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeInput" id=254]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeScalarOp" id=255]
+default_input_values = [ 0, 0.0, 1, 3.0 ]
+operator = 5
+
+[sub_resource type="VisualShaderNodeScalarOp" id=256]
+
+[resource]
+code = "shader_type canvas_item;
+uniform vec4 DefaultColor : hint_color;
+uniform sampler2D ScreenTexture;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// ColorUniform:46
+	vec3 n_out46p0 = DefaultColor.rgb;
+	float n_out46p1 = DefaultColor.a;
+
+// Input:54
+	float n_out54p0 = TIME;
+
+// Input:55
+	vec3 n_out55p0 = vec3(UV, 0.0);
+
+// Expression:53
+	float n_out53p0;
+	n_out53p0 = 0.0;
+	{
+		n_out53p0 = fract(sin(dot(n_out54p0 * n_out55p0.xy, vec2(12.9898, 78.233)))
+		 * 43758.5453) * 0.06;
+	}
+
+// Texture:2
+	vec3 n_out2p0;
+	float n_out2p1;
+	{
+		vec4 _tex_read = texture(TEXTURE , UV.xy);
+		n_out2p0 = _tex_read.rgb;
+		n_out2p1 = _tex_read.a;
+	}
+
+// ColorFunc:17
+	vec3 n_out17p0;
+	{
+		vec3 c = n_out2p0;
+		float max1 = max(c.r, c.g);
+		float max2 = max(max1, c.b);
+		float max3 = max(max1, max2);
+		n_out17p0 = vec3(max3, max3, max3);
+	}
+
+// ScalarOp:56
+	float n_in56p1 = 3.00000;
+	float n_out56p0 = pow(dot(n_out17p0, vec3(0.333333, 0.333333, 0.333333)), n_in56p1);
+
+// ScalarOp:57
+	float n_out57p0 = n_out53p0 + n_out56p0;
+
+// VectorOp:16
+	vec3 n_out16p0 = n_out46p0 * vec3(n_out57p0);
+
+// TextureUniform:52
+	vec3 n_out52p0;
+	float n_out52p1;
+	{
+		vec4 n_tex_read = texture(ScreenTexture, UV.xy);
+		n_out52p0 = n_tex_read.rgb;
+		n_out52p1 = n_tex_read.a;
+	}
+
+// Output:0
+	COLOR.rgb = n_out16p0;
+	COLOR.a = n_out52p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( 1289, -73 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 2320, 100 )
+nodes/fragment/2/node = SubResource( 204 )
+nodes/fragment/2/position = Vector2( 840, 60 )
+nodes/fragment/16/node = SubResource( 215 )
+nodes/fragment/16/position = Vector2( 2020, 40 )
+nodes/fragment/17/node = SubResource( 216 )
+nodes/fragment/17/position = Vector2( 1100, 60 )
+nodes/fragment/46/node = SubResource( 245 )
+nodes/fragment/46/position = Vector2( 1800, -60 )
+nodes/fragment/52/node = SubResource( 251 )
+nodes/fragment/52/position = Vector2( 1300, 220 )
+nodes/fragment/53/node = SubResource( 252 )
+nodes/fragment/53/position = Vector2( 1220, -220 )
+nodes/fragment/53/size = Vector2( 516, 232 )
+nodes/fragment/53/input_ports = "0,0,time;1,1,uv;"
+nodes/fragment/53/output_ports = "0,0,value;"
+nodes/fragment/53/expression = "value = fract(sin(dot(time * uv.xy, vec2(12.9898, 78.233)))
+ * 43758.5453) * 0.06;"
+nodes/fragment/54/node = SubResource( 253 )
+nodes/fragment/54/position = Vector2( 1020, -220 )
+nodes/fragment/55/node = SubResource( 254 )
+nodes/fragment/55/position = Vector2( 1020, -140 )
+nodes/fragment/56/node = SubResource( 255 )
+nodes/fragment/56/position = Vector2( 1560, 60 )
+nodes/fragment/57/node = SubResource( 256 )
+nodes/fragment/57/position = Vector2( 1790.34, 81.635 )
+nodes/fragment/connections = PoolIntArray( 2, 0, 17, 0, 52, 1, 0, 1, 54, 0, 53, 0, 55, 0, 53, 1, 17, 0, 56, 0, 53, 0, 57, 0, 56, 0, 57, 1, 57, 0, 16, 1, 46, 0, 16, 0, 16, 0, 0, 0 )

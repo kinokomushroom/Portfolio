@@ -13,7 +13,7 @@ color_default = 1
 [sub_resource type="VisualShaderNodeScalarUniform" id=154]
 uniform_name = "Brightness"
 
-[sub_resource type="VisualShaderNodeVectorOp" id=155]
+[sub_resource type="VisualShaderNodeVectorOp" id=204]
 operator = 2
 
 [resource]
@@ -67,7 +67,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -656, -29.2 )
+graph_offset = Vector2( -513.917, 33.5278 )
 mode = 1
 flags/light_only = false
 nodes/fragment/2/node = SubResource( 151 )
@@ -78,6 +78,6 @@ nodes/fragment/4/node = SubResource( 153 )
 nodes/fragment/4/position = Vector2( -360, 100 )
 nodes/fragment/5/node = SubResource( 154 )
 nodes/fragment/5/position = Vector2( -320, 0 )
-nodes/fragment/6/node = SubResource( 155 )
+nodes/fragment/6/node = SubResource( 204 )
 nodes/fragment/6/position = Vector2( -60, 60 )
 nodes/fragment/connections = PoolIntArray( 3, 1, 0, 1, 2, 0, 0, 0, 3, 0, 2, 1, 5, 0, 6, 0, 4, 0, 6, 1, 6, 0, 2, 0 )
